@@ -1,0 +1,287 @@
+openapi: 3.1.0
+info:
+  title: Mithril API Keys SSH Keys API
+  description: Mithril Compute API
+  version: 1.0.0
+servers:
+- url: https://api.mithril.ai
+tags:
+- name: SSH Keys
+paths:
+  /v2/ssh-keys:
+    post:
+      tags:
+      - SSH Keys
+      summary: Create Ssh Key
+      description: 'Create a new SSH key. If public_key is not provided, this endpoint will generate
+
+        a new RSA key pair and return both the private and public keys.'
+      operationId: create_ssh_key_v2_ssh_keys_post
+      security:
+      - MithrilAPIKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSshKeyRequest'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatedSshKeyModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    get:
+      tags:
+      - SSH Keys
+      summary: Get Ssh Keys
+      description: Get all SSH keys for a project
+      operationId: get_ssh_keys_v2_ssh_keys_get
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: project
+        in: query
+        required: true
+        schema:
+          type: string
+          examples:
+          - proj_abc123456
+          title: Project
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NewSshKeyModel'
+                title: Response Get Ssh Keys V2 Ssh Keys Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v2/ssh-keys/{ssh_key_fid}:
+    patch:
+      tags:
+      - SSH Keys
+      summary: Update Ssh Key
+      description: Update an SSH key to set it as required. Only admins can set a key as required.
+      operationId: update_ssh_key_v2_ssh_keys__ssh_key_fid__patch
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: ssh_key_fid
+        in: path
+        required: true
+        schema:
+          type: string
+          examples:
+          - sshkey_abc123456
+          title: Ssh Key Fid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSshKeyRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewSshKeyModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - SSH Keys
+      summary: Delete Ssh Key
+      description: 'Delete an SSH key. Note that SSH keys used in active bids/reservations cannot
+
+        be deleted.'
+      operationId: delete_ssh_key_v2_ssh_keys__ssh_key_fid__delete
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: ssh_key_fid
+        in: path
+        required: true
+        schema:
+          type: string
+          examples:
+          - sshkey_abc123456
+          title: Ssh Key Fid
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    CreateSshKeyRequest:
+      properties:
+        project:
+          type: string
+          title: Project
+          examples:
+          - proj_abc123456
+        name:
+          type: string
+          title: Name
+        public_key:
+          type: string
+          nullable: true
+        required:
+          type: boolean
+          title: Required
+          default: false
+      type: object
+      required:
+      - project
+      - name
+      title: CreateSshKeyRequest
+    ValidationError:
+      properties:
+        loc:
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    NewSshKeyModel:
+      properties:
+        fid:
+          type: string
+          title: Fid
+          examples:
+          - sshkey_abc123456
+        name:
+          type: string
+          title: Name
+        project:
+          type: string
+          title: Project
+          examples:
+          - proj_abc123456
+        public_key:
+          type: string
+          title: Public Key
+        created_at:
+          type: string
+          format: datetime
+          title: Created At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        required:
+          type: boolean
+          title: Required
+      type: object
+      required:
+      - fid
+      - name
+      - project
+      - public_key
+      - created_at
+      - required
+      title: NewSshKeyModel
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    CreatedSshKeyModel:
+      properties:
+        fid:
+          type: string
+          title: Fid
+          examples:
+          - sshkey_abc123456
+        name:
+          type: string
+          title: Name
+        project:
+          type: string
+          title: Project
+          examples:
+          - proj_abc123456
+        public_key:
+          type: string
+          title: Public Key
+        created_at:
+          type: string
+          format: datetime
+          title: Created At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        required:
+          type: boolean
+          title: Required
+        private_key:
+          type: string
+          examples:
+          - '-----BEGIN RSA PRIVATE KEY-----...'
+          nullable: true
+      type: object
+      required:
+      - fid
+      - name
+      - project
+      - public_key
+      - created_at
+      - required
+      title: CreatedSshKeyModel
+    UpdateSshKeyRequest:
+      properties:
+        required:
+          type: boolean
+          title: Required
+      type: object
+      required:
+      - required
+      title: UpdateSshKeyRequest
+  securitySchemes:
+    MithrilAPIKey:
+      type: http
+      scheme: bearer
+      bearerFormat: fkey_<key>

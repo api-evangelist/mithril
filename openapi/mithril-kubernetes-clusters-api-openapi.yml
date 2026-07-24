@@ -1,0 +1,284 @@
+openapi: 3.1.0
+info:
+  title: Mithril API Keys kubernetes clusters API
+  description: Mithril Compute API
+  version: 1.0.0
+servers:
+- url: https://api.mithril.ai
+tags:
+- name: kubernetes clusters
+paths:
+  /v2/kubernetes/clusters:
+    get:
+      tags:
+      - kubernetes clusters
+      summary: Get Kubernetes Clusters
+      description: Get all Kubernetes clusters for a project
+      operationId: get_kubernetes_clusters_v2_kubernetes_clusters_get
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: project
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Project
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/KubernetesClusterModel'
+                title: Response Get Kubernetes Clusters V2 Kubernetes Clusters Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+      - kubernetes clusters
+      summary: Create Kubernetes Cluster
+      description: Create a new Kubernetes cluster
+      operationId: create_kubernetes_cluster_v2_kubernetes_clusters_post
+      security:
+      - MithrilAPIKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateKubernetesClusterRequest'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KubernetesClusterModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v2/kubernetes/clusters/{cluster_fid}:
+    get:
+      tags:
+      - kubernetes clusters
+      summary: Get Kubernetes Cluster
+      description: Get a specific Kubernetes cluster
+      operationId: get_kubernetes_cluster_v2_kubernetes_clusters__cluster_fid__get
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: cluster_fid
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Cluster Fid
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KubernetesClusterModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - kubernetes clusters
+      summary: Delete Kubernetes Cluster
+      description: Delete a Kubernetes cluster
+      operationId: delete_kubernetes_cluster_v2_kubernetes_clusters__cluster_fid__delete
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: cluster_fid
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Cluster Fid
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    KubernetesClusterModel:
+      properties:
+        fid:
+          type: string
+          title: Fid
+        project:
+          type: string
+          title: Project
+        name:
+          type: string
+          title: Name
+        region:
+          type: string
+          title: Region
+          examples:
+          - us-central1-a
+        created_at:
+          type: string
+          format: datetime
+          title: Created At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        kube_host:
+          type: string
+          nullable: true
+        ssh_keys:
+          items:
+            type: string
+            examples:
+            - sshkey_abc123456
+          type: array
+          title: Ssh Keys
+        instances:
+          items:
+            type: string
+            examples:
+            - inst_abc123456
+          type: array
+          title: Instances
+        join_command:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum:
+          - Pending
+          - Available
+          - Terminated
+          title: Status
+        deleted_at:
+          type: string
+          format: datetime
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+          nullable: true
+        k8s_version:
+          type: string
+          title: K8S Version
+        user_fid:
+          type: string
+          nullable: true
+      type: object
+      required:
+      - fid
+      - project
+      - name
+      - region
+      - created_at
+      - ssh_keys
+      - instances
+      - status
+      - k8s_version
+      title: KubernetesClusterModel
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    CreateKubernetesClusterRequest:
+      properties:
+        name:
+          type: string
+          title: Name
+        project:
+          type: string
+          title: Project
+          examples:
+          - proj_abc123456
+        region:
+          type: string
+          title: Region
+          examples:
+          - us-central1-a
+        ssh_keys:
+          items:
+            type: string
+            examples:
+            - sshkey_abc123456
+          type: array
+          minItems: 1
+          title: Ssh Keys
+        instance_type:
+          type: string
+          title: Instance Type
+          examples:
+          - it_abc123456
+        k8s_version:
+          type: string
+          enum:
+          - '1.34'
+          - '1.29'
+          title: K8S Version
+          default: '1.34'
+        image_version:
+          type: string
+          examples:
+          - imgver_abc123456
+          nullable: true
+      type: object
+      required:
+      - name
+      - project
+      - region
+      - ssh_keys
+      - instance_type
+      title: CreateKubernetesClusterRequest
+  securitySchemes:
+    MithrilAPIKey:
+      type: http
+      scheme: bearer
+      bearerFormat: fkey_<key>

@@ -1,0 +1,351 @@
+openapi: 3.1.0
+info:
+  title: Mithril API Keys lifecycle scripts API
+  description: Mithril Compute API
+  version: 1.0.0
+servers:
+- url: https://api.mithril.ai
+tags:
+- name: lifecycle scripts
+paths:
+  /v2/lifecycle-scripts:
+    post:
+      tags:
+      - lifecycle scripts
+      summary: Create Lifecycle Script
+      description: Create a new lifecycle script
+      operationId: create_lifecycle_script_v2_lifecycle_scripts_post
+      security:
+      - MithrilAPIKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLifecycleScriptRequest'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LifecycleScriptModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    get:
+      tags:
+      - lifecycle scripts
+      summary: List Lifecycle Scripts
+      description: Get all lifecycle scripts visible to user in a project
+      operationId: list_lifecycle_scripts_v2_lifecycle_scripts_get
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: next_cursor
+        in: query
+        required: false
+        schema:
+          nullable: true
+      - name: sort_by
+        in: query
+        required: false
+        schema:
+          enum:
+          - created_at
+          - last_modified_at
+          type: string
+          nullable: true
+      - name: sort_dir
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/SortDirection'
+          nullable: true
+      - name: project
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Project
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          nullable: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListLifecycleScriptsResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v2/lifecycle-scripts/{ls_fid}/content:
+    get:
+      tags:
+      - lifecycle scripts
+      summary: Get Lifecycle Script Content
+      operationId: get_lifecycle_script_content_v2_lifecycle_scripts__ls_fid__content_get
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: ls_fid
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Ls Fid
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v2/lifecycle-scripts/{ls_fid}:
+    patch:
+      tags:
+      - lifecycle scripts
+      summary: Update Lifecycle Script
+      operationId: update_lifecycle_script_v2_lifecycle_scripts__ls_fid__patch
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: ls_fid
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Ls Fid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateLifecycleScriptRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LifecycleScriptModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - lifecycle scripts
+      summary: Delete Lifecycle Script
+      operationId: delete_lifecycle_script_v2_lifecycle_scripts__ls_fid__delete
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: ls_fid
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Ls Fid
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    LifecycleScriptModel:
+      properties:
+        fid:
+          type: string
+          title: Fid
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        content_url:
+          type: string
+          maxLength: 2083
+          minLength: 1
+          format: uri
+          title: Content Url
+        project:
+          type: string
+          title: Project
+          examples:
+          - proj_abc123456
+        created_at:
+          type: string
+          format: datetime
+          title: Created At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        created_by:
+          type: string
+          title: Created By
+          examples:
+          - user_abc123456
+        last_modified_at:
+          type: string
+          format: datetime
+          title: Last Modified At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        last_modified_by:
+          type: string
+          title: Last Modified By
+          examples:
+          - user_abc123456
+        scope:
+          $ref: '#/components/schemas/LifecycleScriptScope'
+      type: object
+      required:
+      - fid
+      - name
+      - description
+      - content_url
+      - project
+      - created_at
+      - created_by
+      - last_modified_at
+      - last_modified_by
+      - scope
+      title: LifecycleScriptModel
+    ValidationError:
+      properties:
+        loc:
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    CreateLifecycleScriptRequest:
+      properties:
+        project:
+          type: string
+          title: Project
+          examples:
+          - proj_abc123456
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        content:
+          type: string
+          minLength: 1
+          title: Content
+        description:
+          type: string
+          nullable: true
+        scope:
+          $ref: '#/components/schemas/PublicLifecycleScriptScope'
+          default: PROJECT
+          examples: []
+      type: object
+      required:
+      - project
+      - name
+      - content
+      title: CreateLifecycleScriptRequest
+    SortDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ListLifecycleScriptsResponse:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/LifecycleScriptModel'
+          type: array
+          title: Data
+        next_cursor:
+          type: string
+          nullable: true
+      type: object
+      required:
+      - data
+      title: ListLifecycleScriptsResponse
+    LifecycleScriptScope:
+      type: string
+      enum:
+      - PROJECT
+      - ORGANIZATION
+      - PLATFORM
+    PublicLifecycleScriptScope:
+      type: string
+      enum:
+      - PROJECT
+      - ORGANIZATION
+    UpdateLifecycleScriptRequest:
+      properties:
+        name:
+          type: string
+          minLength: 1
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        scope:
+          $ref: '#/components/schemas/PublicLifecycleScriptScope'
+          examples: []
+          nullable: true
+      type: object
+      title: UpdateLifecycleScriptRequest
+  securitySchemes:
+    MithrilAPIKey:
+      type: http
+      scheme: bearer
+      bearerFormat: fkey_<key>

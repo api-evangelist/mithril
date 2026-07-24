@@ -1,0 +1,255 @@
+openapi: 3.1.0
+info:
+  title: Mithril API Keys pricing API
+  description: Mithril Compute API
+  version: 1.0.0
+servers:
+- url: https://api.mithril.ai
+tags:
+- name: pricing
+paths:
+  /v2/pricing/current:
+    get:
+      tags:
+      - pricing
+      summary: Get Current Prices V2
+      description: 'Get current pricing information for an instance type.
+
+
+        Returns the current spot price, reserved price, and minimum price for a given
+
+        instance type, optionally filtered by region.'
+      operationId: get_current_prices_v2_v2_pricing_current_get
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: instance_type
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Instance Type
+      - name: region
+        in: query
+        required: false
+        schema:
+          type: string
+          examples:
+          - us-central1-a
+          nullable: true
+      - name: instance_quantity
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 256
+          minimum: 1
+          default: 1
+          title: Instance Quantity
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrentPricesResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v2/pricing/history:
+    get:
+      tags:
+      - pricing
+      summary: Get Historical Prices V2
+      description: 'Get historical pricing information for instance types.
+
+
+        Returns historical spot and reserved prices over time for instance types,
+
+        optionally filtered by specific instance type and region.'
+      operationId: get_historical_prices_v2_v2_pricing_history_get
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: instance_types
+        in: query
+        required: false
+        schema:
+          type: string
+          nullable: true
+      - name: region
+        in: query
+        required: false
+        schema:
+          type: string
+          examples:
+          - us-central1-a
+          nullable: true
+      - name: num_samples
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1000
+          minimum: -1
+          default: 100
+          title: Num Samples
+      - name: start_time
+        in: query
+        required: false
+        schema:
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+          type: string
+          format: datetime
+          nullable: true
+      - name: end_time
+        in: query
+        required: false
+        schema:
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+          type: string
+          format: datetime
+          nullable: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoricalPricesResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    CurrentPricesResponse:
+      properties:
+        spot_price_cents:
+          type: integer
+          nullable: true
+        reserved_price_cents:
+          type: integer
+          nullable: true
+        minimum_price_cents:
+          type: integer
+          nullable: true
+        lowest_allocated_bid_cents:
+          type: integer
+          nullable: true
+        dynamic_win_price_cents:
+          type: integer
+          nullable: true
+        available_capacity:
+          type: integer
+          nullable: true
+        total_capacity:
+          type: integer
+          nullable: true
+      type: object
+      title: CurrentPricesResponse
+    ValidationError:
+      properties:
+        loc:
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HistoricalPriceSeriesModel:
+      properties:
+        instance_type:
+          type: string
+          title: Instance Type
+          examples:
+          - it_abc123456
+        region:
+          type: string
+          title: Region
+        timestamps:
+          items:
+            type: string
+            format: datetime
+            examples:
+            - '2024-01-01T00:00:00Z'
+            - '2024-01-01T00:00:00+00:00'
+            - '2024-01-01T00:00:00-00:00'
+          type: array
+          title: Timestamps
+        spot_prices:
+          items:
+            type: string
+          type: array
+          title: Spot Prices
+        reserved_prices:
+          items:
+            type: string
+          type: array
+          title: Reserved Prices
+        region_disabled:
+          type: boolean
+          title: Region Disabled
+          default: false
+      type: object
+      required:
+      - instance_type
+      - region
+      - timestamps
+      - spot_prices
+      - reserved_prices
+      title: HistoricalPriceSeriesModel
+      description: A single time-series of prices for one instance type in one region.
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    HistoricalPricesResponseModel:
+      properties:
+        series:
+          items:
+            $ref: '#/components/schemas/HistoricalPriceSeriesModel'
+          type: array
+          title: Series
+        complete:
+          type: boolean
+          title: Complete
+          default: true
+      type: object
+      required:
+      - series
+      title: HistoricalPricesResponseModel
+      description: Response model for historical pricing data.
+  securitySchemes:
+    MithrilAPIKey:
+      type: http
+      scheme: bearer
+      bearerFormat: fkey_<key>

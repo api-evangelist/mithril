@@ -1,0 +1,131 @@
+openapi: 3.1.0
+info:
+  title: Mithril API Keys quotas API
+  description: Mithril Compute API
+  version: 1.0.0
+servers:
+- url: https://api.mithril.ai
+tags:
+- name: quotas
+paths:
+  /v2/quotas:
+    get:
+      tags:
+      - quotas
+      summary: Get Quotas
+      description: Get all quotas for a project in unified format
+      operationId: get_quotas_v2_quotas_get
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: project
+        in: query
+        required: true
+        schema:
+          type: string
+          examples:
+          - proj_abc123456
+          title: Project
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/QuotaModel'
+                title: Response Get Quotas V2 Quotas Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    QuotaModel:
+      properties:
+        fid:
+          type: string
+          title: Fid
+          description: Unique identifier for the quota
+        project:
+          type: string
+          title: Project
+          description: Project FID this quota belongs to
+          examples:
+          - proj_abc123456
+        instance_type:
+          type: string
+          examples:
+          - it_abc123456
+          nullable: true
+        product_type:
+          type: string
+          title: Product Type
+          description: Type of product (e.g., 'Spot', 'Reservations', 'Storage')
+        total_quantity:
+          type: integer
+          minimum: 0.0
+          title: Total Quantity
+          description: Total quota quantity used
+        used_quantity:
+          type: integer
+          minimum: 0.0
+          title: Used Quantity
+          description: Total quota quantity used
+        units:
+          type: string
+          title: Units
+          description: Units for the quota (e.g., 'instances', 'GB')
+        name:
+          type: string
+          title: Name
+          description: Human-readable display name for the quota
+      type: object
+      required:
+      - fid
+      - project
+      - product_type
+      - total_quantity
+      - used_quantity
+      - units
+      - name
+      title: QuotaModel
+      description: Unified quota model for all quota types (instances, storage, Kubernetes).
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+  securitySchemes:
+    MithrilAPIKey:
+      type: http
+      scheme: bearer
+      bearerFormat: fkey_<key>

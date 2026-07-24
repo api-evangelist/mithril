@@ -1,0 +1,146 @@
+openapi: 3.1.0
+info:
+  title: Mithril API Keys instance types API
+  description: Mithril Compute API
+  version: 1.0.0
+servers:
+- url: https://api.mithril.ai
+tags:
+- name: instance types
+paths:
+  /v2/reservation/instance-types:
+    get:
+      tags:
+      - instance types
+      summary: Get Reservation Instance Types
+      description: 'Get instance types available for reservation.
+
+
+        Returns the subset of public instance types that are currently
+
+        eligible for reservation. Instance types can be disabled for
+
+        reservation via the Unleash reservation-disabled-instance-types
+
+        feature flag.'
+      operationId: get_reservation_instance_types_v2_reservation_instance_types_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/InstanceTypeModel'
+                type: array
+                title: Response Get Reservation Instance Types V2 Reservation Instance Types Get
+      security:
+      - MithrilAPIKey: []
+  /v2/instance-types:
+    get:
+      tags:
+      - instance types
+      summary: Get Instance Types
+      description: Get all instance types.
+      operationId: get_instance_types_v2_instance_types_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/InstanceTypeModel'
+                type: array
+                title: Response Get Instance Types V2 Instance Types Get
+      security:
+      - MithrilAPIKey: []
+components:
+  schemas:
+    InstanceTypeModel:
+      properties:
+        fid:
+          type: string
+          title: Fid
+          examples:
+          - it_abc123456
+        name:
+          type: string
+          title: Name
+          examples:
+          - h100.80gb.sxm
+        num_cpus:
+          type: integer
+          title: Num Cpus
+          examples:
+          - 192
+        cpu_type:
+          type: string
+          title: Cpu Type
+          examples:
+          - Intel
+        ram_gb:
+          type: integer
+          title: Ram Gb
+          examples:
+          - 1800
+        num_gpus:
+          type: integer
+          title: Num Gpus
+          examples:
+          - 8
+        gpu_type:
+          type: string
+          title: Gpu Type
+          examples:
+          - H100
+        gpu_memory_gb:
+          type: integer
+          title: Gpu Memory Gb
+          examples:
+          - 80
+        gpu_socket:
+          type: string
+          title: Gpu Socket
+          examples:
+          - SXM5
+        local_storage_gb:
+          type: integer
+          title: Local Storage Gb
+          examples:
+          - 7800
+        network_type:
+          type: string
+          examples:
+          - InfiniBand
+          nullable: true
+        ib_count:
+          type: integer
+          title: Ib Count
+          examples:
+          - 8
+        bridge_count:
+          type: integer
+          title: Bridge Count
+          examples:
+          - 4
+      type: object
+      required:
+      - fid
+      - name
+      - num_cpus
+      - cpu_type
+      - ram_gb
+      - num_gpus
+      - gpu_type
+      - gpu_memory_gb
+      - gpu_socket
+      - local_storage_gb
+      - ib_count
+      - bridge_count
+      title: InstanceTypeModel
+  securitySchemes:
+    MithrilAPIKey:
+      type: http
+      scheme: bearer
+      bearerFormat: fkey_<key>

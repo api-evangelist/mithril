@@ -1,0 +1,127 @@
+openapi: 3.1.0
+info:
+  title: Mithril API Keys profile API
+  description: Mithril Compute API
+  version: 1.0.0
+servers:
+- url: https://api.mithril.ai
+tags:
+- name: profile
+paths:
+  /v2/me:
+    get:
+      tags:
+      - profile
+      summary: Get Me
+      description: Get the current user's profile
+      operationId: get_me_v2_me_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeResponse'
+      security:
+      - MithrilAPIKey: []
+  /v2/me/teammates:
+    get:
+      tags:
+      - profile
+      summary: Get My Teammates
+      description: 'Get teammates visible to the current user.
+
+
+        Returns teammates from the user''s organization, filtered by shared project
+
+        membership (unless the user is an org admin, in which case all org members
+
+        are visible). Can be used by a client to map user FIDs to user profiles.'
+      operationId: get_my_teammates_v2_me_teammates_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TeammateResponse'
+                type: array
+                title: Response Get My Teammates V2 Me Teammates Get
+      security:
+      - MithrilAPIKey: []
+components:
+  schemas:
+    TeammateResponse:
+      properties:
+        id:
+          type: string
+          title: Id
+        fid:
+          type: string
+          title: Fid
+          examples:
+          - user_abc123456
+        user_name:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        organization_role:
+          type: string
+          nullable: true
+        project_ids:
+          items:
+            type: string
+          type: array
+          title: Project Ids
+        deactivated_at:
+          type: string
+          format: datetime
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+          nullable: true
+      type: object
+      required:
+      - id
+      - fid
+      - project_ids
+      title: TeammateResponse
+    MeResponse:
+      properties:
+        id:
+          type: string
+          title: Id
+        fid:
+          type: string
+          title: Fid
+          examples:
+          - user_abc123456
+        email:
+          type: string
+          format: email
+          title: Email
+        user_name:
+          type: string
+          nullable: true
+        organization_id:
+          type: string
+          title: Organization Id
+        organization_role:
+          type: string
+          nullable: true
+      type: object
+      required:
+      - id
+      - fid
+      - email
+      - organization_id
+      title: MeResponse
+  securitySchemes:
+    MithrilAPIKey:
+      type: http
+      scheme: bearer
+      bearerFormat: fkey_<key>

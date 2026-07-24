@@ -1,0 +1,250 @@
+openapi: 3.1.0
+info:
+  title: Mithril API Keys API
+  description: Mithril Compute API
+  version: 1.0.0
+servers:
+- url: https://api.mithril.ai
+tags:
+- name: API Keys
+paths:
+  /v2/api-keys:
+    get:
+      tags:
+      - API Keys
+      summary: Get Api Keys
+      description: Get all API keys registered to the user
+      operationId: get_api_keys_v2_api_keys_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ApiKeyModel'
+                type: array
+                title: Response Get Api Keys V2 Api Keys Get
+        '401':
+          description: Invalid credentials
+      security:
+      - MithrilAPIKey: []
+    post:
+      tags:
+      - API Keys
+      summary: Create Api Key
+      description: Create a new API key
+      operationId: create_api_key_v2_api_keys_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateApiKeyRequest'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateApiKeyResponse'
+        '401':
+          description: Invalid credentials
+        '400':
+          description: Invalid request parameters
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - MithrilAPIKey: []
+  /v2/api-keys/{key_fid}:
+    delete:
+      tags:
+      - API Keys
+      summary: Revoke Api Key
+      description: Revoke an API key
+      operationId: revoke_api_key_v2_api_keys__key_fid__delete
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: key_fid
+        in: path
+        required: true
+        schema:
+          type: string
+          examples:
+          - apikey_abc123456
+          title: Key Fid
+      responses:
+        '204':
+          description: Successful Response
+        '401':
+          description: Invalid credentials
+        '404':
+          description: API key not found
+        '400':
+          description: Invalid request
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    CreateApiKeyRequest:
+      properties:
+        name:
+          type: string
+          title: Name
+        expires_at:
+          type: string
+          format: datetime
+          title: Expires At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+      type: object
+      required:
+      - name
+      - expires_at
+      title: CreateApiKeyRequest
+    CreateApiKeyResponse:
+      properties:
+        fid:
+          type: string
+          title: Fid
+          examples:
+          - apikey_abc123456
+        name:
+          type: string
+          title: Name
+        created_at:
+          type: string
+          format: datetime
+          title: Created At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        expires_at:
+          type: string
+          format: datetime
+          title: Expires At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        deactivated_at:
+          type: string
+          format: datetime
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+          nullable: true
+        snippet:
+          type: string
+          title: Snippet
+          examples:
+          - fkey_abc1...
+        secret:
+          type: string
+          title: Secret
+          examples:
+          - fkey_abc123456
+      type: object
+      required:
+      - fid
+      - name
+      - created_at
+      - expires_at
+      - snippet
+      - secret
+      title: CreateApiKeyResponse
+    ValidationError:
+      properties:
+        loc:
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ApiKeyModel:
+      properties:
+        fid:
+          type: string
+          title: Fid
+          examples:
+          - apikey_abc123456
+        name:
+          type: string
+          title: Name
+        created_at:
+          type: string
+          format: datetime
+          title: Created At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        expires_at:
+          type: string
+          format: datetime
+          title: Expires At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        deactivated_at:
+          type: string
+          format: datetime
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+          nullable: true
+        snippet:
+          type: string
+          title: Snippet
+          examples:
+          - fkey_abc1...
+      type: object
+      required:
+      - fid
+      - name
+      - created_at
+      - expires_at
+      - snippet
+      title: ApiKeyModel
+  securitySchemes:
+    MithrilAPIKey:
+      type: http
+      scheme: bearer
+      bearerFormat: fkey_<key>

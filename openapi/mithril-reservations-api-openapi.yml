@@ -1,0 +1,1428 @@
+openapi: 3.1.0
+info:
+  title: Mithril API Keys reservations API
+  description: Mithril Compute API
+  version: 1.0.0
+servers:
+- url: https://api.mithril.ai
+tags:
+- name: reservations
+paths:
+  /v2/reservation/instance-types:
+    get:
+      tags:
+      - reservations
+      summary: Get Reservation Instance Types
+      description: 'Get instance types available for reservation.
+
+
+        Returns the subset of public instance types that are currently
+
+        eligible for reservation. Instance types can be disabled for
+
+        reservation via the Unleash reservation-disabled-instance-types
+
+        feature flag.'
+      operationId: get_reservation_instance_types_v2_reservation_instance_types_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/InstanceTypeModel'
+                type: array
+                title: Response Get Reservation Instance Types V2 Reservation Instance Types Get
+      security:
+      - MithrilAPIKey: []
+  /v2/reservation/quote:
+    get:
+      tags:
+      - reservations
+      summary: Get Reservation Quote
+      description: 'Get pricing offers for a reservation.
+
+
+        Reservation offers are dynamic and the price may change slightly since
+
+        the time it was generated. You can include an optional "max_unit_price"
+
+        (which you can set at the quoted price or slightly above it) to ensure
+
+        your reservation request fails if the new price is above that max.'
+      operationId: get_reservation_quote_v2_reservation_quote_get
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: project
+        in: query
+        required: true
+        schema:
+          type: string
+          examples:
+          - proj_abc123456
+          title: Project
+      - name: instance_type
+        in: query
+        required: true
+        schema:
+          type: string
+          examples:
+          - it_abc123456
+          title: Instance Type
+      - name: region
+        in: query
+        required: true
+        schema:
+          type: string
+          examples:
+          - us-central1-a
+          title: Region
+      - name: start_time
+        in: query
+        required: true
+        schema:
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+          type: string
+          format: datetime
+          title: Start Time
+      - name: end_time
+        in: query
+        required: true
+        schema:
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+          type: string
+          format: datetime
+          title: End Time
+      - name: quantity
+        in: query
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+          title: Quantity
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservationQuoteResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v2/reservation/availability:
+    get:
+      tags:
+      - reservations
+      summary: Get Availability
+      description: "Get availability information for reservations.\n\nThis endpoint supports three different modes for querying availability:\n\n## Mode: latest_end_time (default)\nGet the latest possible end time for a reservation given a start time and\nquantity.\n\n**Required parameters:**\n- `start_time`: Desired start time for the reservation\n- `quantity`: Number of instances needed\n- `project`: Project FID\n- `instance_type`: Instance type FID\n- `region`: Region name\n\n**Returns:** Latest possible end time and availability status\n\n**Example:**\n```\nGET /reservation/availability?\n    start_time=2024-01-01T00:00:00Z&\n    quantity=4&\n    project=proj_01h8x2k9m3n4p5q6r7s8t9u0v&\n    instance_type=it_01h8x2k9m3n4p5q6r7s8t9u0v&\n    region=us-central1-a\n```\n\n## Mode: slots\nGet all available slots in a time range.\n\n**Required parameters:**\n- `earliest_start_time`: Start of the time range to search\n- `latest_end_time`: End of the time range to search\n- `project`: Project FID\n- `instance_type`: Instance type FID\n- `region`: Region name\n\n**Returns:** List of available time slots with quantities\n\n**Example:**\n```\nGET /reservation/availability?\n    mode=slots&\n    earliest_start_time=2024-01-01T00:00:00Z&\n    latest_end_time=2024-01-02T00:00:00Z&\n    project=proj_01h8x2k9m3n4p5q6r7s8t9u0v&\n    instance_type=it_01h8x2k9m3n4p5q6r7s8t9u0v&\n    region=us-central1-a\n```\n\n## Mode: check\nCheck if a specific time slot is available for reservation.\n\n**Required parameters:**\n- `start_time`: Start of the desired time slot\n- `end_time`: End of the desired time slot\n- `quantity`: Number of instances needed\n- `project`: Project FID\n- `instance_type`: Instance type FID\n- `region`: Region name\n\n**Returns:** Boolean indicating if the slot is available\n\n**Example:**\n```\nGET /reservation/availability?\n    mode=check&\n    start_time=2024-01-01T00:00:00Z&\n    end_time=2024-01-01T12:00:00Z&\n    quantity=4&\n    project=proj_01h8x2k9m3n4p5q6r7s8t9u0v&\n    instance_type=it_01h8x2k9m3n4p5q6r7s8t9u0v&\n    region=us-central1-a\n```\n\n## Common Parameters\nAll modes require these parameters:\n- `project`: Project FID\n- `instance_type`: Instance type FID\n- `region`: Region name\n\n## Authentication\nRequires authentication and user must be a member of the specified project."
+      operationId: get_availability_v2_reservation_availability_get
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: project
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Project
+      - name: instance_type
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Instance Type
+      - name: region
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Region
+      - name: mode
+        in: query
+        required: false
+        schema:
+          enum:
+          - slots
+          - latest_end_time
+          - check
+          type: string
+          default: latest_end_time
+          title: Mode
+      - name: earliest_start_time
+        in: query
+        required: false
+        schema:
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+          type: string
+          format: datetime
+          nullable: true
+      - name: latest_end_time
+        in: query
+        required: false
+        schema:
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+          type: string
+          format: datetime
+          nullable: true
+      - name: start_time
+        in: query
+        required: false
+        schema:
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+          type: string
+          format: datetime
+          nullable: true
+      - name: end_time
+        in: query
+        required: false
+        schema:
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+          type: string
+          format: datetime
+          nullable: true
+      - name: quantity
+        in: query
+        required: false
+        schema:
+          type: integer
+          exclusiveMinimum: 0
+          nullable: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AvailabilitySlotModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v2/reservation:
+    post:
+      tags:
+      - reservations
+      summary: Create Reservation
+      description: Create a new reservation.
+      operationId: create_reservation_v2_reservation_post
+      security:
+      - MithrilAPIKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateReservationRequest'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservationModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    get:
+      tags:
+      - reservations
+      summary: Get Reservations
+      description: Get all reservations for a project
+      operationId: get_reservations_v2_reservation_get
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: next_cursor
+        in: query
+        required: false
+        schema:
+          nullable: true
+      - name: sort_by
+        in: query
+        required: false
+        schema:
+          enum:
+          - created_at
+          - status
+          type: string
+          nullable: true
+      - name: sort_dir
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/SortDirection'
+          nullable: true
+      - name: project
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Project
+      - name: instance_type
+        in: query
+        required: false
+        schema:
+          type: string
+          examples:
+          - it_abc123456
+          nullable: true
+      - name: region
+        in: query
+        required: false
+        schema:
+          type: string
+          examples:
+          - us-central1-a
+          nullable: true
+      - name: status
+        in: query
+        required: false
+        schema:
+          enum:
+          - Pending
+          - Active
+          - Paused
+          - Canceled
+          - Ended
+          type: string
+          nullable: true
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          nullable: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetReservationsResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v2/reservation/{reservation_fid}/extension-availability:
+    get:
+      tags:
+      - reservations
+      summary: Get Extension Availability
+      description: Get extension availability for a reservation
+      operationId: get_extension_availability_v2_reservation__reservation_fid__extension_availability_get
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: reservation_fid
+        in: path
+        required: true
+        schema:
+          type: string
+          examples:
+          - res_abc123456
+          title: Reservation Fid
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtensionAvailabilityResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v2/reservation/{reservation_fid}/extend:
+    post:
+      tags:
+      - reservations
+      summary: Extend Reservation
+      description: Extend a reservation to the requested time.
+      operationId: extend_reservation_v2_reservation__reservation_fid__extend_post
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: reservation_fid
+        in: path
+        required: true
+        schema:
+          type: string
+          examples:
+          - res_abc123456
+          title: Reservation Fid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExtendReservationRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservationModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v2/reservation/{reservation_fid}:
+    patch:
+      tags:
+      - reservations
+      summary: Update Reservation
+      description: Update a reservation's pause/resume status and/or volumes
+      operationId: update_reservation_v2_reservation__reservation_fid__patch
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: reservation_fid
+        in: path
+        required: true
+        schema:
+          type: string
+          examples:
+          - res_abc123456
+          title: Reservation Fid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateReservationRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservationModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v2/reservation/{reservation_fid}/terminate-instances:
+    post:
+      tags:
+      - reservations
+      summary: Terminate Instance
+      description: 'Remove and permanently delete instances from this reservation.
+
+
+        You will receive a credit based on your early termination buyback price
+
+        associated with this reservation and the time remaining in the
+
+        reservation.
+
+
+        This endpoint does a best effort to termiante all instances, but it can
+
+        fail to do so for some instances. If you receive a 207, then please see
+
+        the response for details.'
+      operationId: terminate_instance_v2_reservation__reservation_fid__terminate_instances_post
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: reservation_fid
+        in: path
+        required: true
+        schema:
+          type: string
+          examples:
+          - res_abc123456
+          title: Reservation Fid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TerminateInstanceRequest'
+      responses:
+        '200':
+          description: Successfully terminated all instances.
+          content:
+            application/json:
+              schema: {}
+        '207':
+          description: Failed to terminate some instances. See response for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TerminateInstanceResponsePartialSuccess'
+        '404':
+          description: Either the reservation or one of the instances could not be found.
+        '400':
+          description: The reservation was already ended.
+        '502':
+          description: No instance was able to be stopped due to an internal error.
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v2/reservation/{reservation_fid}/history:
+    get:
+      tags:
+      - reservations
+      summary: Get Reservation History
+      description: 'Get the activity history for a reservation.
+
+
+        Returns a chronological list of order-level status changes (Placed, Active,
+
+        Paused, Resumed, Canceled, Ended) interleaved with aggregated instance-level
+
+        status events (instances running, stopped, error) bucketed into 60-second
+
+        windows so burst transitions appear as a single entry.'
+      operationId: get_reservation_history_v2_reservation__reservation_fid__history_get
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: reservation_fid
+        in: path
+        required: true
+        schema:
+          type: string
+          examples:
+          - res_abc123456
+          title: Reservation Fid
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservationHistoryResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v2/reservation/{reservation_fid}/usage:
+    get:
+      tags:
+      - reservations
+      summary: Get Reservation Usage
+      description: Get usage breakdown for a flex reservation.
+      operationId: get_reservation_usage_v2_reservation__reservation_fid__usage_get
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: reservation_fid
+        in: path
+        required: true
+        schema:
+          type: string
+          examples:
+          - res_abc123456
+          title: Reservation Fid
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservationUsageResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    SortDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+    TerminateInstanceResponsePartialSuccess:
+      properties:
+        terminated_instances:
+          items:
+            type: string
+            examples:
+            - inst_abc123456
+          type: array
+          uniqueItems: true
+          title: Terminated Instances
+      type: object
+      required:
+      - terminated_instances
+      title: TerminateInstanceResponsePartialSuccess
+    GrantUsageModel:
+      properties:
+        fid:
+          type: string
+          title: Fid
+        starts_at:
+          type: string
+          format: datetime
+          title: Starts At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        ends_at:
+          type: string
+          format: datetime
+          title: Ends At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        quantity:
+          type: integer
+          title: Quantity
+        unit_price:
+          type: integer
+          title: Unit Price
+        price_credit:
+          type: integer
+          title: Price Credit
+        return_credit:
+          type: integer
+          title: Return Credit
+      type: object
+      required:
+      - fid
+      - starts_at
+      - ends_at
+      - quantity
+      - unit_price
+      - price_credit
+      - return_credit
+      title: GrantUsageModel
+    UpdateReservationRequest:
+      properties:
+        paused:
+          type: boolean
+          nullable: true
+        volumes:
+          items:
+            type: string
+            examples:
+            - vol_abc123456
+          type: array
+          nullable: true
+      type: object
+      title: UpdateReservationRequest
+    ReservationOffer:
+      properties:
+        key:
+          type: string
+          title: Key
+        display_name:
+          type: string
+          title: Display Name
+        unit_price:
+          type: string
+          title: Unit Price
+        return_buyback_price:
+          type: string
+          title: Return Buyback Price
+        pause_buyback_price:
+          type: string
+          title: Pause Buyback Price
+        total_price:
+          type: string
+          title: Total Price
+        total_etbp_value:
+          type: string
+          title: Total Etbp Value
+        total_fubp_value:
+          type: string
+          title: Total Fubp Value
+        option_premium:
+          type: string
+          title: Option Premium
+      type: object
+      required:
+      - key
+      - display_name
+      - unit_price
+      - return_buyback_price
+      - pause_buyback_price
+      - total_price
+      - total_etbp_value
+      - total_fubp_value
+      - option_premium
+      title: ReservationOffer
+      description: A single pricing offer within a quote response.
+    GetReservationsResponse:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ReservationModel'
+          type: array
+          title: Data
+        next_cursor:
+          type: string
+          nullable: true
+      type: object
+      required:
+      - data
+      title: GetReservationsResponse
+    TerminateInstanceRequest:
+      properties:
+        instances:
+          items:
+            type: string
+            examples:
+            - inst_abc123456
+          type: array
+          minItems: 1
+          uniqueItems: true
+          title: Instances
+        reduce_capacity:
+          type: boolean
+          const: true
+          title: Reduce Capacity
+      type: object
+      required:
+      - instances
+      - reduce_capacity
+      title: TerminateInstanceRequest
+    ReservationQuoteResponse:
+      properties:
+        offers:
+          items:
+            $ref: '#/components/schemas/ReservationOffer'
+          type: array
+          title: Offers
+      type: object
+      required:
+      - offers
+      title: ReservationQuoteResponse
+      description: Response with all pricing offers available when creating a new reservation.
+    UsageSummaryModel:
+      properties:
+        committed_cost_cents:
+          type: integer
+          title: Committed Cost Cents
+        flex_use_credits_cents:
+          type: integer
+          title: Flex Use Credits Cents
+        early_termination_credits_cents:
+          type: integer
+          title: Early Termination Credits Cents
+        net_cost_cents:
+          type: integer
+          title: Net Cost Cents
+        reserved_instance_hours:
+          type: string
+          format: duration
+          title: Reserved Instance Hours
+        active_instance_hours:
+          type: string
+          format: duration
+          title: Active Instance Hours
+        idle_instance_hours:
+          type: string
+          format: duration
+          title: Idle Instance Hours
+        as_of:
+          type: string
+          format: datetime
+          title: As Of
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+      type: object
+      required:
+      - committed_cost_cents
+      - flex_use_credits_cents
+      - early_termination_credits_cents
+      - net_cost_cents
+      - reserved_instance_hours
+      - active_instance_hours
+      - idle_instance_hours
+      - as_of
+      title: UsageSummaryModel
+    ExtendReservationRequest:
+      properties:
+        end_time:
+          type: string
+          format: datetime
+          title: End Time
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        price_specification:
+          $ref: '#/components/schemas/PriceSpecification'
+          nullable: true
+      type: object
+      required:
+      - end_time
+      title: ExtendReservationRequest
+    ReservationLevelEventModel:
+      properties:
+        occurred_at:
+          type: string
+          format: datetime
+          title: Occurred At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        event_type:
+          type: string
+          enum:
+          - Started
+          - Paused
+          - Extended
+          title: Event Type
+        reservation_name:
+          type: string
+          title: Reservation Name
+      type: object
+      required:
+      - occurred_at
+      - event_type
+      - reservation_name
+      title: ReservationLevelEventModel
+    ReservationHistoryEventModel:
+      properties:
+        timestamp:
+          type: string
+          format: datetime
+          title: Timestamp
+          description: When the event occurred
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        event_type:
+          type: string
+          enum:
+          - Placed
+          - Active
+          - Paused
+          - Resumed
+          - Canceled
+          - Ended
+          - Terms Set
+          - Terms Changed
+          title: Event Type
+          examples:
+          - Placed
+          - Active
+          - Paused
+          - Resumed
+          - Canceled
+          - Ended
+          - Terms Set
+          - Terms Changed
+        user_id:
+          type: string
+          nullable: true
+        unit_price_cents:
+          type: integer
+          nullable: true
+        pause_credit_cents:
+          type: integer
+          nullable: true
+        return_credit_cents:
+          type: integer
+          nullable: true
+      type: object
+      required:
+      - timestamp
+      - event_type
+      title: ReservationHistoryEventModel
+      description: A single event in the history of a reservation.
+    PricingEventModel:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        occurred_at:
+          type: string
+          format: datetime
+          title: Occurred At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        instance_fid:
+          type: string
+          title: Instance Fid
+          examples:
+          - inst_abc123456
+        instance_name:
+          type: string
+          title: Instance Name
+        instance_status:
+          type: string
+          enum:
+          - STATUS_NEW
+          - STATUS_CONFIRMED
+          - STATUS_INITIALIZING
+          - STATUS_STARTING
+          - STATUS_RUNNING
+          - STATUS_STOPPING
+          - STATUS_TERMINATED
+          - STATUS_RELOCATING
+          - STATUS_PREEMPTING
+          - STATUS_PREEMPTED
+          - STATUS_REPLACED
+          - STATUS_PAUSED
+          - STATUS_ERROR
+          title: Instance Status
+      type: object
+      required:
+      - id
+      - occurred_at
+      - instance_fid
+      - instance_name
+      - instance_status
+      title: PricingEventModel
+    AvailabilitySlotModel:
+      properties:
+        start_time:
+          type: string
+          format: datetime
+          title: Start Time
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        end_time:
+          type: string
+          format: datetime
+          title: End Time
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        quantity:
+          type: integer
+          title: Quantity
+      type: object
+      required:
+      - start_time
+      - end_time
+      - quantity
+      title: AvailabilitySlotModel
+    ReservationHistoryResponse:
+      properties:
+        reservation_fid:
+          type: string
+          title: Reservation Fid
+          examples:
+          - res_abc123456
+        events:
+          items:
+            $ref: '#/components/schemas/ReservationHistoryEventModel'
+          type: array
+          title: Events
+          description: List of historical events for this reservation, ordered by time
+      type: object
+      required:
+      - reservation_fid
+      - events
+      title: ReservationHistoryResponse
+      description: Response model for reservation history.
+    ReservationInfoModel:
+      properties:
+        fid:
+          type: string
+          title: Fid
+          examples:
+          - res_abc123456
+        order_name:
+          type: string
+          title: Order Name
+        start_date:
+          type: string
+          format: datetime
+          title: Start Date
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        end_date:
+          type: string
+          format: datetime
+          title: End Date
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        status:
+          type: string
+          enum:
+          - Open
+          - Allocated
+          - Preempting
+          - Terminated
+          - Paused
+        committed_cost_cents:
+          type: integer
+          title: Committed Cost Cents
+      type: object
+      required:
+      - fid
+      - order_name
+      - start_date
+      - end_date
+      - status
+      - committed_cost_cents
+      title: ReservationInfoModel
+    CreateReservationRequest:
+      properties:
+        project:
+          type: string
+          title: Project
+          examples:
+          - proj_abc123456
+        instance_type:
+          type: string
+          title: Instance Type
+          examples:
+          - it_abc123456
+        region:
+          type: string
+          title: Region
+          examples:
+          - us-central1-a
+        start_time:
+          type: string
+          format: datetime
+          title: Start Time
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        end_time:
+          type: string
+          format: datetime
+          title: End Time
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        instance_quantity:
+          type: integer
+          title: Instance Quantity
+          examples:
+          - 4
+        name:
+          type: string
+          title: Name
+        launch_specification:
+          $ref: '#/components/schemas/LaunchSpecificationModel'
+        price_specification:
+          $ref: '#/components/schemas/PriceSpecification'
+          nullable: true
+        notification_email:
+          type: string
+          nullable: true
+      type: object
+      required:
+      - project
+      - instance_type
+      - region
+      - start_time
+      - end_time
+      - instance_quantity
+      - name
+      - launch_specification
+      title: CreateReservationRequest
+    ExtensionAvailabilityResponse:
+      properties:
+        latest_extension_time:
+          type: string
+          format: datetime
+          title: Latest Extension Time
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        available:
+          type: boolean
+          title: Available
+      type: object
+      required:
+      - latest_extension_time
+      - available
+      title: ExtensionAvailabilityResponse
+    PriceSpecification:
+      properties:
+        offer_key:
+          type: string
+          title: Offer Key
+          default: standard
+        max_unit_price:
+          type: integer
+          minimum: 0.0
+          examples:
+          - 500
+          nullable: true
+      type: object
+      title: PriceSpecification
+      description: 'Optional pricing specification for flexible reservations.
+
+
+        If omitted, the reservation defaults to the ''standard'' offer.
+
+        If provided, the system applies the specified offer''s pricing.'
+    LaunchSpecificationModel:
+      properties:
+        volumes:
+          items:
+            type: string
+            examples:
+            - vol_abc123456
+          type: array
+          title: Volumes
+          description: List of volume FIDs
+          examples:
+          - - vol_1234567890
+            - vol_1234567891
+        ssh_keys:
+          items:
+            type: string
+            examples:
+            - sshkey_abc123456
+          type: array
+          title: Ssh Keys
+          description: List of SSH key FIDs
+          examples:
+          - - sshkey_1234567890
+            - sshkey_1234567891
+        startup_script:
+          type: string
+          nullable: true
+        kubernetes_cluster:
+          type: string
+          examples:
+          - clust_abc123456
+          nullable: true
+        image_version:
+          type: string
+          examples:
+          - imgver_abc123456
+          nullable: true
+        memory_gb:
+          type: integer
+          nullable: true
+      type: object
+      required:
+      - volumes
+      - ssh_keys
+      title: LaunchSpecificationModel
+    ValidationError:
+      properties:
+        loc:
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ReservationModel:
+      properties:
+        fid:
+          type: string
+          title: Fid
+          examples:
+          - res_abc123456
+        name:
+          type: string
+          title: Name
+        project:
+          type: string
+          title: Project
+          examples:
+          - proj_abc123456
+        created_by:
+          type: string
+          title: Created By
+          examples:
+          - user_abc123456
+        created_at:
+          type: string
+          format: datetime
+          title: Created At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        deactivated_at:
+          type: string
+          format: datetime
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+          nullable: true
+        instance_quantity:
+          type: integer
+          title: Instance Quantity
+          examples:
+          - 4
+        instance_type:
+          type: string
+          title: Instance Type
+          examples:
+          - it_abc123456
+        region:
+          type: string
+          examples:
+          - us-central1-a
+          nullable: true
+        instances:
+          items:
+            type: string
+            examples:
+            - inst_abc123456
+          type: array
+          title: Instances
+        launch_specification:
+          $ref: '#/components/schemas/LaunchSpecificationModel'
+        status:
+          type: string
+          enum:
+          - Pending
+          - Active
+          - Paused
+          - Canceled
+          - Ended
+          title: Status
+          examples:
+          - Pending
+          - Active
+          - Paused
+          - Canceled
+          - Ended
+        start_time:
+          type: string
+          format: datetime
+          title: Start Time
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        end_time:
+          type: string
+          format: datetime
+          title: End Time
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        total_price:
+          type: string
+          title: Total Price
+          examples:
+          - $47.76
+        unit_price:
+          type: string
+          title: Unit Price
+          examples:
+          - $1.99
+      type: object
+      required:
+      - fid
+      - name
+      - project
+      - created_by
+      - created_at
+      - instance_quantity
+      - instance_type
+      - instances
+      - launch_specification
+      - status
+      - start_time
+      - end_time
+      - total_price
+      - unit_price
+      title: ReservationModel
+    InstanceTypeModel:
+      properties:
+        fid:
+          type: string
+          title: Fid
+          examples:
+          - it_abc123456
+        name:
+          type: string
+          title: Name
+          examples:
+          - h100.80gb.sxm
+        num_cpus:
+          type: integer
+          title: Num Cpus
+          examples:
+          - 192
+        cpu_type:
+          type: string
+          title: Cpu Type
+          examples:
+          - Intel
+        ram_gb:
+          type: integer
+          title: Ram Gb
+          examples:
+          - 1800
+        num_gpus:
+          type: integer
+          title: Num Gpus
+          examples:
+          - 8
+        gpu_type:
+          type: string
+          title: Gpu Type
+          examples:
+          - H100
+        gpu_memory_gb:
+          type: integer
+          title: Gpu Memory Gb
+          examples:
+          - 80
+        gpu_socket:
+          type: string
+          title: Gpu Socket
+          examples:
+          - SXM5
+        local_storage_gb:
+          type: integer
+          title: Local Storage Gb
+          examples:
+          - 7800
+        network_type:
+          type: string
+          examples:
+          - InfiniBand
+          nullable: true
+        ib_count:
+          type: integer
+          title: Ib Count
+          examples:
+          - 8
+        bridge_count:
+          type: integer
+          title: Bridge Count
+          examples:
+          - 4
+      type: object
+      required:
+      - fid
+      - name
+      - num_cpus
+      - cpu_type
+      - ram_gb
+      - num_gpus
+      - gpu_type
+      - gpu_memory_gb
+      - gpu_socket
+      - local_storage_gb
+      - ib_count
+      - bridge_count
+      title: InstanceTypeModel
+    ReservationUsageResponse:
+      properties:
+        reservation:
+          $ref: '#/components/schemas/ReservationInfoModel'
+        summary:
+          $ref: '#/components/schemas/UsageSummaryModel'
+        grants:
+          items:
+            $ref: '#/components/schemas/GrantUsageModel'
+          type: array
+          title: Grants
+        pricing_events:
+          items:
+            $ref: '#/components/schemas/PricingEventModel'
+          type: array
+          title: Pricing Events
+        reservation_events:
+          items:
+            $ref: '#/components/schemas/ReservationLevelEventModel'
+          type: array
+          title: Reservation Events
+      type: object
+      required:
+      - reservation
+      - summary
+      - grants
+      - pricing_events
+      - reservation_events
+      title: ReservationUsageResponse
+  securitySchemes:
+    MithrilAPIKey:
+      type: http
+      scheme: bearer
+      bearerFormat: fkey_<key>

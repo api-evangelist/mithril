@@ -1,0 +1,60 @@
+openapi: 3.1.0
+info:
+  title: Mithril API Keys projects API
+  description: Mithril Compute API
+  version: 1.0.0
+servers:
+- url: https://api.mithril.ai
+tags:
+- name: projects
+paths:
+  /v2/projects:
+    get:
+      tags:
+      - projects
+      summary: Get Projects
+      description: Get all projects a user has access to
+      operationId: get_projects_v2_projects_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ProjectModel'
+                type: array
+                title: Response Get Projects V2 Projects Get
+      security:
+      - MithrilAPIKey: []
+components:
+  schemas:
+    ProjectModel:
+      properties:
+        fid:
+          type: string
+          title: Fid
+          examples:
+          - proj_abc123456
+        name:
+          type: string
+          title: Name
+        created_at:
+          type: string
+          format: datetime
+          title: Created At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+      type: object
+      required:
+      - fid
+      - name
+      - created_at
+      title: ProjectModel
+  securitySchemes:
+    MithrilAPIKey:
+      type: http
+      scheme: bearer
+      bearerFormat: fkey_<key>

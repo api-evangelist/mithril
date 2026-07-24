@@ -1,0 +1,160 @@
+openapi: 3.1.0
+info:
+  title: Mithril API Keys image versions API
+  description: Mithril Compute API
+  version: 1.0.0
+servers:
+- url: https://api.mithril.ai
+tags:
+- name: image versions
+paths:
+  /v2/image-versions:
+    get:
+      tags:
+      - image versions
+      summary: Get Image Versions
+      description: 'Get all available image versions;
+
+        the stable image version is the default unless otherwise specified.'
+      operationId: get_image_versions_v2_image_versions_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ImageVersionModel'
+                type: array
+                title: Response Get Image Versions V2 Image Versions Get
+      security:
+      - MithrilAPIKey: []
+  /v2/mcc-image-versions:
+    get:
+      tags:
+      - image versions
+      summary: Get Mcc Image Versions
+      description: 'Get MCC (CPU) image versions available for a region.
+
+        These are CPU-only images used for Kubernetes cluster control planes.'
+      operationId: get_mcc_image_versions_v2_mcc_image_versions_get
+      security:
+      - MithrilAPIKey: []
+      parameters:
+      - name: region
+        in: query
+        required: true
+        schema:
+          type: string
+          examples:
+          - us-central1-a
+          title: Region
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ImageVersionModel'
+                title: Response Get Mcc Image Versions V2 Mcc Image Versions Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ImageVersionModel:
+      properties:
+        image_version_fid:
+          type: string
+          title: Image Version Fid
+          examples:
+          - imgver_abc123456
+        image_version_name:
+          type: string
+          title: Image Version Name
+        os:
+          type: string
+          title: Os
+        kernel:
+          type: string
+          title: Kernel
+        stable:
+          type: boolean
+          title: Stable
+        supported_regions:
+          items:
+            type: string
+          type: array
+          title: Supported Regions
+        deactivated_at:
+          type: string
+          format: datetime
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+          nullable: true
+        nvidia_driver:
+          type: string
+          nullable: true
+        cuda:
+          type: string
+          nullable: true
+        cuda_toolkit:
+          type: string
+          nullable: true
+        nvidia_container_toolkit:
+          type: string
+          nullable: true
+        packages:
+          type: string
+          nullable: true
+      type: object
+      required:
+      - image_version_fid
+      - image_version_name
+      - os
+      - kernel
+      - stable
+      - supported_regions
+      title: ImageVersionModel
+    ValidationError:
+      properties:
+        loc:
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+  securitySchemes:
+    MithrilAPIKey:
+      type: http
+      scheme: bearer
+      bearerFormat: fkey_<key>
