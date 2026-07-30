@@ -1,28 +1,351 @@
 aid: mithril
 name: Mithril
-description: Mithril is a company surfaced as a portfolio company of lightspeed-venture-partners, multicoin-capital,
-  redpoint-ventures and added to the API Evangelist network as a stub for enrichment. This profile is
-  a lead awaiting the enrichment pipeline.
+description: >-
+  Mithril is an AI omnicloud compute platform, operated by Foundry Technologies,
+  that aggregates GPU, CPU, and storage capacity across multiple cloud providers
+  behind a single interface with transparent, market-based pricing. Developers
+  reserve NVIDIA A100/H100/H200 GPUs on flexible reservations or burst onto
+  interruptible spot capacity via price-limited bids, attach WEKA/NVMe persistent
+  storage, run Kubernetes clusters, and drive it all through the v2 Compute REST
+  API, the `ml` CLI, and a Python batch/inference SDK. Used for training,
+  fine-tuning, inference, and batch workloads; SOC 2 Type II certified. Backed by
+  Lightspeed, Multicoin Capital, and Redpoint.
 url: https://raw.githubusercontent.com/api-evangelist/mithril/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://app.mithril.ai/favicon.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - lightspeed-venture-partners
 - multicoin-capital
 - redpoint-ventures
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enriched-from-live-api-surface
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- GPU Cloud
+- AI Infrastructure
+- Machine Learning
+- Cloud Computing
+- Compute
+- Spot Instances
+- Kubernetes
+- GPU
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: mithril:mithril-api-keys-api
+  name: Mithril API Keys API
+  description: The API Keys API from Mithril — 2 operation(s) for api keys.
+  humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  baseURL: https://api.mithril.ai/v2
+  tags:
+  - API Keys
+  properties:
+  - type: OpenAPI
+    url: openapi/mithril-api-keys-api-openapi.yml
+  - type: APIReference
+    url: https://docs.mithril.ai/compute-api/compute-api-reference
+  - type: GettingStarted
+    url: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  - type: Authentication
+    url: authentication/mithril-authentication.yml
+- aid: mithril:mithril-image-versions-api
+  name: Mithril image versions API
+  description: The image versions API from Mithril — 2 operation(s) for image versions.
+  humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  baseURL: https://api.mithril.ai/v2
+  tags:
+  - image versions
+  properties:
+  - type: OpenAPI
+    url: openapi/mithril-image-versions-api-openapi.yml
+  - type: APIReference
+    url: https://docs.mithril.ai/compute-api/compute-api-reference
+  - type: GettingStarted
+    url: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  - type: Authentication
+    url: authentication/mithril-authentication.yml
+- aid: mithril:mithril-instance-types-api
+  name: Mithril instance types API
+  description: The instance types API from Mithril — 2 operation(s) for instance types.
+  humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  baseURL: https://api.mithril.ai/v2
+  tags:
+  - instance types
+  properties:
+  - type: OpenAPI
+    url: openapi/mithril-instance-types-api-openapi.yml
+  - type: APIReference
+    url: https://docs.mithril.ai/compute-api/compute-api-reference
+  - type: GettingStarted
+    url: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  - type: Authentication
+    url: authentication/mithril-authentication.yml
+- aid: mithril:mithril-instances-api
+  name: Mithril instances API
+  description: The instances API from Mithril — 5 operation(s) for instances.
+  humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  baseURL: https://api.mithril.ai/v2
+  tags:
+  - instances
+  properties:
+  - type: OpenAPI
+    url: openapi/mithril-instances-api-openapi.yml
+  - type: APIReference
+    url: https://docs.mithril.ai/compute-api/compute-api-reference
+  - type: GettingStarted
+    url: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  - type: Authentication
+    url: authentication/mithril-authentication.yml
+- aid: mithril:mithril-kubernetes-clusters-api
+  name: Mithril kubernetes clusters API
+  description: The kubernetes clusters API from Mithril — 2 operation(s) for kubernetes clusters.
+  humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  baseURL: https://api.mithril.ai/v2
+  tags:
+  - kubernetes clusters
+  properties:
+  - type: OpenAPI
+    url: openapi/mithril-kubernetes-clusters-api-openapi.yml
+  - type: APIReference
+    url: https://docs.mithril.ai/compute-api/compute-api-reference
+  - type: GettingStarted
+    url: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  - type: Authentication
+    url: authentication/mithril-authentication.yml
+- aid: mithril:mithril-lifecycle-scripts-api
+  name: Mithril lifecycle scripts API
+  description: The lifecycle scripts API from Mithril — 3 operation(s) for lifecycle scripts.
+  humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  baseURL: https://api.mithril.ai/v2
+  tags:
+  - lifecycle scripts
+  properties:
+  - type: OpenAPI
+    url: openapi/mithril-lifecycle-scripts-api-openapi.yml
+  - type: APIReference
+    url: https://docs.mithril.ai/compute-api/compute-api-reference
+  - type: GettingStarted
+    url: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  - type: Authentication
+    url: authentication/mithril-authentication.yml
+- aid: mithril:mithril-pricing-api
+  name: Mithril pricing API
+  description: The pricing API from Mithril — 2 operation(s) for pricing.
+  humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  baseURL: https://api.mithril.ai/v2
+  tags:
+  - pricing
+  properties:
+  - type: OpenAPI
+    url: openapi/mithril-pricing-api-openapi.yml
+  - type: APIReference
+    url: https://docs.mithril.ai/compute-api/compute-api-reference
+  - type: GettingStarted
+    url: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  - type: Authentication
+    url: authentication/mithril-authentication.yml
+- aid: mithril:mithril-profile-api
+  name: Mithril profile API
+  description: The profile API from Mithril — 2 operation(s) for profile.
+  humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  baseURL: https://api.mithril.ai/v2
+  tags:
+  - profile
+  properties:
+  - type: OpenAPI
+    url: openapi/mithril-profile-api-openapi.yml
+  - type: APIReference
+    url: https://docs.mithril.ai/compute-api/compute-api-reference
+  - type: GettingStarted
+    url: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  - type: Authentication
+    url: authentication/mithril-authentication.yml
+- aid: mithril:mithril-projects-api
+  name: Mithril projects API
+  description: The projects API from Mithril — 1 operation(s) for projects.
+  humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  baseURL: https://api.mithril.ai/v2
+  tags:
+  - projects
+  properties:
+  - type: OpenAPI
+    url: openapi/mithril-projects-api-openapi.yml
+  - type: APIReference
+    url: https://docs.mithril.ai/compute-api/compute-api-reference
+  - type: GettingStarted
+    url: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  - type: Authentication
+    url: authentication/mithril-authentication.yml
+- aid: mithril:mithril-quotas-api
+  name: Mithril quotas API
+  description: The quotas API from Mithril — 1 operation(s) for quotas.
+  humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  baseURL: https://api.mithril.ai/v2
+  tags:
+  - quotas
+  properties:
+  - type: OpenAPI
+    url: openapi/mithril-quotas-api-openapi.yml
+  - type: APIReference
+    url: https://docs.mithril.ai/compute-api/compute-api-reference
+  - type: GettingStarted
+    url: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  - type: Authentication
+    url: authentication/mithril-authentication.yml
+- aid: mithril:mithril-reservations-api
+  name: Mithril reservations API
+  description: The reservations API from Mithril — 10 operation(s) for reservations.
+  humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  baseURL: https://api.mithril.ai/v2
+  tags:
+  - reservations
+  properties:
+  - type: OpenAPI
+    url: openapi/mithril-reservations-api-openapi.yml
+  - type: APIReference
+    url: https://docs.mithril.ai/compute-api/compute-api-reference
+  - type: GettingStarted
+    url: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  - type: Authentication
+    url: authentication/mithril-authentication.yml
+- aid: mithril:mithril-spot-api
+  name: Mithril spot API
+  description: The spot API from Mithril — 5 operation(s) for spot.
+  humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  baseURL: https://api.mithril.ai/v2
+  tags:
+  - spot
+  properties:
+  - type: OpenAPI
+    url: openapi/mithril-spot-api-openapi.yml
+  - type: APIReference
+    url: https://docs.mithril.ai/compute-api/compute-api-reference
+  - type: GettingStarted
+    url: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  - type: Authentication
+    url: authentication/mithril-authentication.yml
+- aid: mithril:mithril-ssh-keys-api
+  name: Mithril SSH Keys API
+  description: The SSH Keys API from Mithril — 2 operation(s) for ssh keys.
+  humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  baseURL: https://api.mithril.ai/v2
+  tags:
+  - SSH Keys
+  properties:
+  - type: OpenAPI
+    url: openapi/mithril-ssh-keys-api-openapi.yml
+  - type: APIReference
+    url: https://docs.mithril.ai/compute-api/compute-api-reference
+  - type: GettingStarted
+    url: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  - type: Authentication
+    url: authentication/mithril-authentication.yml
+- aid: mithril:mithril-volumes-api
+  name: Mithril volumes API
+  description: The volumes API from Mithril — 2 operation(s) for volumes.
+  humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  baseURL: https://api.mithril.ai/v2
+  tags:
+  - volumes
+  properties:
+  - type: OpenAPI
+    url: openapi/mithril-volumes-api-openapi.yml
+  - type: APIReference
+    url: https://docs.mithril.ai/compute-api/compute-api-reference
+  - type: GettingStarted
+    url: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+  - type: Authentication
+    url: authentication/mithril-authentication.yml
 common:
 - type: Website
   url: https://mithril.ai
+- type: DeveloperPortal
+  url: https://docs.mithril.ai
+- type: Documentation
+  url: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+- type: APIReference
+  url: https://docs.mithril.ai/compute-api/compute-api-reference
+- type: GettingStarted
+  url: https://docs.mithril.ai/getting-started/welcome-to-mithril
+- type: SignUp
+  url: https://login.mithril.ai/sign-up
+- type: Login
+  url: https://app.mithril.ai
+- type: Pricing
+  url: https://mithril.ai/pricing
+- type: Blog
+  url: https://mithril.ai/blog
+- type: Support
+  url: https://mithril.ai/contact-sales
+- type: TermsOfService
+  url: https://docs.mithril.ai/security-and-trust/legal/terms-of-service
+- type: PrivacyPolicy
+  url: https://docs.mithril.ai/security-and-trust/legal/privacy-policy
+- type: StatusPage
+  url: https://status.mithril.ai
+- type: ChangeLog
+  url: changelog/mithril-changelog.yml
+- type: Authentication
+  url: authentication/mithril-authentication.yml
+- type: Packages
+  url: packages/mithril-packages.yml
+- type: SDKs
+  url: packages/mithril-packages.yml
+- type: CLI
+  url: cli/mithril-cli.yml
+- type: WellKnown
+  url: well-known/mithril-well-known.yml
+- type: MCPServer
+  url: mcp/mithril-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/mithril-llms.txt
+- type: Overlay
+  url: overlays/mithril-compute-overlay.yaml
+- type: Conformance
+  url: conformance/mithril-conformance.yml
+- type: Compliance
+  url: https://trust.mlfoundry.com/
+- type: TrustCenter
+  url: security/mithril-trust-center.yml
+- type: ErrorCatalog
+  url: errors/mithril-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/mithril-lifecycle.yml
+- type: Conventions
+  url: conventions/mithril-conventions.yml
+- type: DataModel
+  url: data-model/mithril-data-model.yml
+- type: VulnerabilityDisclosure
+  url: security/mithril-vulnerability-disclosure.yml
+- type: Security
+  url: https://docs.mithril.ai/security-and-trust/reporting-security-concerns
+- type: DomainSecurity
+  url: security/mithril-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/mithril-agentic-access.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 19
+  pass: local-v1
