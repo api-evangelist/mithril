@@ -1,0 +1,49 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/mithril-compute-openapi-original.json
+id_convention: fid (opaque Foundry ID string per resource)
+entities:
+- name: Project
+  fid: fid
+  fields: [fid, name, created_at]
+- name: ApiKey
+  belongs_to: [Project]
+  fields: [fid, name, created_at, expires_at, deactivated_at, snippet]
+- name: SshKey
+  belongs_to: [Project]
+- name: Bid
+  belongs_to: [Project]
+  has_many: [Instance]
+  fields: [fid, name, project, limit_price, instance_quantity, instance_type, region,
+    status, launch_specification]
+- name: Reservation
+  belongs_to: [Project]
+  has_many: [Instance]
+  fields: [fid, name, project, instance_quantity, instance_type, region, status, start_time,
+    end_time, total_price, unit_price]
+- name: Instance
+  belongs_to: [Project, Bid, Reservation]
+  fields: [fid, name, project, instance_type, region, bid, reservation, ssh_destination,
+    private_ip, status]
+- name: Volume
+  belongs_to: [Project]
+  fields: [fid, name, region, capacity_gb, interface, attachments, bids, reservations]
+- name: KubernetesCluster
+  belongs_to: [Project]
+  has_many: [Instance]
+  fields: [fid, project, name, region, kube_host, ssh_keys, instances, k8s_version,
+    status]
+- name: LifecycleScript
+  belongs_to: [Project]
+- name: InstanceType
+  fields: [instance type catalog + specifications]
+relationships:
+- {from: ApiKey, to: Project, kind: belongs_to, via: project}
+- {from: Bid, to: Project, kind: belongs_to, via: project}
+- {from: Reservation, to: Project, kind: belongs_to, via: project}
+- {from: Instance, to: Bid, kind: belongs_to, via: bid}
+- {from: Instance, to: Reservation, kind: belongs_to, via: reservation}
+- {from: Instance, to: Project, kind: belongs_to, via: project}
+- {from: Volume, to: Bid, kind: has_many, via: bids}
+- {from: Volume, to: Reservation, kind: has_many, via: reservations}
+- {from: KubernetesCluster, to: Instance, kind: has_many, via: instances}

@@ -1,0 +1,21 @@
+generated: '2026-07-20'
+method: searched
+source: https://pypi.org/project/mithril-client/
+packages:
+- language: python
+  registry: pypi
+  name: mithril-client
+  url: https://pypi.org/project/mithril-client/
+  install: uv tool install -U --refresh mithril-client
+  summary: Mithril CLI and SDK
+  version: 0.1.0rc3
+  requires_python: '>=3.10'
+  provides:
+  - cli: ml
+  - sdk: python (batch/inference SDK, early preview)
+  official: true
+notes: >-
+  mithril-client is the single first-party PyPI distribution that ships both the
+  `ml` CLI and the Python SDK. Installed with the uv tool installer per the docs
+  (https://docs.mithril.ai/mithril-cli/installation). No first-party JS/npm, Go,
+  Ruby, or crates.io client library was found.

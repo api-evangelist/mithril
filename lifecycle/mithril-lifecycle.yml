@@ -1,0 +1,21 @@
+generated: '2026-07-20'
+method: searched
+source: docs.mithril.ai + status.mithril.ai + mithril.ai/changelog
+versioning:
+  scheme: uri-path
+  current: v2
+  base_url: https://api.mithril.ai/v2
+  docs: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No formal deprecation/sunset policy published; API is at v2.
+sla:
+  url: https://docs.mithril.ai/security-and-trust/legal/terms-of-service
+  uptime_target: null
+status_page: https://status.mithril.ai
+changelog: https://mithril.ai/changelog
+deprecated_operations: []
+notes: >-
+  Status page is live at status.mithril.ai. A dated changelog is maintained at
+  mithril.ai/changelog. No OpenAPI operations are marked deprecated in the v2 spec.

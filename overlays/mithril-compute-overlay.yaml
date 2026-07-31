@@ -1,0 +1,22 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Mithril Compute API
+  version: 1.0.0
+extends: openapi/mithril-compute-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: '2026-07-20'
+    x-api-provider: Mithril (Foundry Technologies)
+    x-base-url: https://api.mithril.ai/v2
+    x-authentication: 'bearer API key (Authorization: Bearer fkey_<key>)'
+    x-status-page: https://status.mithril.ai
+    x-changelog: https://mithril.ai/changelog
+    x-docs: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
+- target: $.info
+  update:
+    description: >-
+      Mithril Compute API (v2) — provision GPU/CPU compute across an aggregated
+      omnicloud via spot bids and reservations, manage instances, storage volumes,
+      SSH keys, lifecycle scripts, Kubernetes clusters, and market pricing.
+      Operated by Foundry Technologies; SOC 2 Type II certified.

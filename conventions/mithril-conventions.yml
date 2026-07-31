@@ -1,0 +1,36 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/mithril-compute-openapi-original.json + docs.mithril.ai/compute-api
+authentication:
+  style: bearer-api-key
+  header: 'Authorization: Bearer fkey_<key>'
+  scheme: MithrilAPIKey (http bearer, bearerFormat fkey_<key>)
+  docs: https://docs.mithril.ai/compute-api/compute-api-reference/api-keys
+  reference: authentication/mithril-authentication.yml
+identifiers:
+  style: fid (Foundry ID) opaque string identifiers per resource
+  path_params: [key_fid, ssh_key_fid, bid_fid, ls_fid, reservation_fid, volume_fid,
+    cluster_fid, instance_fid]
+idempotency:
+  supported: false
+  notes: No Idempotency-Key header/parameter documented or present in the OpenAPI.
+pagination:
+  supported: true
+  style: query-parameter (limit / cursor style on list + history endpoints)
+  applies_to: [get_bids, get_reservations, get_instances, pricing/history, spot/bids/history]
+versioning:
+  style: uri-path
+  current: v2
+  reference: lifecycle/mithril-lifecycle.yml
+error_envelope:
+  validation: HTTPValidationError (detail[] with loc/msg/type) on 422
+  other: HTTP status with JSON body (not RFC 9457)
+  reference: errors/mithril-problem-types.yml
+rate_limits:
+  documented: false
+  notes: No published rate-limit headers or quotas beyond compute quotas (/v2/quotas).
+domains:
+  api: https://api.mithril.ai
+  identity: https://login.mithril.ai
+  console: https://app.mithril.ai
+  docs: https://docs.mithril.ai

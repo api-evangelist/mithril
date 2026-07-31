@@ -1,0 +1,22 @@
+generated: '2026-07-20'
+method: searched
+probe: false
+source: https://docs.mithril.ai/security-and-trust/mithrils-approach-to-security
+url: https://trust.mlfoundry.com/
+url_status: 403 (bot-blocked; linked from Mithril security docs)
+certifications:
+- SOC 2 Type II (availability, security, confidentiality)
+compliance_notes: >-
+  Mithril is SOC 2 Type II certified in availability, security, and confidentiality.
+  Datacenters hosting Mithril compute maintain SOC 2 Type II or ISO 27001 compliance.
+  Mithril publishes GDPR-oriented legal docs (Data Processing Agreement, Privacy
+  Policy, Acceptable Use Policy).
+evidence:
+- source: https://docs.mithril.ai/security-and-trust/mithrils-approach-to-security
+  keywords: [soc 2 type ii, iso 27001, trust center]
+- source: https://trust.mlfoundry.com/
+  keywords: [trust center]
+notes: >-
+  The trust center is hosted at trust.mlfoundry.com (Mithril is operated by Foundry
+  Technologies / ML Foundry). It returns 403 to non-browser clients but is the
+  canonical trust portal linked from the Mithril security docs.

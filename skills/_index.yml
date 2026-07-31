@@ -1,0 +1,21 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/mithril-compute-openapi-original.json
+skills:
+- file: mithril-reserve-gpu-compute.md
+  name: Reserve GPU compute on Mithril
+  api: openapi/mithril-compute-openapi-original.json
+  operations: [get_reservation_instance_types_v2_reservation_instance_types_get, get_reservation_quote_v2_reservation_quote_get,
+    get_availability_v2_reservation_availability_get, create_reservation_v2_reservation_post,
+    get_instances_v2_instances_get, get_quotas_v2_quotas_get]
+- file: mithril-place-spot-bid.md
+  name: Place a spot GPU bid on Mithril
+  api: openapi/mithril-compute-openapi-original.json
+  operations: [get_auctions_v2_spot_availability_get, create_bid_v2_spot_bids_post,
+    get_bid_v2_spot_bids__bid_fid__get, get_bid_status_v2_spot_bids__bid_fid__status_get,
+    cancel_bid_v2_spot_bids__bid_fid__delete]
+- file: mithril-manage-storage-and-keys.md
+  name: Manage Mithril storage volumes and access keys
+  api: openapi/mithril-compute-openapi-original.json
+  operations: [create_api_key_v2_api_keys_post, create_ssh_key_v2_ssh_keys_post, get_ssh_keys_v2_ssh_keys_get,
+    create_volume_v2_volumes_post, get_volumes_v2_volumes_get, delete_volume_v2_volumes__volume_fid__delete]

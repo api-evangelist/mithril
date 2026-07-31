@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/mithril-compute-openapi-original.json
+format: http-status
+envelope: >-
+  Non-422 errors return an HTTP status with a JSON body; 422 validation errors use
+  the FastAPI HTTPValidationError shape { "detail": [ { "loc": [...], "msg": "...",
+  "type": "..." } ] }. Errors are not RFC 9457 application/problem+json.
+problems:
+- status: 400
+  title: Invalid request parameters
+  meaning: The request was malformed or a business precondition failed (e.g. "The
+    reservation was already ended.").
+  example_operation: create_api_key_v2_api_keys_post
+- status: 401
+  title: Invalid credentials
+  meaning: Missing or invalid bearer API key (fkey_...).
+  example_operation: get_api_keys_v2_api_keys_get
+- status: 404
+  title: Resource not found
+  meaning: The referenced resource (API key, reservation, instance) does not exist.
+  example_operation: revoke_api_key_v2_api_keys__key_fid__delete
+- status: 409
+  title: Conflict / not ready
+  meaning: The target resource is not in a valid state for the operation (e.g. instance
+    not yet ready, no underlying VM to refresh).
+  example_operation: put_instance_status_v2_instances_patch
+- status: 422
+  title: Validation error
+  meaning: Request body/params failed schema validation; body is HTTPValidationError.
+  example_operation: (all POST/PATCH operations)
+- status: 501
+  title: Not implemented
+  meaning: The requested capability is not yet supported for this resource (e.g. spot
+    bids, boot-disk refresh on spot/region).
+  example_operation: put_instance_status_v2_instances_patch
+- status: 502
+  title: Upstream error
+  meaning: An internal/upstream failure prevented the operation (e.g. no instance
+    could be stopped).
+  example_operation: terminate_instance_v2_reservation__reservation_fid__terminate_instances_post

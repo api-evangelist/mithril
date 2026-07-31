@@ -1,0 +1,48 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/mithril-compute-openapi-original.json
+server:
+  name: mithril-compute
+  transport: http
+  url: null
+  note: No official hosted/remote Mithril MCP server was found (docs, npm
+    @modelcontextprotocol, MCP registries). Tools below are a candidate surface
+    derived one-per-operation from the v2 Compute API.
+tools:
+- name: list_pricing_current
+  description: Get current market GPU prices
+  source_operation: openapi/mithril-compute-openapi-original.json#get_current_prices_v2_v2_pricing_current_get
+- name: list_instance_types
+  description: List available GPU instance types and specifications
+  source_operation: openapi/mithril-compute-openapi-original.json#get_instance_types_v2_instance_types_get
+- name: get_spot_availability
+  description: Check spot auction availability and pricing
+  source_operation: openapi/mithril-compute-openapi-original.json#get_auctions_v2_spot_availability_get
+- name: create_spot_bid
+  description: Place a spot bid for GPU instances
+  source_operation: openapi/mithril-compute-openapi-original.json#create_bid_v2_spot_bids_post
+- name: get_bid_status
+  description: Get the status of a spot bid
+  source_operation: openapi/mithril-compute-openapi-original.json#get_bid_status_v2_spot_bids__bid_fid__status_get
+- name: cancel_bid
+  description: Cancel a spot bid and terminate its instances
+  source_operation: openapi/mithril-compute-openapi-original.json#cancel_bid_v2_spot_bids__bid_fid__delete
+- name: get_reservation_quote
+  description: Quote a compute reservation
+  source_operation: openapi/mithril-compute-openapi-original.json#get_reservation_quote_v2_reservation_quote_get
+- name: create_reservation
+  description: Create a compute reservation
+  source_operation: openapi/mithril-compute-openapi-original.json#create_reservation_v2_reservation_post
+- name: list_instances
+  description: List running instances
+  source_operation: openapi/mithril-compute-openapi-original.json#get_instances_v2_instances_get
+- name: create_volume
+  description: Create a persistent storage volume
+  source_operation: openapi/mithril-compute-openapi-original.json#create_volume_v2_volumes_post
+- name: create_kubernetes_cluster
+  description: Create a Mithril Kubernetes cluster
+  source_operation: openapi/mithril-compute-openapi-original.json#create_kubernetes_cluster_v2_kubernetes_clusters_post
+- name: get_quotas
+  description: Get compute quotas for the account
+  source_operation: openapi/mithril-compute-openapi-original.json#get_quotas_v2_quotas_get

@@ -1,0 +1,33 @@
+generated: '2026-07-20'
+method: searched
+source: https://mithril.ai/changelog
+scheme: dated
+versioning: none-published
+current_api_version: v2
+entries:
+- date: '2026-03-19'
+  title: Flexible reservations now available
+  type: addition
+  highlights: Receive credit for unused instances, whether pausing temporarily (pause
+    credit) or returning them early (return credit).
+- date: '2025-10-09'
+  title: Flow CLI now available with SDK in early preview
+  type: addition
+  highlights: Command-line tool for provisioning, developing, and running GPU workloads,
+    plus an experimental Python SDK for programmatic job submission.
+- date: '2025-07-07'
+  title: Save and reuse startup scripts
+  type: addition
+  highlights: Script library feature to save and reuse startup scripts at project
+    or organization scope.
+- date: '2025-05-20'
+  title: H200s & simplified reservation billing
+  type: addition
+  highlights: NVIDIA H200 GPUs available via custom reservations; self-serve reservation
+    billing now monthly alongside spot billing.
+- date: '2025-05-14'
+  title: Attach persistent storage to existing spot bids & upgraded authentication
+    flow
+  type: addition
+  highlights: Modify storage volumes on paused bids; authentication infrastructure
+    upgrades.

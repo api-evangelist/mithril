@@ -1,0 +1,84 @@
+# Mithril
+
+## Mithril Documentation
+
+- [Welcome to Mithril](https://docs.mithril.ai/getting-started/welcome-to-mithril.md): Mithril is a self-serve cloud platform for machine learning research and infrastructure teams
+- [Account setup](https://docs.mithril.ai/getting-started/account-setup.md): Begin using compute on Mithril.
+- [Compute overview](https://docs.mithril.ai/compute-and-storage/compute-overview.md): Infrastructure designed to maximize price-performance for your ML workloads
+- [Compute quickstart](https://docs.mithril.ai/compute-and-storage/compute-quickstart.md): Set up your account and provision compute in minutes
+- [Using the price chart](https://docs.mithril.ai/compute-and-storage/using-the-price-chart.md)
+- [Instance types & specifications](https://docs.mithril.ai/compute-and-storage/instance-types-and-specifications.md)
+- [Reserving compute](https://docs.mithril.ai/compute-and-storage/reserving-compute.md): Guarantee access to compute for a set duration for critical, preplanned workloads
+- [Pause Credit](https://docs.mithril.ai/compute-and-storage/reserving-compute/pause-credit.md): Earn credit for temporarily unused instances
+- [Return Credit](https://docs.mithril.ai/compute-and-storage/reserving-compute/return-credit.md): Earn credit for returning parts of a reservation early
+- [Spot bids](https://docs.mithril.ai/compute-and-storage/spot-bids.md): Pay as you go for preemptible instances.
+- [Spot auction mechanics](https://docs.mithril.ai/compute-and-storage/spot-bids/spot-auction-mechanics.md): How Mithril allocates spot compute
+- [Handling spot interruptions](https://docs.mithril.ai/compute-and-storage/spot-bids/handling-spot-interruptions.md)
+- [Startup scripts](https://docs.mithril.ai/compute-and-storage/startup-scripts.md)
+- [Access & manage instances](https://docs.mithril.ai/compute-and-storage/access-and-manage-instances.md): See the status of your instances, reservations, and spot bids
+- [Statuses](https://docs.mithril.ai/compute-and-storage/access-and-manage-instances/statuses.md)
+- [Compute quotas](https://docs.mithril.ai/compute-and-storage/compute-quotas.md): How to view and increase your quotas
+- [Managing open ports](https://docs.mithril.ai/compute-and-storage/managing-open-ports.md): A guide to exposing ports from your Mithril instances
+- [Ephemeral storage](https://docs.mithril.ai/compute-and-storage/ephemeral-storage.md)
+- [Persistent storage](https://docs.mithril.ai/compute-and-storage/persistent-storage.md)
+- [File shares](https://docs.mithril.ai/compute-and-storage/persistent-storage/file-shares.md): Provisioning file shares for your instances
+- [Block storage](https://docs.mithril.ai/compute-and-storage/persistent-storage/block-storage.md): Provision raw disk storage
+- [Mithril Compute Clusters](https://docs.mithril.ai/compute-and-storage/mithril-compute-clusters.md)
+- [SSH keys](https://docs.mithril.ai/compute-and-storage/ssh-keys.md): Manage the SSH keys you use with Mithril compute
+- [Overview](https://docs.mithril.ai/mithril-cli/overview.md)
+- [Installation](https://docs.mithril.ai/mithril-cli/installation.md)
+- [Quickstart](https://docs.mithril.ai/mithril-cli/quickstart.md)
+- [Task YAML](https://docs.mithril.ai/mithril-cli/task-yaml.md): Complete reference for SkyPilot-compatible Task YAML.
+- [Infra](https://docs.mithril.ai/mithril-cli/task-yaml/infra.md)
+- [Data & storage](https://docs.mithril.ai/mithril-cli/task-yaml/data-and-storage.md)
+- [Detect idle instances](https://docs.mithril.ai/mithril-cli/task-yaml/detect-idle-instances.md)
+- [Tutorials](https://docs.mithril.ai/mithril-cli/tutorials.md)
+- [Axolotl](https://docs.mithril.ai/mithril-cli/tutorials/axolotl.md)
+- [CLI reference](https://docs.mithril.ai/mithril-cli/cli-reference.md)
+- [Workloads](https://docs.mithril.ai/mithril-cli/cli-reference/workloads.md)
+- [Infrastructure](https://docs.mithril.ai/mithril-cli/cli-reference/infrastructure.md)
+- [Flow (experimental)](https://docs.mithril.ai/mithril-cli/flow-experimental.md): Looking for Flow CLI?
+- [API overview and quickstart](https://docs.mithril.ai/compute-api/api-overview-and-quickstart.md): Mithril's Compute API
+- [Compute API reference](https://docs.mithril.ai/compute-api/compute-api-reference.md)
+- [API Keys](https://docs.mithril.ai/compute-api/compute-api-reference/api-keys.md)
+- [Profile](https://docs.mithril.ai/compute-api/compute-api-reference/profile.md)
+- [SSH Keys](https://docs.mithril.ai/compute-api/compute-api-reference/ssh-keys.md)
+- [Spot](https://docs.mithril.ai/compute-api/compute-api-reference/spot.md)
+- [Lifecycle Scripts](https://docs.mithril.ai/compute-api/compute-api-reference/lifecycle-scripts.md)
+- [Reservations](https://docs.mithril.ai/compute-api/compute-api-reference/reservations.md)
+- [Volumes](https://docs.mithril.ai/compute-api/compute-api-reference/volumes.md)
+- [Pricing](https://docs.mithril.ai/compute-api/compute-api-reference/pricing.md)
+- [Kubernetes Clusters](https://docs.mithril.ai/compute-api/compute-api-reference/kubernetes-clusters.md)
+- [Instances](https://docs.mithril.ai/compute-api/compute-api-reference/instances.md)
+- [Instance Types](https://docs.mithril.ai/compute-api/compute-api-reference/instance-types.md)
+- [Projects](https://docs.mithril.ai/compute-api/compute-api-reference/projects.md)
+- [Image Versions](https://docs.mithril.ai/compute-api/compute-api-reference/image-versions.md)
+- [Quotas](https://docs.mithril.ai/compute-api/compute-api-reference/quotas.md)
+- [Porting IAM roles & permissions from AWS or GCP](https://docs.mithril.ai/access-management/porting-iam-roles-and-permissions-from-aws-or-gcp.md)
+- [Access management](https://docs.mithril.ai/account-and-billing/access-management.md)
+- [Billing](https://docs.mithril.ai/account-and-billing/billing.md): Learn how Mithril calculates your bill and charges you.
+- [Mithril Referral Program](https://docs.mithril.ai/account-and-billing/mithril-referral-program.md): Give Mithril credits, get Mithril credits 🎁 \*
+- [Billing FAQ](https://docs.mithril.ai/account-and-billing/billing-faq.md)
+- [Mithril's approach to security](https://docs.mithril.ai/security-and-trust/mithrils-approach-to-security.md)
+- [Reporting security concerns](https://docs.mithril.ai/security-and-trust/reporting-security-concerns.md)
+- [Legal](https://docs.mithril.ai/security-and-trust/legal.md)
+- [Terms of Service](https://docs.mithril.ai/security-and-trust/legal/terms-of-service.md)
+- [Privacy Policy](https://docs.mithril.ai/security-and-trust/legal/privacy-policy.md)
+- [Acceptable Use Policy](https://docs.mithril.ai/security-and-trust/legal/acceptable-use-policy.md)
+- [Data Processing Agreement](https://docs.mithril.ai/security-and-trust/legal/data-processing-agreement.md)
+
+
+---
+
+# Agent Instructions
+This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively. Learn more at gitbook.com.
+
+## Querying This Documentation
+If you need additional information, you can query the documentation dynamically by asking a question.
+Perform an HTTP GET request on a page URL with the `ask` query parameter:
+```
+GET https://docs.mithril.ai/getting-started/welcome-to-mithril.md?ask=<question>
+```
+The question should be specific, self-contained, and written in natural language.
+The response will contain a direct answer to the question and relevant excerpts and sources from the documentation.
+Use this mechanism when the answer is not explicitly present in the current page, you need clarification or additional context, or you want to retrieve related documentation sections.

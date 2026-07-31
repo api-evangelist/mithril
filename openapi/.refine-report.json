@@ -1,0 +1,40 @@
+{
+  "provider": "mithril",
+  "sources": [
+    "mithril-api-keys-api-openapi.yml",
+    "mithril-image-versions-api-openapi.yml",
+    "mithril-instance-types-api-openapi.yml",
+    "mithril-instances-api-openapi.yml",
+    "mithril-kubernetes-clusters-api-openapi.yml",
+    "mithril-lifecycle-scripts-api-openapi.yml",
+    "mithril-pricing-api-openapi.yml",
+    "mithril-profile-api-openapi.yml",
+    "mithril-projects-api-openapi.yml",
+    "mithril-quotas-api-openapi.yml",
+    "mithril-reservations-api-openapi.yml",
+    "mithril-spot-api-openapi.yml",
+    "mithril-ssh-keys-api-openapi.yml",
+    "mithril-volumes-api-openapi.yml"
+  ],
+  "outputs": [
+    "mithril-api-keys-api-openapi.yml",
+    "mithril-image-versions-api-openapi.yml",
+    "mithril-instance-types-api-openapi.yml",
+    "mithril-instances-api-openapi.yml",
+    "mithril-kubernetes-clusters-api-openapi.yml",
+    "mithril-lifecycle-scripts-api-openapi.yml",
+    "mithril-pricing-api-openapi.yml",
+    "mithril-profile-api-openapi.yml",
+    "mithril-projects-api-openapi.yml",
+    "mithril-quotas-api-openapi.yml",
+    "mithril-reservations-api-openapi.yml",
+    "mithril-spot-api-openapi.yml",
+    "mithril-ssh-keys-api-openapi.yml",
+    "mithril-volumes-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

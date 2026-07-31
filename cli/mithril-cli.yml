@@ -1,0 +1,60 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.mithril.ai/mithril-cli/overview
+binary: ml
+package: mithril-client
+install:
+- method: uv
+  command: uv tool install -U --refresh mithril-client
+  prereq: 'curl -LsSf https://astral.sh/uv/install.sh | sh'
+setup: ml setup
+docs: https://docs.mithril.ai/mithril-cli/cli-reference
+command_groups:
+- group: workloads
+  docs: https://docs.mithril.ai/mithril-cli/cli-reference/workloads
+  commands:
+  - name: ml launch
+    purpose: Create cluster and run a task (or start interactive setup)
+  - name: ml exec
+    purpose: Run a task or command on an existing cluster (or open a shell)
+  - name: ml status
+    purpose: List clusters and jobs; optionally show IP or endpoints
+  - name: ml logs
+    purpose: Stream or download job logs; stream provision/autostop logs
+  - name: ml queue
+    purpose: Show job queue for cluster(s)
+  - name: ml start
+    purpose: Start stopped (or failed) cluster(s)
+  - name: ml stop
+    purpose: Stop cluster(s); keep disks for later ml start
+  - name: ml down
+    purpose: Tear down cluster(s) and delete resources
+- group: infrastructure
+  docs: https://docs.mithril.ai/mithril-cli/cli-reference/infrastructure
+  commands:
+  - name: ml instance create
+    purpose: Submit a spot bid for one or more GPU instances
+  - name: ml instance list
+    purpose: List instances and spot bids
+  - name: ml instance info
+    purpose: Show detailed information about an instance or bid
+  - name: ml instance delete
+    purpose: Cancel a bid and terminate its instances
+  - name: ml instance list-types
+    purpose: Show available GPU instance types and their specifications
+  - name: ml k8s list
+    purpose: List Kubernetes clusters
+  - name: ml k8s info
+    purpose: Show detailed information about a Kubernetes cluster
+  - name: ml k8s ssh
+    purpose: SSH into the control node of a Kubernetes cluster
+  - name: ml k8s update-kubeconfig
+    purpose: Fetch cluster credentials and merge into local kubeconfig
+  - name: ml ssh
+    purpose: SSH into a Mithril instance by bid name
+task_yaml:
+  docs: https://docs.mithril.ai/mithril-cli/task-yaml
+  purpose: Declarative task definition (infra, data & storage, idle-instance detection)
+notes: >-
+  A Flow CLI + experimental Python SDK entered early preview (changelog 2025-10-09);
+  see https://docs.mithril.ai/mithril-cli/flow-experimental.

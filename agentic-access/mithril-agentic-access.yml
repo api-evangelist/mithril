@@ -1,0 +1,689 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/mithril-compute-openapi-original.json
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 54
+  by_action_class:
+    connected: 32
+    acting: 22
+  by_consequence:
+    read: 32
+    write: 20
+    safety-critical: 2
+  human_in_the_loop_required: 2
+operations:
+- path: /v2/api-keys
+  method: get
+  operationId: get_api_keys_v2_api_keys_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/api-keys
+  method: post
+  operationId: create_api_key_v2_api_keys_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/api-keys/{key_fid}
+  method: delete
+  operationId: revoke_api_key_v2_api_keys__key_fid__delete
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v2/me
+  method: get
+  operationId: get_me_v2_me_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/me/teammates
+  method: get
+  operationId: get_my_teammates_v2_me_teammates_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/ssh-keys
+  method: post
+  operationId: create_ssh_key_v2_ssh_keys_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/ssh-keys
+  method: get
+  operationId: get_ssh_keys_v2_ssh_keys_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/ssh-keys/{ssh_key_fid}
+  method: patch
+  operationId: update_ssh_key_v2_ssh_keys__ssh_key_fid__patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/ssh-keys/{ssh_key_fid}
+  method: delete
+  operationId: delete_ssh_key_v2_ssh_keys__ssh_key_fid__delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/spot/bids
+  method: get
+  operationId: get_bids_v2_spot_bids_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/spot/bids
+  method: post
+  operationId: create_bid_v2_spot_bids_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/spot/bids/{bid_fid}
+  method: get
+  operationId: get_bid_v2_spot_bids__bid_fid__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/spot/bids/{bid_fid}
+  method: patch
+  operationId: update_bid_v2_spot_bids__bid_fid__patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/spot/bids/{bid_fid}
+  method: delete
+  operationId: cancel_bid_v2_spot_bids__bid_fid__delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/spot/bids/{bid_fid}/status
+  method: get
+  operationId: get_bid_status_v2_spot_bids__bid_fid__status_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/spot/bids/{bid_fid}/history
+  method: get
+  operationId: get_bid_history_v2_spot_bids__bid_fid__history_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/spot/availability
+  method: get
+  operationId: get_auctions_v2_spot_availability_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/lifecycle-scripts
+  method: post
+  operationId: create_lifecycle_script_v2_lifecycle_scripts_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/lifecycle-scripts
+  method: get
+  operationId: list_lifecycle_scripts_v2_lifecycle_scripts_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/lifecycle-scripts/{ls_fid}/content
+  method: get
+  operationId: get_lifecycle_script_content_v2_lifecycle_scripts__ls_fid__content_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/lifecycle-scripts/{ls_fid}
+  method: patch
+  operationId: update_lifecycle_script_v2_lifecycle_scripts__ls_fid__patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/lifecycle-scripts/{ls_fid}
+  method: delete
+  operationId: delete_lifecycle_script_v2_lifecycle_scripts__ls_fid__delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/reservation/instance-types
+  method: get
+  operationId: get_reservation_instance_types_v2_reservation_instance_types_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/reservation/quote
+  method: get
+  operationId: get_reservation_quote_v2_reservation_quote_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/reservation/availability
+  method: get
+  operationId: get_availability_v2_reservation_availability_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/reservation
+  method: post
+  operationId: create_reservation_v2_reservation_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/reservation
+  method: get
+  operationId: get_reservations_v2_reservation_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/reservation/{reservation_fid}/extension-availability
+  method: get
+  operationId: get_extension_availability_v2_reservation__reservation_fid__extension_availability_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/reservation/{reservation_fid}/extend
+  method: post
+  operationId: extend_reservation_v2_reservation__reservation_fid__extend_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/reservation/{reservation_fid}
+  method: patch
+  operationId: update_reservation_v2_reservation__reservation_fid__patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/reservation/{reservation_fid}/terminate-instances
+  method: post
+  operationId: terminate_instance_v2_reservation__reservation_fid__terminate_instances_post
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v2/reservation/{reservation_fid}/history
+  method: get
+  operationId: get_reservation_history_v2_reservation__reservation_fid__history_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/reservation/{reservation_fid}/usage
+  method: get
+  operationId: get_reservation_usage_v2_reservation__reservation_fid__usage_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/volumes
+  method: get
+  operationId: get_volumes_v2_volumes_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/volumes
+  method: post
+  operationId: create_volume_v2_volumes_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/volumes/{volume_fid}
+  method: delete
+  operationId: delete_volume_v2_volumes__volume_fid__delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/volumes/{volume_fid}
+  method: patch
+  operationId: update_volume_v2_volumes__volume_fid__patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/pricing/current
+  method: get
+  operationId: get_current_prices_v2_v2_pricing_current_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/pricing/history
+  method: get
+  operationId: get_historical_prices_v2_v2_pricing_history_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/kubernetes/clusters
+  method: get
+  operationId: get_kubernetes_clusters_v2_kubernetes_clusters_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/kubernetes/clusters
+  method: post
+  operationId: create_kubernetes_cluster_v2_kubernetes_clusters_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/kubernetes/clusters/{cluster_fid}
+  method: get
+  operationId: get_kubernetes_cluster_v2_kubernetes_clusters__cluster_fid__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/kubernetes/clusters/{cluster_fid}
+  method: delete
+  operationId: delete_kubernetes_cluster_v2_kubernetes_clusters__cluster_fid__delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/instances
+  method: get
+  operationId: get_instances_v2_instances_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/instances
+  method: patch
+  operationId: put_instance_status_v2_instances_patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/instances/{instance_fid}/status
+  method: get
+  operationId: get_instance_status_v2_instances__instance_fid__status_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/instances/{instance_fid}/refresh-boot-disk
+  method: post
+  operationId: refresh_instance_boot_disk_v2_instances__instance_fid__refresh_boot_disk_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/instances/status/history
+  method: get
+  operationId: get_instance_status_history_v2_instances_status_history_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/instances/pricing/history
+  method: get
+  operationId: get_instance_pricing_history_v2_instances_pricing_history_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/instance-types
+  method: get
+  operationId: get_instance_types_v2_instance_types_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/projects
+  method: get
+  operationId: get_projects_v2_projects_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/image-versions
+  method: get
+  operationId: get_image_versions_v2_image_versions_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/mcc-image-versions
+  method: get
+  operationId: get_mcc_image_versions_v2_mcc_image_versions_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/quotas
+  method: get
+  operationId: get_quotas_v2_quotas_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

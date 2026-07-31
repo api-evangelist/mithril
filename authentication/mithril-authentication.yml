@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/mithril-compute-openapi-original.json
+docs: https://docs.mithril.ai/compute-api/compute-api-reference/api-keys
+summary:
+  types:
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: MithrilAPIKey
+  type: http
+  scheme: bearer
+  bearerFormat: fkey_<key>
+  header: 'Authorization: Bearer fkey_<key>'
+  docs: https://docs.mithril.ai/compute-api/compute-api-reference/api-keys
+  sources:
+  - openapi/mithril-compute-openapi-original.json
+oauth_identity:
+  note: >-
+    Separately, the Mithril console/CLI sign-in uses OAuth 2.0 / OIDC at
+    login.mithril.ai (authorization_code, client_credentials, refresh_token,
+    device_code grants; scopes openid, profile, email, offline_access). This is
+    account identity, not the API's request auth (which is the fkey_ bearer key).

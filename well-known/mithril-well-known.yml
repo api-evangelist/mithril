@@ -1,0 +1,33 @@
+generated: '2026-07-20'
+method: searched
+source: probed /.well-known/ across mithril.ai, docs.mithril.ai, api.mithril.ai, login.mithril.ai, app.mithril.ai
+hosts:
+- host: https://login.mithril.ai
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: mithril-login-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: mithril-oauth-authorization-server.json
+- host: https://mithril.ai
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+- host: https://api.mithril.ai
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+- host: https://app.mithril.ai
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    note: returns the SPA HTML shell, not a JSON OIDC document; not captured
+notes: >-
+  login.mithril.ai is the Mithril (Foundry) identity provider used for console/CLI
+  sign-in (OAuth 2.0 / OIDC). The v2 Compute REST API itself authenticates with a
+  bearer API key (fkey_...), not these OAuth flows.
