@@ -1,0 +1,271 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mithril API Keys instances API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "instances",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/instances",
+            "params": [
+              {
+                "name": "next_cursor",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_dir",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "instance_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status_in",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "order_type_in",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "bid_fid_in",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "reservation_fid_in",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get all instances for a project"
+        },
+        {
+          "info": {
+            "name": "Put Instance Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.mithril.ai/v2/instances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Trigger a status change for a set of instances.\n\nThis endpoint supports batch start and pause requests for instances. The\nrequest accepts a set of instance FIDs and a target action\n(`STATUS_RUNNING` or `STATUS_PAUSED`).\n\nThe response always includes an entry for every requested instance, keyed by\ninstance FID, with that instance's current status after processing.\n- When an instance is successfully starting, its status is `STATUS_CONFIRMED`.\n- When an instance is successfully stopping, its status"
+        },
+        {
+          "info": {
+            "name": "Get Instance Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/instances/:instance_fid/status",
+            "params": [
+              {
+                "name": "instance_fid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get the status of a specific instance by its ID.\nSupports authentication via mithril key or API key."
+        },
+        {
+          "info": {
+            "name": "Refresh Instance Boot Disk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mithril.ai/v2/instances/:instance_fid/refresh-boot-disk",
+            "params": [
+              {
+                "name": "instance_fid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Refresh (delete and recreate) the boot disk of a reserved instance.\n\nThe instance must already be stopped: stop it first via the pause API\n(`PATCH /instances` with `STATUS_PAUSED`), then call this endpoint, then\nstart it again. A running instance is declined; this endpoint never\nstops the instance itself. When `image_version` is omitted the current\nboot image is reused.\n\nNotes:\n- Only reserved (non-spot) instances are supported at this time.\n- This is being rolled out across all our regions."
+        },
+        {
+          "info": {
+            "name": "Get Instance Status History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/instances/status/history",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "instance_fid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "bid_fid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "reservation_fid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "next_cursor",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get the history of a specific instance by its ID,\nor of all instances in a bid or reservation."
+        },
+        {
+          "info": {
+            "name": "Get Instance Pricing History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/instances/pricing/history",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "instance_fid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "bid_fid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "reservation_fid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "next_cursor",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get the pricing history of a specific instance by its ID,\nor of all instances in a bid or reservation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

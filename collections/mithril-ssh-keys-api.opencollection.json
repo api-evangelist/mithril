@@ -1,0 +1,107 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mithril API Keys SSH Keys API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SSH Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Ssh Keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/ssh-keys",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get all SSH keys for a project"
+        },
+        {
+          "info": {
+            "name": "Create Ssh Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mithril.ai/v2/ssh-keys",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new SSH key. If public_key is not provided, this endpoint will generate\na new RSA key pair and return both the private and public keys."
+        },
+        {
+          "info": {
+            "name": "Update Ssh Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.mithril.ai/v2/ssh-keys/:ssh_key_fid",
+            "params": [
+              {
+                "name": "ssh_key_fid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update an SSH key to set it as required. Only admins can set a key as required."
+        },
+        {
+          "info": {
+            "name": "Delete Ssh Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mithril.ai/v2/ssh-keys/:ssh_key_fid",
+            "params": [
+              {
+                "name": "ssh_key_fid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete an SSH key. Note that SSH keys used in active bids/reservations cannot\nbe deleted."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,2282 @@
+{
+  "item": [
+    {
+      "id": "a6d3130d-6ba2-45a4-9d3f-7d7735d1cb2e",
+      "name": "reservations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7086c5d4-15e3-4758-b2d8-3157a7344f50",
+          "name": "Get Reservation Instance Types",
+          "request": {
+            "name": "Get Reservation Instance Types",
+            "description": {
+              "content": "Get instance types available for reservation.\n\nReturns the subset of public instance types that are currently\neligible for reservation. Instance types can be disabled for\nreservation via the Unleash reservation-disabled-instance-types\nfeature flag.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "reservation",
+                "instance-types"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2e83214f-be1c-40c4-8c0e-a8214fb8c10b",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    "instance-types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"fid\": \"it_abc123456\",\n    \"name\": \"h100.80gb.sxm\",\n    \"num_cpus\": 192,\n    \"cpu_type\": \"Intel\",\n    \"ram_gb\": 1800,\n    \"num_gpus\": 8,\n    \"gpu_type\": \"H100\",\n    \"gpu_memory_gb\": 80,\n    \"gpu_socket\": \"SXM5\",\n    \"local_storage_gb\": 7800,\n    \"ib_count\": 8,\n    \"bridge_count\": 4,\n    \"network_type\": \"InfiniBand\"\n  },\n  {\n    \"fid\": \"it_abc123456\",\n    \"name\": \"h100.80gb.sxm\",\n    \"num_cpus\": 192,\n    \"cpu_type\": \"Intel\",\n    \"ram_gb\": 1800,\n    \"num_gpus\": 8,\n    \"gpu_type\": \"H100\",\n    \"gpu_memory_gb\": 80,\n    \"gpu_socket\": \"SXM5\",\n    \"local_storage_gb\": 7800,\n    \"ib_count\": 8,\n    \"bridge_count\": 4,\n    \"network_type\": \"InfiniBand\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f9afebb-7ef4-43b3-a7ce-256abd387540",
+          "name": "Get Reservation Quote",
+          "request": {
+            "name": "Get Reservation Quote",
+            "description": {
+              "content": "Get pricing offers for a reservation.\n\nReservation offers are dynamic and the price may change slightly since\nthe time it was generated. You can include an optional \"max_unit_price\"\n(which you can set at the quoted price or slightly above it) to ensure\nyour reservation request fails if the new price is above that max.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "reservation",
+                "quote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "project",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "instance_type",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<datetime>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<datetime>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "quantity",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "df7e488d-69a3-4f9d-a879-5ef99d2ecc1a",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "project",
+                      "value": "proj_abc123456"
+                    },
+                    {
+                      "key": "instance_type",
+                      "value": "it_abc123456"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-central1-a"
+                    },
+                    {
+                      "key": "start_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "quantity",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"offers\": [\n    {\n      \"key\": \"string\",\n      \"display_name\": \"string\",\n      \"unit_price\": \"string\",\n      \"return_buyback_price\": \"string\",\n      \"pause_buyback_price\": \"string\",\n      \"total_price\": \"string\",\n      \"total_etbp_value\": \"string\",\n      \"total_fubp_value\": \"string\",\n      \"option_premium\": \"string\"\n    },\n    {\n      \"key\": \"string\",\n      \"display_name\": \"string\",\n      \"unit_price\": \"string\",\n      \"return_buyback_price\": \"string\",\n      \"pause_buyback_price\": \"string\",\n      \"total_price\": \"string\",\n      \"total_etbp_value\": \"string\",\n      \"total_fubp_value\": \"string\",\n      \"option_premium\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e292644f-d233-4ce6-831c-0e907c348d6a",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "project",
+                      "value": "proj_abc123456"
+                    },
+                    {
+                      "key": "instance_type",
+                      "value": "it_abc123456"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-central1-a"
+                    },
+                    {
+                      "key": "start_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "quantity",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c73abad-5d33-4943-a31a-93350522ba35",
+          "name": "Get Availability",
+          "request": {
+            "name": "Get Availability",
+            "description": {
+              "content": "Get availability information for reservations.\n\nThis endpoint supports three different modes for querying availability:\n\n## Mode: latest_end_time (default)\nGet the latest possible end time for a reservation given a start time and\nquantity.\n\n**Required parameters:**\n- `start_time`: Desired start time for the reservation\n- `quantity`: Number of instances needed\n- `project`: Project FID\n- `instance_type`: Instance type FID\n- `region`: Region name\n\n**Returns:** Latest possible end time and availability status\n\n**Example:**\n```\nGET /reservation/availability?\n    start_time=2024-01-01T00:00:00Z&\n    quantity=4&\n    project=proj_01h8x2k9m3n4p5q6r7s8t9u0v&\n    instance_type=it_01h8x2k9m3n4p5q6r7s8t9u0v&\n    region=us-central1-a\n```\n\n## Mode: slots\nGet all available slots in a time range.\n\n**Required parameters:**\n- `earliest_start_time`: Start of the time range to search\n- `latest_end_time`: End of the time range to search\n- `project`: Project FID\n- `instance_type`: Instance type FID\n- `region`: Region name\n\n**Returns:** List of available time slots with quantities\n\n**Example:**\n```\nGET /reservation/availability?\n    mode=slots&\n    earliest_start_time=2024-01-01T00:00:00Z&\n    latest_end_time=2024-01-02T00:00:00Z&\n    project=proj_01h8x2k9m3n4p5q6r7s8t9u0v&\n    instance_type=it_01h8x2k9m3n4p5q6r7s8t9u0v&\n    region=us-central1-a\n```\n\n## Mode: check\nCheck if a specific time slot is available for reservation.\n\n**Required parameters:**\n- `start_time`: Start of the desired time slot\n- `end_time`: End of the desired time slot\n- `quantity`: Number of instances needed\n- `project`: Project FID\n- `instance_type`: Instance type FID\n- `region`: Region name\n\n**Returns:** Boolean indicating if the slot is available\n\n**Example:**\n```\nGET /reservation/availability?\n    mode=check&\n    start_time=2024-01-01T00:00:00Z&\n    end_time=2024-01-01T12:00:00Z&\n    quantity=4&\n    project=proj_01h8x2k9m3n4p5q6r7s8t9u0v&\n    instance_type=it_01h8x2k9m3n4p5q6r7s8t9u0v&\n    region=us-central1-a\n```\n\n## Common Parameters\nAll modes require these parameters:\n- `project`: Project FID\n- `instance_type`: Instance type FID\n- `region`: Region name\n\n## Authentication\nRequires authentication and user must be a member of the specified project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "reservation",
+                "availability"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "project",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "instance_type",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "latest_end_time"
+                },
+                {
+                  "disabled": false,
+                  "key": "earliest_start_time",
+                  "value": "<datetime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "latest_end_time",
+                  "value": "<datetime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<datetime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<datetime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "quantity",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "15e4141c-f1f9-43e4-b6ba-ad4dd20d8b59",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    "availability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "project",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "instance_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "latest_end_time"
+                    },
+                    {
+                      "key": "earliest_start_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "latest_end_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "start_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "quantity",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"start_time\": \"2024-01-01T00:00:00Z\",\n    \"end_time\": \"2024-01-01T00:00:00Z\",\n    \"quantity\": 6810\n  },\n  {\n    \"start_time\": \"2024-01-01T00:00:00Z\",\n    \"end_time\": \"2024-01-01T00:00:00Z\",\n    \"quantity\": 406\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c1b9ba6a-7305-4a8a-867a-91974c0c845b",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    "availability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "project",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "instance_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "latest_end_time"
+                    },
+                    {
+                      "key": "earliest_start_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "latest_end_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "start_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "quantity",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "adb47348-0176-4aa3-b571-cf6b60cfae0b",
+          "name": "Create Reservation",
+          "request": {
+            "name": "Create Reservation",
+            "description": {
+              "content": "Create a new reservation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "reservation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"project\": \"<string>\",\n  \"instance_type\": \"<string>\",\n  \"region\": \"<string>\",\n  \"start_time\": \"<datetime>\",\n  \"end_time\": \"<datetime>\",\n  \"instance_quantity\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"launch_specification\": {\n    \"volumes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"ssh_keys\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"startup_script\": \"<string>\",\n    \"kubernetes_cluster\": \"<string>\",\n    \"image_version\": \"<string>\",\n    \"memory_gb\": \"<integer>\"\n  },\n  \"price_specification\": {\n    \"offer_key\": \"standard\",\n    \"max_unit_price\": \"<integer>\"\n  },\n  \"notification_email\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bdc40a4f-4084-4bb2-88ab-c420c4a46224",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project\": \"proj_abc123456\",\n  \"instance_type\": \"it_abc123456\",\n  \"region\": \"us-central1-a\",\n  \"start_time\": \"2024-01-01T00:00:00Z\",\n  \"end_time\": \"2024-01-01T00:00:00Z\",\n  \"instance_quantity\": 4,\n  \"name\": \"<string>\",\n  \"launch_specification\": {\n    \"volumes\": [\n      \"vol_1234567890\",\n      \"vol_1234567891\"\n    ],\n    \"ssh_keys\": [\n      \"sshkey_1234567890\",\n      \"sshkey_1234567891\"\n    ],\n    \"startup_script\": \"string\",\n    \"kubernetes_cluster\": \"clust_abc123456\",\n    \"image_version\": \"imgver_abc123456\",\n    \"memory_gb\": 6077\n  },\n  \"price_specification\": {\n    \"offer_key\": \"standard\",\n    \"max_unit_price\": 500\n  },\n  \"notification_email\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fid\": \"res_abc123456\",\n  \"name\": \"string\",\n  \"project\": \"proj_abc123456\",\n  \"created_by\": \"user_abc123456\",\n  \"created_at\": \"2024-01-01T00:00:00Z\",\n  \"instance_quantity\": 4,\n  \"instance_type\": \"it_abc123456\",\n  \"instances\": [\n    \"inst_abc123456\",\n    \"inst_abc123456\"\n  ],\n  \"launch_specification\": {\n    \"volumes\": [\n      \"vol_1234567890\",\n      \"vol_1234567891\"\n    ],\n    \"ssh_keys\": [\n      \"sshkey_1234567890\",\n      \"sshkey_1234567891\"\n    ],\n    \"startup_script\": \"string\",\n    \"kubernetes_cluster\": \"clust_abc123456\",\n    \"image_version\": \"imgver_abc123456\",\n    \"memory_gb\": 7838\n  },\n  \"status\": \"Pending\",\n  \"start_time\": \"2024-01-01T00:00:00Z\",\n  \"end_time\": \"2024-01-01T00:00:00Z\",\n  \"total_price\": \"$47.76\",\n  \"unit_price\": \"$1.99\",\n  \"deactivated_at\": \"2024-01-01T00:00:00Z\",\n  \"region\": \"us-central1-a\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51f6df55-8496-49e8-94c4-207df183d040",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project\": \"proj_abc123456\",\n  \"instance_type\": \"it_abc123456\",\n  \"region\": \"us-central1-a\",\n  \"start_time\": \"2024-01-01T00:00:00Z\",\n  \"end_time\": \"2024-01-01T00:00:00Z\",\n  \"instance_quantity\": 4,\n  \"name\": \"<string>\",\n  \"launch_specification\": {\n    \"volumes\": [\n      \"vol_1234567890\",\n      \"vol_1234567891\"\n    ],\n    \"ssh_keys\": [\n      \"sshkey_1234567890\",\n      \"sshkey_1234567891\"\n    ],\n    \"startup_script\": \"string\",\n    \"kubernetes_cluster\": \"clust_abc123456\",\n    \"image_version\": \"imgver_abc123456\",\n    \"memory_gb\": 6077\n  },\n  \"price_specification\": {\n    \"offer_key\": \"standard\",\n    \"max_unit_price\": 500\n  },\n  \"notification_email\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58c43e7c-7e76-4fb5-bc42-c7fab6ce1a04",
+          "name": "Get Reservations",
+          "request": {
+            "name": "Get Reservations",
+            "description": {
+              "content": "Get all reservations for a project",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "reservation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_dir",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "project",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "instance_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a7721790-5ed9-42ae-ac98-77bb2e43b0b3",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_dir",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "instance_type",
+                      "value": "it_abc123456"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-central1-a"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"fid\": \"res_abc123456\",\n      \"name\": \"string\",\n      \"project\": \"proj_abc123456\",\n      \"created_by\": \"user_abc123456\",\n      \"created_at\": \"2024-01-01T00:00:00Z\",\n      \"instance_quantity\": 4,\n      \"instance_type\": \"it_abc123456\",\n      \"instances\": [\n        \"inst_abc123456\",\n        \"inst_abc123456\"\n      ],\n      \"launch_specification\": {\n        \"volumes\": [\n          \"vol_1234567890\",\n          \"vol_1234567891\"\n        ],\n        \"ssh_keys\": [\n          \"sshkey_1234567890\",\n          \"sshkey_1234567891\"\n        ],\n        \"startup_script\": \"string\",\n        \"kubernetes_cluster\": \"clust_abc123456\",\n        \"image_version\": \"imgver_abc123456\",\n        \"memory_gb\": 5566\n      },\n      \"status\": \"Pending\",\n      \"start_time\": \"2024-01-01T00:00:00Z\",\n      \"end_time\": \"2024-01-01T00:00:00Z\",\n      \"total_price\": \"$47.76\",\n      \"unit_price\": \"$1.99\",\n      \"deactivated_at\": \"2024-01-01T00:00:00Z\",\n      \"region\": \"us-central1-a\"\n    },\n    {\n      \"fid\": \"res_abc123456\",\n      \"name\": \"string\",\n      \"project\": \"proj_abc123456\",\n      \"created_by\": \"user_abc123456\",\n      \"created_at\": \"2024-01-01T00:00:00Z\",\n      \"instance_quantity\": 4,\n      \"instance_type\": \"it_abc123456\",\n      \"instances\": [\n        \"inst_abc123456\",\n        \"inst_abc123456\"\n      ],\n      \"launch_specification\": {\n        \"volumes\": [\n          \"vol_1234567890\",\n          \"vol_1234567891\"\n        ],\n        \"ssh_keys\": [\n          \"sshkey_1234567890\",\n          \"sshkey_1234567891\"\n        ],\n        \"startup_script\": \"string\",\n        \"kubernetes_cluster\": \"clust_abc123456\",\n        \"image_version\": \"imgver_abc123456\",\n        \"memory_gb\": 1055\n      },\n      \"status\": \"Pending\",\n      \"start_time\": \"2024-01-01T00:00:00Z\",\n      \"end_time\": \"2024-01-01T00:00:00Z\",\n      \"total_price\": \"$47.76\",\n      \"unit_price\": \"$1.99\",\n      \"deactivated_at\": \"2024-01-01T00:00:00Z\",\n      \"region\": \"us-central1-a\"\n    }\n  ],\n  \"next_cursor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c0f4f40-8a85-46dc-96be-7119823a7cc4",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_dir",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "instance_type",
+                      "value": "it_abc123456"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-central1-a"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b57087e-6d03-46fa-a0c3-086076056fe7",
+          "name": "Get Extension Availability",
+          "request": {
+            "name": "Get Extension Availability",
+            "description": {
+              "content": "Get extension availability for a reservation",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "reservation",
+                ":reservation_fid",
+                "extension-availability"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reservation_fid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "85ddde3b-f22e-4699-b392-3f56b49458bd",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    ":reservation_fid",
+                    "extension-availability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reservation_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"latest_extension_time\": \"2024-01-01T00:00:00Z\",\n  \"available\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e73c3e3-0535-4950-a2b5-eb9d3b24d823",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    ":reservation_fid",
+                    "extension-availability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reservation_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd444ff8-18e7-47ef-a938-c57a2181caeb",
+          "name": "Extend Reservation",
+          "request": {
+            "name": "Extend Reservation",
+            "description": {
+              "content": "Extend a reservation to the requested time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "reservation",
+                ":reservation_fid",
+                "extend"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reservation_fid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"end_time\": \"<datetime>\",\n  \"price_specification\": {\n    \"offer_key\": \"standard\",\n    \"max_unit_price\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b72eb0d9-9cbd-4da5-b6ef-d7fb98bf4a05",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    ":reservation_fid",
+                    "extend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reservation_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_time\": \"2024-01-01T00:00:00Z\",\n  \"price_specification\": {\n    \"offer_key\": \"standard\",\n    \"max_unit_price\": 500\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fid\": \"res_abc123456\",\n  \"name\": \"string\",\n  \"project\": \"proj_abc123456\",\n  \"created_by\": \"user_abc123456\",\n  \"created_at\": \"2024-01-01T00:00:00Z\",\n  \"instance_quantity\": 4,\n  \"instance_type\": \"it_abc123456\",\n  \"instances\": [\n    \"inst_abc123456\",\n    \"inst_abc123456\"\n  ],\n  \"launch_specification\": {\n    \"volumes\": [\n      \"vol_1234567890\",\n      \"vol_1234567891\"\n    ],\n    \"ssh_keys\": [\n      \"sshkey_1234567890\",\n      \"sshkey_1234567891\"\n    ],\n    \"startup_script\": \"string\",\n    \"kubernetes_cluster\": \"clust_abc123456\",\n    \"image_version\": \"imgver_abc123456\",\n    \"memory_gb\": 7838\n  },\n  \"status\": \"Pending\",\n  \"start_time\": \"2024-01-01T00:00:00Z\",\n  \"end_time\": \"2024-01-01T00:00:00Z\",\n  \"total_price\": \"$47.76\",\n  \"unit_price\": \"$1.99\",\n  \"deactivated_at\": \"2024-01-01T00:00:00Z\",\n  \"region\": \"us-central1-a\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2b514fd-58c4-44d5-8776-260f739df6df",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    ":reservation_fid",
+                    "extend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reservation_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_time\": \"2024-01-01T00:00:00Z\",\n  \"price_specification\": {\n    \"offer_key\": \"standard\",\n    \"max_unit_price\": 500\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "969d44c0-1488-42fe-8583-449cad973bd0",
+          "name": "Update Reservation",
+          "request": {
+            "name": "Update Reservation",
+            "description": {
+              "content": "Update a reservation's pause/resume status and/or volumes",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "reservation",
+                ":reservation_fid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reservation_fid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"paused\": \"<boolean>\",\n  \"volumes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2a01f746-c8d8-43f0-91ed-af75a6582267",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    ":reservation_fid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reservation_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"paused\": \"<boolean>\",\n  \"volumes\": [\n    \"vol_abc123456\",\n    \"vol_abc123456\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fid\": \"res_abc123456\",\n  \"name\": \"string\",\n  \"project\": \"proj_abc123456\",\n  \"created_by\": \"user_abc123456\",\n  \"created_at\": \"2024-01-01T00:00:00Z\",\n  \"instance_quantity\": 4,\n  \"instance_type\": \"it_abc123456\",\n  \"instances\": [\n    \"inst_abc123456\",\n    \"inst_abc123456\"\n  ],\n  \"launch_specification\": {\n    \"volumes\": [\n      \"vol_1234567890\",\n      \"vol_1234567891\"\n    ],\n    \"ssh_keys\": [\n      \"sshkey_1234567890\",\n      \"sshkey_1234567891\"\n    ],\n    \"startup_script\": \"string\",\n    \"kubernetes_cluster\": \"clust_abc123456\",\n    \"image_version\": \"imgver_abc123456\",\n    \"memory_gb\": 7838\n  },\n  \"status\": \"Pending\",\n  \"start_time\": \"2024-01-01T00:00:00Z\",\n  \"end_time\": \"2024-01-01T00:00:00Z\",\n  \"total_price\": \"$47.76\",\n  \"unit_price\": \"$1.99\",\n  \"deactivated_at\": \"2024-01-01T00:00:00Z\",\n  \"region\": \"us-central1-a\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b313c237-2ae6-48b9-bdb4-5e701d427dc8",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    ":reservation_fid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reservation_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"paused\": \"<boolean>\",\n  \"volumes\": [\n    \"vol_abc123456\",\n    \"vol_abc123456\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "97d824d1-1b09-4545-9bb9-dfbffc898771",
+          "name": "Terminate Instance",
+          "request": {
+            "name": "Terminate Instance",
+            "description": {
+              "content": "Remove and permanently delete instances from this reservation.\n\nYou will receive a credit based on your early termination buyback price\nassociated with this reservation and the time remaining in the\nreservation.\n\nThis endpoint does a best effort to termiante all instances, but it can\nfail to do so for some instances. If you receive a 207, then please see\nthe response for details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "reservation",
+                ":reservation_fid",
+                "terminate-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reservation_fid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"instances\": [\n    \"<string>\"\n  ],\n  \"reduce_capacity\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "885b60d1-c5fd-461c-a6a6-8517bbcacc91",
+              "name": "Successfully terminated all instances.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    ":reservation_fid",
+                    "terminate-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reservation_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instances\": [\n    \"inst_abc123456\"\n  ],\n  \"reduce_capacity\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85672547-4097-490c-91d3-3f178369dcb8",
+              "name": "Failed to terminate some instances. See response for details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    ":reservation_fid",
+                    "terminate-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reservation_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instances\": [\n    \"inst_abc123456\"\n  ],\n  \"reduce_capacity\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Multi-Status (WebDAV) (RFC 4918)",
+              "code": 207,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"terminated_instances\": [\n    \"inst_abc123456\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13db4c37-229b-4c04-8847-fda22ed938a9",
+              "name": "The reservation was already ended.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    ":reservation_fid",
+                    "terminate-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reservation_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instances\": [\n    \"inst_abc123456\"\n  ],\n  \"reduce_capacity\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "83ec8cb9-7af9-48bc-8ff6-07a474cda7e0",
+              "name": "Either the reservation or one of the instances could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    ":reservation_fid",
+                    "terminate-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reservation_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instances\": [\n    \"inst_abc123456\"\n  ],\n  \"reduce_capacity\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e285b20b-0e94-4660-a26e-90acb9d10eb4",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    ":reservation_fid",
+                    "terminate-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reservation_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instances\": [\n    \"inst_abc123456\"\n  ],\n  \"reduce_capacity\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58f46463-28f6-4a61-a180-a05d9cec4be1",
+              "name": "No instance was able to be stopped due to an internal error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    ":reservation_fid",
+                    "terminate-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reservation_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instances\": [\n    \"inst_abc123456\"\n  ],\n  \"reduce_capacity\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d672c80-8543-41ea-91eb-532fc2f33680",
+          "name": "Get Reservation History",
+          "request": {
+            "name": "Get Reservation History",
+            "description": {
+              "content": "Get the activity history for a reservation.\n\nReturns a chronological list of order-level status changes (Placed, Active,\nPaused, Resumed, Canceled, Ended) interleaved with aggregated instance-level\nstatus events (instances running, stopped, error) bucketed into 60-second\nwindows so burst transitions appear as a single entry.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "reservation",
+                ":reservation_fid",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reservation_fid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d8517b35-109c-46e6-84e6-9c06b4d5361b",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    ":reservation_fid",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reservation_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reservation_fid\": \"res_abc123456\",\n  \"events\": [\n    {\n      \"timestamp\": \"2024-01-01T00:00:00Z\",\n      \"event_type\": \"Placed\",\n      \"user_id\": \"string\",\n      \"unit_price_cents\": 1105,\n      \"pause_credit_cents\": 838,\n      \"return_credit_cents\": 2638\n    },\n    {\n      \"timestamp\": \"2024-01-01T00:00:00Z\",\n      \"event_type\": \"Placed\",\n      \"user_id\": \"string\",\n      \"unit_price_cents\": 2901,\n      \"pause_credit_cents\": 7410,\n      \"return_credit_cents\": 664\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32007bab-bb26-48cf-9cb2-aa608b65feb9",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    ":reservation_fid",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reservation_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59b9e621-11ea-459f-a7ce-3897c0a1eccc",
+          "name": "Get Reservation Usage",
+          "request": {
+            "name": "Get Reservation Usage",
+            "description": {
+              "content": "Get usage breakdown for a flex reservation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "reservation",
+                ":reservation_fid",
+                "usage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reservation_fid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d6ed2b5a-48f7-406f-8d47-1b82dbeeaa00",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    ":reservation_fid",
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reservation_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reservation\": {\n    \"fid\": \"res_abc123456\",\n    \"order_name\": \"string\",\n    \"start_date\": \"2024-01-01T00:00:00Z\",\n    \"end_date\": \"2024-01-01T00:00:00Z\",\n    \"status\": \"Paused\",\n    \"committed_cost_cents\": 11\n  },\n  \"summary\": {\n    \"committed_cost_cents\": 9937,\n    \"flex_use_credits_cents\": 7262,\n    \"early_termination_credits_cents\": 8849,\n    \"net_cost_cents\": 7720,\n    \"reserved_instance_hours\": \"string\",\n    \"active_instance_hours\": \"string\",\n    \"idle_instance_hours\": \"string\",\n    \"as_of\": \"2024-01-01T00:00:00Z\"\n  },\n  \"grants\": [\n    {\n      \"fid\": \"string\",\n      \"starts_at\": \"2024-01-01T00:00:00Z\",\n      \"ends_at\": \"2024-01-01T00:00:00Z\",\n      \"quantity\": 5242,\n      \"unit_price\": 8124,\n      \"price_credit\": 7408,\n      \"return_credit\": 708\n    },\n    {\n      \"fid\": \"string\",\n      \"starts_at\": \"2024-01-01T00:00:00Z\",\n      \"ends_at\": \"2024-01-01T00:00:00Z\",\n      \"quantity\": 1649,\n      \"unit_price\": 1668,\n      \"price_credit\": 8028,\n      \"return_credit\": 8861\n    }\n  ],\n  \"pricing_events\": [\n    {\n      \"id\": \"0c07fc07-65de-78d5-2474-9faaba021292\",\n      \"occurred_at\": \"2024-01-01T00:00:00Z\",\n      \"instance_fid\": \"inst_abc123456\",\n      \"instance_name\": \"string\",\n      \"instance_status\": \"STATUS_ERROR\"\n    },\n    {\n      \"id\": \"3afabc11-3986-f6ca-7bd3-7dc4cd89bc36\",\n      \"occurred_at\": \"2024-01-01T00:00:00Z\",\n      \"instance_fid\": \"inst_abc123456\",\n      \"instance_name\": \"string\",\n      \"instance_status\": \"STATUS_REPLACED\"\n    }\n  ],\n  \"reservation_events\": [\n    {\n      \"occurred_at\": \"2024-01-01T00:00:00Z\",\n      \"event_type\": \"Started\",\n      \"reservation_name\": \"string\"\n    },\n    {\n      \"occurred_at\": \"2024-01-01T00:00:00Z\",\n      \"event_type\": \"Extended\",\n      \"reservation_name\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac5f1ac9-08ec-4e83-865a-5ae5b960b1f4",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "reservation",
+                    ":reservation_fid",
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reservation_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mithril.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "60a561cf-1e0b-47fe-b681-7ccaecb9355d",
+    "name": "Mithril API Keys reservations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Mithril Compute API",
+      "type": "text/plain"
+    }
+  }
+}

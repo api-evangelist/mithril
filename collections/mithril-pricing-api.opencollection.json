@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mithril API Keys pricing API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "pricing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Current Prices V2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/pricing/current",
+            "params": [
+              {
+                "name": "instance_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "instance_quantity",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get current pricing information for an instance type.\n\nReturns the current spot price, reserved price, and minimum price for a given\ninstance type, optionally filtered by region."
+        },
+        {
+          "info": {
+            "name": "Get Historical Prices V2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/pricing/history",
+            "params": [
+              {
+                "name": "instance_types",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "num_samples",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get historical pricing information for instance types.\n\nReturns historical spot and reserved prices over time for instance types,\noptionally filtered by specific instance type and region."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

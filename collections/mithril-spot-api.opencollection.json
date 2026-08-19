@@ -1,0 +1,228 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mithril API Keys spot API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "spot",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Bids",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/spot/bids",
+            "params": [
+              {
+                "name": "next_cursor",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_dir",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "instance_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get all Spot bids for a project, or all user's projects if not specified"
+        },
+        {
+          "info": {
+            "name": "Create Bid",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mithril.ai/v2/spot/bids",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Place a new Spot bid"
+        },
+        {
+          "info": {
+            "name": "Get Bid",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/spot/bids/:bid_fid",
+            "params": [
+              {
+                "name": "bid_fid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a single Spot bid by FID"
+        },
+        {
+          "info": {
+            "name": "Update Bid",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.mithril.ai/v2/spot/bids/:bid_fid",
+            "params": [
+              {
+                "name": "bid_fid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update the limit price of a Spot bid"
+        },
+        {
+          "info": {
+            "name": "Cancel Bid",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mithril.ai/v2/spot/bids/:bid_fid",
+            "params": [
+              {
+                "name": "bid_fid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Cancel a Spot bid"
+        },
+        {
+          "info": {
+            "name": "Get Bid Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/spot/bids/:bid_fid/status",
+            "params": [
+              {
+                "name": "bid_fid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get detailed status of a Spot bid.\n\nReturns a detailed status that includes instance-level status information.\nThe status can be one of: Open, Allocated, Preempting, Terminated,\nPaused, Relocating.\n\n\"Relocating\" indicates that part of the order is being relocated."
+        },
+        {
+          "info": {
+            "name": "Get Bid History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/spot/bids/:bid_fid/history",
+            "params": [
+              {
+                "name": "bid_fid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get the history of events for a Spot bid.\n\nReturns a list of historical events including:\n- placing the bid\n- pausing the bid\n- resuming the bid\n- terminating the bid\n- changes to the limit price"
+        },
+        {
+          "info": {
+            "name": "Get Auctions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/spot/availability",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get the Spot availability across all regions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

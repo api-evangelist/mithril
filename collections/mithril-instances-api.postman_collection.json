@@ -1,0 +1,1670 @@
+{
+  "item": [
+    {
+      "id": "804628e8-3ef4-43c7-9a99-3a8d3cb58891",
+      "name": "instances",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bd3e5d64-2c3b-4eb4-a09e-dac0b6a4ac41",
+          "name": "Get Instances",
+          "request": {
+            "name": "Get Instances",
+            "description": {
+              "content": "Get all instances for a project",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_dir",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "project",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "instance_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status_in",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status_in",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "order_type_in",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "order_type_in",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "bid_fid_in",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "bid_fid_in",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "reservation_fid_in",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "reservation_fid_in",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a2ab9c96-45c4-4650-8eea-7daf4c7cf102",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_dir",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "instance_type",
+                      "value": "it_abc123456"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-central1-a"
+                    },
+                    {
+                      "key": "status_in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status_in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_type_in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_type_in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bid_fid_in",
+                      "value": "bid_abc123456"
+                    },
+                    {
+                      "key": "bid_fid_in",
+                      "value": "bid_abc123456"
+                    },
+                    {
+                      "key": "reservation_fid_in",
+                      "value": "res_abc123456"
+                    },
+                    {
+                      "key": "reservation_fid_in",
+                      "value": "res_abc123456"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"fid\": \"inst_abc123456\",\n      \"name\": \"string\",\n      \"project\": \"proj_abc123456\",\n      \"created_at\": \"2024-01-01T00:00:00Z\",\n      \"created_by\": \"user_abc123456\",\n      \"instance_type\": \"it_abc123456\",\n      \"status\": \"STATUS_NEW\",\n      \"region\": \"us-central1-a\",\n      \"bid\": \"bid_abc123456\",\n      \"reservation\": \"res_abc123456\",\n      \"ssh_destination\": \"string\",\n      \"private_ip\": \"string\"\n    },\n    {\n      \"fid\": \"inst_abc123456\",\n      \"name\": \"string\",\n      \"project\": \"proj_abc123456\",\n      \"created_at\": \"2024-01-01T00:00:00Z\",\n      \"created_by\": \"user_abc123456\",\n      \"instance_type\": \"it_abc123456\",\n      \"status\": \"STATUS_NEW\",\n      \"region\": \"us-central1-a\",\n      \"bid\": \"bid_abc123456\",\n      \"reservation\": \"res_abc123456\",\n      \"ssh_destination\": \"string\",\n      \"private_ip\": \"string\"\n    }\n  ],\n  \"next_cursor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8bf6b368-e424-4a8e-8425-92be92e5c497",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_dir",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "instance_type",
+                      "value": "it_abc123456"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-central1-a"
+                    },
+                    {
+                      "key": "status_in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status_in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_type_in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_type_in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bid_fid_in",
+                      "value": "bid_abc123456"
+                    },
+                    {
+                      "key": "bid_fid_in",
+                      "value": "bid_abc123456"
+                    },
+                    {
+                      "key": "reservation_fid_in",
+                      "value": "res_abc123456"
+                    },
+                    {
+                      "key": "reservation_fid_in",
+                      "value": "res_abc123456"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6374b1e-f9e0-428b-b6ad-d96e2ccbecd1",
+          "name": "Put Instance Status",
+          "request": {
+            "name": "Put Instance Status",
+            "description": {
+              "content": "Trigger a status change for a set of instances.\n\nThis endpoint supports batch start and pause requests for instances. The\nrequest accepts a set of instance FIDs and a target action\n(`STATUS_RUNNING` or `STATUS_PAUSED`).\n\nThe response always includes an entry for every requested instance, keyed by\ninstance FID, with that instance's current status after processing.\n- When an instance is successfully starting, its status is `STATUS_CONFIRMED`.\n- When an instance is successfully stopping, its status is `STATUS_STOPPING`.\n- If an instance cannot be stopped, its prior status is returned unchanged.\n\nPaused instances which are associated with a reservation will accrue a\ncredit based on the flexible usage buyback price on that reservation.\n\nNotes:\n- Only reserved instances are supported at this time.\n- This API is asynchronous. You can check the status of the instance with the\n  Get Status api.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"instances\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1c72e95c-7337-4243-b8f5-64ebccc608ac",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instances\": [\n    \"inst_abc123456\"\n  ],\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"instances\": {\n    \"key_0\": \"STATUS_PREEMPTED\",\n    \"key_1\": \"STATUS_ERROR\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19b23f1a-c361-4415-825d-d04efd889992",
+              "name": "One of the provided instances did not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instances\": [\n    \"inst_abc123456\"\n  ],\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "80758b35-cfbc-4153-9dc1-6d7f6ce4e107",
+              "name": "One or more of the instances is not yet ready for this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instances\": [\n    \"inst_abc123456\"\n  ],\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "27a5da75-17ff-4ee8-8673-a739e83562ff",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instances\": [\n    \"inst_abc123456\"\n  ],\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0662734c-4813-48ca-b718-f94bd229ae6b",
+              "name": "Spot bids are not yet supported.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instances\": [\n    \"inst_abc123456\"\n  ],\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b26075e-8f63-4cda-a2a6-348f16c50080",
+          "name": "Get Instance Status",
+          "request": {
+            "name": "Get Instance Status",
+            "description": {
+              "content": "Get the status of a specific instance by its ID.\nSupports authentication via mithril key or API key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "instances",
+                ":instance_fid",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "instance_fid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "91dba3b1-4aa6-4921-8747-07b41b130ab0",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "instances",
+                    ":instance_fid",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instance_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fid\": \"inst_abc123456\",\n  \"name\": \"string\",\n  \"status\": \"STATUS_NEW\",\n  \"bid\": \"bid_abc123456\",\n  \"reservation\": \"res_abc123456\",\n  \"end_time\": \"2024-01-01T00:00:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b90a5fe8-fbbb-45a4-bbae-510a972a2f4c",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "instances",
+                    ":instance_fid",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instance_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bdd24b31-66b3-4322-9bae-5000cb46843d",
+          "name": "Refresh Instance Boot Disk",
+          "request": {
+            "name": "Refresh Instance Boot Disk",
+            "description": {
+              "content": "Refresh (delete and recreate) the boot disk of a reserved instance.\n\nThe instance must already be stopped: stop it first via the pause API\n(`PATCH /instances` with `STATUS_PAUSED`), then call this endpoint, then\nstart it again. A running instance is declined; this endpoint never\nstops the instance itself. When `image_version` is omitted the current\nboot image is reused.\n\nNotes:\n- Only reserved (non-spot) instances are supported at this time.\n- This is being rolled out across all our regions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "instances",
+                ":instance_fid",
+                "refresh-boot-disk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "instance_fid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"image_version\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4a943d1f-02fd-4dfc-b005-04f6774d748f",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "instances",
+                    ":instance_fid",
+                    "refresh-boot-disk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instance_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image_version\": \"imgver_abc123456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fid\": \"inst_abc123456\",\n  \"image_version\": \"imgver_abc123456\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c74250f-19db-4be9-b2ed-648df5ff809e",
+              "name": "The instance does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "instances",
+                    ":instance_fid",
+                    "refresh-boot-disk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instance_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image_version\": \"imgver_abc123456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d8ef24fc-13f7-4200-ad5d-c32cc9efea4b",
+              "name": "The instance has no underlying VM to refresh.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "instances",
+                    ":instance_fid",
+                    "refresh-boot-disk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instance_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image_version\": \"imgver_abc123456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "078e7fa2-51d1-42b5-baa0-4cedca063baf",
+              "name": "The instance is still running, or the requested image version is invalid for the instance's region. The body carries a `reason` of INSTANCE_RUNNING or INVALID_IMAGE_VERSION.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "instances",
+                    ":instance_fid",
+                    "refresh-boot-disk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instance_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image_version\": \"imgver_abc123456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "acf8db3e-5f0c-41d2-8129-7ef191f98f0c",
+              "name": "Boot disk refresh is not supported for this instance yet (spot instances, or not yet available in this instance's region).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "instances",
+                    ":instance_fid",
+                    "refresh-boot-disk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instance_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image_version\": \"imgver_abc123456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "56af9213-5715-4b44-b751-6197e5c08dda",
+          "name": "Get Instance Status History",
+          "request": {
+            "name": "Get Instance Status History",
+            "description": {
+              "content": "Get the history of a specific instance by its ID,\nor of all instances in a bid or reservation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "instances",
+                "status",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "project",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "instance_fid",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "bid_fid",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "reservation_fid",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<datetime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<datetime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "next_cursor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7ad76554-6bec-45cb-8c64-59585c1d625e",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "instances",
+                    "status",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "project",
+                      "value": "proj_abc123456"
+                    },
+                    {
+                      "key": "instance_fid",
+                      "value": "inst_abc123456"
+                    },
+                    {
+                      "key": "bid_fid",
+                      "value": "bid_abc123456"
+                    },
+                    {
+                      "key": "reservation_fid",
+                      "value": "res_abc123456"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "next_cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"instances\": [\n    {\n      \"instance_fid\": \"inst_abc123456\",\n      \"events\": [\n        {\n          \"timestamp\": \"2024-01-01T00:00:00Z\",\n          \"status\": \"STATUS_CONFIRMED\"\n        },\n        {\n          \"timestamp\": \"2024-01-01T00:00:00Z\",\n          \"status\": \"STATUS_REPLACED\"\n        }\n      ],\n      \"bid_fid\": \"bid_abc123456\",\n      \"reservation_fid\": \"res_abc123456\"\n    },\n    {\n      \"instance_fid\": \"inst_abc123456\",\n      \"events\": [\n        {\n          \"timestamp\": \"2024-01-01T00:00:00Z\",\n          \"status\": \"STATUS_PREEMPTED\"\n        },\n        {\n          \"timestamp\": \"2024-01-01T00:00:00Z\",\n          \"status\": \"STATUS_ERROR\"\n        }\n      ],\n      \"bid_fid\": \"bid_abc123456\",\n      \"reservation_fid\": \"res_abc123456\"\n    }\n  ],\n  \"next_cursor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98acc6fa-7f29-4ed0-bd25-59d5f550ddc1",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "instances",
+                    "status",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "project",
+                      "value": "proj_abc123456"
+                    },
+                    {
+                      "key": "instance_fid",
+                      "value": "inst_abc123456"
+                    },
+                    {
+                      "key": "bid_fid",
+                      "value": "bid_abc123456"
+                    },
+                    {
+                      "key": "reservation_fid",
+                      "value": "res_abc123456"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "next_cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55f50a32-ddf0-4c71-934e-b8e26aae08df",
+          "name": "Get Instance Pricing History",
+          "request": {
+            "name": "Get Instance Pricing History",
+            "description": {
+              "content": "Get the pricing history of a specific instance by its ID,\nor of all instances in a bid or reservation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "instances",
+                "pricing",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "project",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "instance_fid",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "bid_fid",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "reservation_fid",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<datetime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<datetime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "next_cursor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "31bd8edb-72df-475f-8bf1-dfa32de15ad5",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "instances",
+                    "pricing",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "project",
+                      "value": "proj_abc123456"
+                    },
+                    {
+                      "key": "instance_fid",
+                      "value": "inst_abc123456"
+                    },
+                    {
+                      "key": "bid_fid",
+                      "value": "bid_abc123456"
+                    },
+                    {
+                      "key": "reservation_fid",
+                      "value": "res_abc123456"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "next_cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"instances\": [\n    {\n      \"instance_fid\": \"inst_abc123456\",\n      \"events\": [\n        {\n          \"price_cents\": 9159,\n          \"start_time\": \"2024-01-01T00:00:00Z\",\n          \"end_time\": \"2024-01-01T00:00:00Z\"\n        },\n        {\n          \"price_cents\": 497,\n          \"start_time\": \"2024-01-01T00:00:00Z\",\n          \"end_time\": \"2024-01-01T00:00:00Z\"\n        }\n      ],\n      \"bid_fid\": \"bid_abc123456\",\n      \"reservation_fid\": \"res_abc123456\"\n    },\n    {\n      \"instance_fid\": \"inst_abc123456\",\n      \"events\": [\n        {\n          \"price_cents\": 5012,\n          \"start_time\": \"2024-01-01T00:00:00Z\",\n          \"end_time\": \"2024-01-01T00:00:00Z\"\n        },\n        {\n          \"price_cents\": 8934,\n          \"start_time\": \"2024-01-01T00:00:00Z\",\n          \"end_time\": \"2024-01-01T00:00:00Z\"\n        }\n      ],\n      \"bid_fid\": \"bid_abc123456\",\n      \"reservation_fid\": \"res_abc123456\"\n    }\n  ],\n  \"next_cursor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3b9e17a-2e42-4683-8180-1698d4916ae0",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "instances",
+                    "pricing",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "project",
+                      "value": "proj_abc123456"
+                    },
+                    {
+                      "key": "instance_fid",
+                      "value": "inst_abc123456"
+                    },
+                    {
+                      "key": "bid_fid",
+                      "value": "bid_abc123456"
+                    },
+                    {
+                      "key": "reservation_fid",
+                      "value": "res_abc123456"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "next_cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mithril.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c72b8a83-bb7b-4585-bac8-6d7bbf465399",
+    "name": "Mithril API Keys instances API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Mithril Compute API",
+      "type": "text/plain"
+    }
+  }
+}

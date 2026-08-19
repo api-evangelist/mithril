@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mithril API Keys profile API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "profile",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Me",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/me",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get the current user's profile"
+        },
+        {
+          "info": {
+            "name": "Get My Teammates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/me/teammates",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get teammates visible to the current user.\n\nReturns teammates from the user's organization, filtered by shared project\nmembership (unless the user is an org admin, in which case all org members\nare visible). Can be used by a client to map user FIDs to user profiles."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,120 @@
+{
+  "item": [
+    {
+      "id": "c9fdcb42-f819-4d44-8d41-a0aab8f3ab2d",
+      "name": "projects",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4ff7c5f8-11f6-4b25-9f30-2409d71cfa1a",
+          "name": "Get Projects",
+          "request": {
+            "name": "Get Projects",
+            "description": {
+              "content": "Get all projects a user has access to",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "projects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fe7c4db9-a7e1-4cd8-9897-948fde708224",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"fid\": \"proj_abc123456\",\n    \"name\": \"string\",\n    \"created_at\": \"2024-01-01T00:00:00Z\"\n  },\n  {\n    \"fid\": \"proj_abc123456\",\n    \"name\": \"string\",\n    \"created_at\": \"2024-01-01T00:00:00Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mithril.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "420511be-b955-4e3d-81d7-346704827d95",
+    "name": "Mithril API Keys projects API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Mithril Compute API",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1369 @@
+{
+  "item": [
+    {
+      "id": "5be01816-6526-470b-b411-e25da54ee661",
+      "name": "spot",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d784627a-9b18-4f70-952c-fae18b740086",
+          "name": "Get Bids",
+          "request": {
+            "name": "Get Bids",
+            "description": {
+              "content": "Get all Spot bids for a project, or all user's projects if not specified",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "spot",
+                "bids"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_dir",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "project",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "instance_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e6adc2cd-7eb2-4b33-a6ac-6d650c67c435",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "spot",
+                    "bids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_dir",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "project",
+                      "value": "proj_abc123456"
+                    },
+                    {
+                      "key": "instance_type",
+                      "value": "it_abc123456"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-central1-a"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"fid\": \"bid_abc123456\",\n      \"name\": \"string\",\n      \"project\": \"proj_abc123456\",\n      \"created_by\": \"user_abc123456\",\n      \"created_at\": \"2024-01-01T00:00:00Z\",\n      \"limit_price\": \"$15.60\",\n      \"instance_quantity\": 4,\n      \"instance_type\": \"it_abc123456\",\n      \"instances\": [\n        \"inst_abc123456\",\n        \"inst_abc123456\"\n      ],\n      \"launch_specification\": {\n        \"volumes\": [\n          \"vol_1234567890\",\n          \"vol_1234567891\"\n        ],\n        \"ssh_keys\": [\n          \"sshkey_1234567890\",\n          \"sshkey_1234567891\"\n        ],\n        \"startup_script\": \"string\",\n        \"kubernetes_cluster\": \"clust_abc123456\",\n        \"image_version\": \"imgver_abc123456\",\n        \"memory_gb\": 2029\n      },\n      \"status\": \"Open\",\n      \"deactivated_at\": \"2024-01-01T00:00:00Z\",\n      \"region\": \"us-central1-a\"\n    },\n    {\n      \"fid\": \"bid_abc123456\",\n      \"name\": \"string\",\n      \"project\": \"proj_abc123456\",\n      \"created_by\": \"user_abc123456\",\n      \"created_at\": \"2024-01-01T00:00:00Z\",\n      \"limit_price\": \"$15.60\",\n      \"instance_quantity\": 4,\n      \"instance_type\": \"it_abc123456\",\n      \"instances\": [\n        \"inst_abc123456\",\n        \"inst_abc123456\"\n      ],\n      \"launch_specification\": {\n        \"volumes\": [\n          \"vol_1234567890\",\n          \"vol_1234567891\"\n        ],\n        \"ssh_keys\": [\n          \"sshkey_1234567890\",\n          \"sshkey_1234567891\"\n        ],\n        \"startup_script\": \"string\",\n        \"kubernetes_cluster\": \"clust_abc123456\",\n        \"image_version\": \"imgver_abc123456\",\n        \"memory_gb\": 1422\n      },\n      \"status\": \"Open\",\n      \"deactivated_at\": \"2024-01-01T00:00:00Z\",\n      \"region\": \"us-central1-a\"\n    }\n  ],\n  \"next_cursor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff9e9023-9659-4f1c-868b-1e24f6a6062c",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "spot",
+                    "bids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_dir",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "project",
+                      "value": "proj_abc123456"
+                    },
+                    {
+                      "key": "instance_type",
+                      "value": "it_abc123456"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-central1-a"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dd71799e-ad13-47b8-88c7-c5c484e3b571",
+          "name": "Create Bid",
+          "request": {
+            "name": "Create Bid",
+            "description": {
+              "content": "Place a new Spot bid",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "spot",
+                "bids"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"project\": \"<string>\",\n  \"region\": \"<string>\",\n  \"instance_type\": \"<string>\",\n  \"limit_price\": \"<string>\",\n  \"instance_quantity\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"launch_specification\": {\n    \"volumes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"ssh_keys\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"startup_script\": \"<string>\",\n    \"kubernetes_cluster\": \"<string>\",\n    \"image_version\": \"<string>\",\n    \"memory_gb\": \"<integer>\"\n  },\n  \"notification_email\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5e44b00c-181b-42d0-b041-6a48522a4cfe",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "spot",
+                    "bids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project\": \"proj_abc123456\",\n  \"region\": \"us-central1-a\",\n  \"instance_type\": \"it_abc123456\",\n  \"limit_price\": \"$25.60\",\n  \"instance_quantity\": 4,\n  \"name\": \"<string>\",\n  \"launch_specification\": {\n    \"volumes\": [\n      \"vol_1234567890\",\n      \"vol_1234567891\"\n    ],\n    \"ssh_keys\": [\n      \"sshkey_1234567890\",\n      \"sshkey_1234567891\"\n    ],\n    \"startup_script\": \"string\",\n    \"kubernetes_cluster\": \"clust_abc123456\",\n    \"image_version\": \"imgver_abc123456\",\n    \"memory_gb\": 6015\n  },\n  \"notification_email\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fid\": \"bid_abc123456\",\n  \"name\": \"string\",\n  \"project\": \"proj_abc123456\",\n  \"created_by\": \"user_abc123456\",\n  \"created_at\": \"2024-01-01T00:00:00Z\",\n  \"limit_price\": \"$15.60\",\n  \"instance_quantity\": 4,\n  \"instance_type\": \"it_abc123456\",\n  \"instances\": [\n    \"inst_abc123456\",\n    \"inst_abc123456\"\n  ],\n  \"launch_specification\": {\n    \"volumes\": [\n      \"vol_1234567890\",\n      \"vol_1234567891\"\n    ],\n    \"ssh_keys\": [\n      \"sshkey_1234567890\",\n      \"sshkey_1234567891\"\n    ],\n    \"startup_script\": \"string\",\n    \"kubernetes_cluster\": \"clust_abc123456\",\n    \"image_version\": \"imgver_abc123456\",\n    \"memory_gb\": 6574\n  },\n  \"status\": \"Open\",\n  \"deactivated_at\": \"2024-01-01T00:00:00Z\",\n  \"region\": \"us-central1-a\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7ed3eeac-ad47-4bc9-8fa3-22cd00351616",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "spot",
+                    "bids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project\": \"proj_abc123456\",\n  \"region\": \"us-central1-a\",\n  \"instance_type\": \"it_abc123456\",\n  \"limit_price\": \"$25.60\",\n  \"instance_quantity\": 4,\n  \"name\": \"<string>\",\n  \"launch_specification\": {\n    \"volumes\": [\n      \"vol_1234567890\",\n      \"vol_1234567891\"\n    ],\n    \"ssh_keys\": [\n      \"sshkey_1234567890\",\n      \"sshkey_1234567891\"\n    ],\n    \"startup_script\": \"string\",\n    \"kubernetes_cluster\": \"clust_abc123456\",\n    \"image_version\": \"imgver_abc123456\",\n    \"memory_gb\": 6015\n  },\n  \"notification_email\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35c0a968-a8a5-4ca1-9ead-158352858822",
+          "name": "Get Bid",
+          "request": {
+            "name": "Get Bid",
+            "description": {
+              "content": "Get a single Spot bid by FID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "spot",
+                "bids",
+                ":bid_fid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bid_fid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9783e72f-5d26-4435-94af-7fc3ea7cfea4",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "spot",
+                    "bids",
+                    ":bid_fid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bid_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fid\": \"bid_abc123456\",\n  \"name\": \"string\",\n  \"project\": \"proj_abc123456\",\n  \"created_by\": \"user_abc123456\",\n  \"created_at\": \"2024-01-01T00:00:00Z\",\n  \"limit_price\": \"$15.60\",\n  \"instance_quantity\": 4,\n  \"instance_type\": \"it_abc123456\",\n  \"instances\": [\n    \"inst_abc123456\",\n    \"inst_abc123456\"\n  ],\n  \"launch_specification\": {\n    \"volumes\": [\n      \"vol_1234567890\",\n      \"vol_1234567891\"\n    ],\n    \"ssh_keys\": [\n      \"sshkey_1234567890\",\n      \"sshkey_1234567891\"\n    ],\n    \"startup_script\": \"string\",\n    \"kubernetes_cluster\": \"clust_abc123456\",\n    \"image_version\": \"imgver_abc123456\",\n    \"memory_gb\": 6574\n  },\n  \"status\": \"Open\",\n  \"deactivated_at\": \"2024-01-01T00:00:00Z\",\n  \"region\": \"us-central1-a\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "397e46ac-e6a8-41b1-a0e9-814315f9d9b2",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "spot",
+                    "bids",
+                    ":bid_fid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bid_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10d8142d-f5f9-4660-a456-720ba15478e2",
+          "name": "Update Bid",
+          "request": {
+            "name": "Update Bid",
+            "description": {
+              "content": "Update the limit price of a Spot bid",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "spot",
+                "bids",
+                ":bid_fid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bid_fid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"limit_price\": \"<string>\",\n  \"paused\": \"<boolean>\",\n  \"volumes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"memory_gb\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "54743b42-3235-49bb-b2ee-938e7a179dd8",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "spot",
+                    "bids",
+                    ":bid_fid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bid_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"limit_price\": \"<string>\",\n  \"paused\": \"<boolean>\",\n  \"volumes\": [\n    \"vol_abc123456\",\n    \"vol_abc123456\"\n  ],\n  \"memory_gb\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fid\": \"bid_abc123456\",\n  \"name\": \"string\",\n  \"project\": \"proj_abc123456\",\n  \"created_by\": \"user_abc123456\",\n  \"created_at\": \"2024-01-01T00:00:00Z\",\n  \"limit_price\": \"$15.60\",\n  \"instance_quantity\": 4,\n  \"instance_type\": \"it_abc123456\",\n  \"instances\": [\n    \"inst_abc123456\",\n    \"inst_abc123456\"\n  ],\n  \"launch_specification\": {\n    \"volumes\": [\n      \"vol_1234567890\",\n      \"vol_1234567891\"\n    ],\n    \"ssh_keys\": [\n      \"sshkey_1234567890\",\n      \"sshkey_1234567891\"\n    ],\n    \"startup_script\": \"string\",\n    \"kubernetes_cluster\": \"clust_abc123456\",\n    \"image_version\": \"imgver_abc123456\",\n    \"memory_gb\": 6574\n  },\n  \"status\": \"Open\",\n  \"deactivated_at\": \"2024-01-01T00:00:00Z\",\n  \"region\": \"us-central1-a\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e04ba7bb-83ed-4822-8a55-f070b232b259",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "spot",
+                    "bids",
+                    ":bid_fid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bid_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"limit_price\": \"<string>\",\n  \"paused\": \"<boolean>\",\n  \"volumes\": [\n    \"vol_abc123456\",\n    \"vol_abc123456\"\n  ],\n  \"memory_gb\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b148ec3b-8e48-4aff-9a10-2884d78958ea",
+          "name": "Cancel Bid",
+          "request": {
+            "name": "Cancel Bid",
+            "description": {
+              "content": "Cancel a Spot bid",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "spot",
+                "bids",
+                ":bid_fid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bid_fid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "83754ad6-42c7-4429-9e92-00677473c0cb",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "spot",
+                    "bids",
+                    ":bid_fid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bid_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7a466d9f-0185-4d75-8d2b-128ef8095a3d",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "spot",
+                    "bids",
+                    ":bid_fid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bid_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f37e99c0-5db9-41a6-aa80-8896120e5ae7",
+          "name": "Get Bid Status",
+          "request": {
+            "name": "Get Bid Status",
+            "description": {
+              "content": "Get detailed status of a Spot bid.\n\nReturns a detailed status that includes instance-level status information.\nThe status can be one of: Open, Allocated, Preempting, Terminated,\nPaused, Relocating.\n\n\"Relocating\" indicates that part of the order is being relocated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "spot",
+                "bids",
+                ":bid_fid",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bid_fid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "83c416e1-e18b-458c-9ad5-d310f92afff4",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "spot",
+                    "bids",
+                    ":bid_fid",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bid_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bid_fid\": \"bid_xxxx\",\n  \"status\": \"Open\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f0eaf15c-5723-4bda-aff2-cb1f1669e510",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "spot",
+                    "bids",
+                    ":bid_fid",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bid_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "516e7a37-0158-4182-a558-7de12e175f24",
+          "name": "Get Bid History",
+          "request": {
+            "name": "Get Bid History",
+            "description": {
+              "content": "Get the history of events for a Spot bid.\n\nReturns a list of historical events including:\n- placing the bid\n- pausing the bid\n- resuming the bid\n- terminating the bid\n- changes to the limit price",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "spot",
+                "bids",
+                ":bid_fid",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bid_fid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "456bb272-7f7e-46d9-9f08-49122a02991a",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "spot",
+                    "bids",
+                    ":bid_fid",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bid_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bid_fid\": \"bid_abc123456\",\n  \"events\": [\n    {\n      \"timestamp\": \"2024-01-01T00:00:00Z\",\n      \"event_type\": \"Placed\",\n      \"limit_price\": \"$15.60\",\n      \"user_id\": \"string\",\n      \"memory_gb\": 2703,\n      \"persistent_disk_change\": {\n        \"attached\": \"string\",\n        \"removed\": \"string\"\n      }\n    },\n    {\n      \"timestamp\": \"2024-01-01T00:00:00Z\",\n      \"event_type\": \"Placed\",\n      \"limit_price\": \"$15.60\",\n      \"user_id\": \"string\",\n      \"memory_gb\": 598,\n      \"persistent_disk_change\": {\n        \"attached\": \"string\",\n        \"removed\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79499ef2-2bcf-4bfa-abce-1453d44b7470",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "spot",
+                    "bids",
+                    ":bid_fid",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bid_fid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04562e88-9ade-4c1e-95e6-8f9b9fcedc48",
+          "name": "Get Auctions",
+          "request": {
+            "name": "Get Auctions",
+            "description": {
+              "content": "Get the Spot availability across all regions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "spot",
+                "availability"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0a5dc5a4-c0d4-488a-be82-6e7068d94a1e",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "spot",
+                    "availability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"fid\": \"auc_abc123456\",\n    \"instance_type\": \"it_abc123456\",\n    \"region\": \"us-central1-a\",\n    \"capacity\": 512,\n    \"last_instance_price\": \"$10.00\",\n    \"adjustable_memory\": false,\n    \"lowest_allocated_price\": \"$15.00\",\n    \"default_image_version\": \"imgver_abc123456\"\n  },\n  {\n    \"fid\": \"auc_abc123456\",\n    \"instance_type\": \"it_abc123456\",\n    \"region\": \"us-central1-a\",\n    \"capacity\": 512,\n    \"last_instance_price\": \"$10.00\",\n    \"adjustable_memory\": true,\n    \"lowest_allocated_price\": \"$15.00\",\n    \"default_image_version\": \"imgver_abc123456\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mithril.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3245d2bf-283d-4322-a852-58fee06a553a",
+    "name": "Mithril API Keys spot API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Mithril Compute API",
+      "type": "text/plain"
+    }
+  }
+}

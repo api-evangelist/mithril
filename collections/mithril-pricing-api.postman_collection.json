@@ -1,0 +1,413 @@
+{
+  "item": [
+    {
+      "id": "b5135df9-e9b2-44ed-b325-952a6525e5ea",
+      "name": "pricing",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f6caff53-d8ec-48a7-93dc-f8767498ac65",
+          "name": "Get Current Prices V2",
+          "request": {
+            "name": "Get Current Prices V2",
+            "description": {
+              "content": "Get current pricing information for an instance type.\n\nReturns the current spot price, reserved price, and minimum price for a given\ninstance type, optionally filtered by region.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "pricing",
+                "current"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "instance_type",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "instance_quantity",
+                  "value": "1"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cd6b80d3-8101-45fe-bd8f-f4e6a3aaf49f",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "pricing",
+                    "current"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "instance_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-central1-a"
+                    },
+                    {
+                      "key": "instance_quantity",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"spot_price_cents\": 7121,\n  \"reserved_price_cents\": 4189,\n  \"minimum_price_cents\": 1518,\n  \"lowest_allocated_bid_cents\": 1772,\n  \"dynamic_win_price_cents\": 5958,\n  \"available_capacity\": 7358,\n  \"total_capacity\": 7372\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ffb8d6a4-761d-4934-8d42-b9481e6b06ed",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "pricing",
+                    "current"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "instance_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-central1-a"
+                    },
+                    {
+                      "key": "instance_quantity",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e955c097-4fee-4300-8f97-348293148151",
+          "name": "Get Historical Prices V2",
+          "request": {
+            "name": "Get Historical Prices V2",
+            "description": {
+              "content": "Get historical pricing information for instance types.\n\nReturns historical spot and reserved prices over time for instance types,\noptionally filtered by specific instance type and region.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "pricing",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "instance_types",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "num_samples",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<datetime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<datetime>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fb5c5527-5d90-4bad-ba34-b8937acc5b97",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "pricing",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "instance_types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-central1-a"
+                    },
+                    {
+                      "key": "num_samples",
+                      "value": "100"
+                    },
+                    {
+                      "key": "start_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"series\": [\n    {\n      \"instance_type\": \"it_abc123456\",\n      \"region\": \"string\",\n      \"timestamps\": [\n        \"2024-01-01T00:00:00Z\",\n        \"2024-01-01T00:00:00Z\"\n      ],\n      \"spot_prices\": [\n        \"string\",\n        \"string\"\n      ],\n      \"reserved_prices\": [\n        \"string\",\n        \"string\"\n      ],\n      \"region_disabled\": false\n    },\n    {\n      \"instance_type\": \"it_abc123456\",\n      \"region\": \"string\",\n      \"timestamps\": [\n        \"2024-01-01T00:00:00Z\",\n        \"2024-01-01T00:00:00Z\"\n      ],\n      \"spot_prices\": [\n        \"string\",\n        \"string\"\n      ],\n      \"reserved_prices\": [\n        \"string\",\n        \"string\"\n      ],\n      \"region_disabled\": false\n    }\n  ],\n  \"complete\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "324ecf0c-67ee-4d0f-b284-5421531ec16a",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "pricing",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "instance_types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "region",
+                      "value": "us-central1-a"
+                    },
+                    {
+                      "key": "num_samples",
+                      "value": "100"
+                    },
+                    {
+                      "key": "start_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "2024-01-01T00:00:00Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mithril.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d04cd959-47a9-48f9-baea-b0f445103fae",
+    "name": "Mithril API Keys pricing API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Mithril Compute API",
+      "type": "text/plain"
+    }
+  }
+}

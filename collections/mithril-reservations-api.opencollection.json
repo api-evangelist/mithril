@@ -1,0 +1,362 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mithril API Keys reservations API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "reservations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Reservation Instance Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/reservation/instance-types",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get instance types available for reservation.\n\nReturns the subset of public instance types that are currently\neligible for reservation. Instance types can be disabled for\nreservation via the Unleash reservation-disabled-instance-types\nfeature flag."
+        },
+        {
+          "info": {
+            "name": "Get Reservation Quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/reservation/quote",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "instance_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "quantity",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get pricing offers for a reservation.\n\nReservation offers are dynamic and the price may change slightly since\nthe time it was generated. You can include an optional \"max_unit_price\"\n(which you can set at the quoted price or slightly above it) to ensure\nyour reservation request fails if the new price is above that max."
+        },
+        {
+          "info": {
+            "name": "Get Availability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/reservation/availability",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "instance_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "earliest_start_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "latest_end_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "quantity",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get availability information for reservations.\n\nThis endpoint supports three different modes for querying availability:\n\n## Mode: latest_end_time (default)\nGet the latest possible end time for a reservation given a start time and\nquantity.\n\n**Required parameters:**\n- `start_time`: Desired start time for the reservation\n- `quantity`: Number of instances needed\n- `project`: Project FID\n- `instance_type`: Instance type FID\n- `region`: Region name\n\n**Returns:** Latest possible end time and availabil"
+        },
+        {
+          "info": {
+            "name": "Get Reservations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/reservation",
+            "params": [
+              {
+                "name": "next_cursor",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_dir",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "instance_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get all reservations for a project"
+        },
+        {
+          "info": {
+            "name": "Create Reservation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mithril.ai/v2/reservation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new reservation."
+        },
+        {
+          "info": {
+            "name": "Get Extension Availability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/reservation/:reservation_fid/extension-availability",
+            "params": [
+              {
+                "name": "reservation_fid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get extension availability for a reservation"
+        },
+        {
+          "info": {
+            "name": "Extend Reservation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mithril.ai/v2/reservation/:reservation_fid/extend",
+            "params": [
+              {
+                "name": "reservation_fid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Extend a reservation to the requested time."
+        },
+        {
+          "info": {
+            "name": "Update Reservation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.mithril.ai/v2/reservation/:reservation_fid",
+            "params": [
+              {
+                "name": "reservation_fid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update a reservation's pause/resume status and/or volumes"
+        },
+        {
+          "info": {
+            "name": "Terminate Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mithril.ai/v2/reservation/:reservation_fid/terminate-instances",
+            "params": [
+              {
+                "name": "reservation_fid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Remove and permanently delete instances from this reservation.\n\nYou will receive a credit based on your early termination buyback price\nassociated with this reservation and the time remaining in the\nreservation.\n\nThis endpoint does a best effort to termiante all instances, but it can\nfail to do so for some instances. If you receive a 207, then please see\nthe response for details."
+        },
+        {
+          "info": {
+            "name": "Get Reservation History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/reservation/:reservation_fid/history",
+            "params": [
+              {
+                "name": "reservation_fid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get the activity history for a reservation.\n\nReturns a chronological list of order-level status changes (Placed, Active,\nPaused, Resumed, Canceled, Ended) interleaved with aggregated instance-level\nstatus events (instances running, stopped, error) bucketed into 60-second\nwindows so burst transitions appear as a single entry."
+        },
+        {
+          "info": {
+            "name": "Get Reservation Usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/reservation/:reservation_fid/usage",
+            "params": [
+              {
+                "name": "reservation_fid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get usage breakdown for a flex reservation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

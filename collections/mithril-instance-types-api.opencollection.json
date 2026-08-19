@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mithril API Keys instance types API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "instance types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Reservation Instance Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/reservation/instance-types",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get instance types available for reservation.\n\nReturns the subset of public instance types that are currently\neligible for reservation. Instance types can be disabled for\nreservation via the Unleash reservation-disabled-instance-types\nfeature flag."
+        },
+        {
+          "info": {
+            "name": "Get Instance Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/instance-types",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get all instance types."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

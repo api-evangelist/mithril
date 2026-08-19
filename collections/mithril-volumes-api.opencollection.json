@@ -1,0 +1,117 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mithril API Keys volumes API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "volumes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Volumes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/volumes",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include_deleted",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieves all storage volumes for a specific project.\n\nArgs:\n    user_info: Authenticated user information.\n    project: Identifier of the project to list volumes for.\n    region: Optional region filter.\n    include_deleted: When True, includes soft-deleted volumes in the\n        response. Deleted volumes have a non-null ``deleted_at`` field.\n        Defaults to False.\n\nReturns:\n    list[VolumeModel]: A list of volume models belonging to the project.\n\nRaises:\n    HTTPException: If project is mis"
+        },
+        {
+          "info": {
+            "name": "Create Volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mithril.ai/v2/volumes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a new storage volume.\n\nArgs:\n    user_info: Authenticated user information.\n    body: Request body containing volume creation details (size, region, etc).\n\nReturns:\n    VolumeModel: The created volume model.\n\nRaises:\n    HTTPException: If user unauthorized or creation fails."
+        },
+        {
+          "info": {
+            "name": "Update Volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.mithril.ai/v2/volumes/:volume_fid",
+            "params": [
+              {
+                "name": "volume_fid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates a storage volume's mutable properties (e.g., name).\n\nArgs:\n    user_info: Authenticated user information.\n    volume_fid: Identifier of the volume to update.\n    body: Request body containing updated fields.\n\nReturns:\n    VolumeModel: The updated volume model.\n\nRaises:\n    HTTPException: If volume not found or user unauthorized."
+        },
+        {
+          "info": {
+            "name": "Delete Volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mithril.ai/v2/volumes/:volume_fid",
+            "params": [
+              {
+                "name": "volume_fid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes a storage volume.\n\nPermanently removes a volume. The volume must not be currently in use/attached.\n\nArgs:\n    user_info: Authenticated user information.\n    volume_fid: Identifier of the volume to delete.\n\nRaises:\n    HTTPException: If volume not found, user unauthorized, or volume is in use."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

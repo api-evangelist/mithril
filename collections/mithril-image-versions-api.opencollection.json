@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mithril API Keys image versions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "image versions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Image Versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/image-versions",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get all available image versions;\nthe stable image version is the default unless otherwise specified."
+        },
+        {
+          "info": {
+            "name": "Get Mcc Image Versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/mcc-image-versions",
+            "params": [
+              {
+                "name": "region",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get MCC (CPU) image versions available for a region.\nThese are CPU-only images used for Kubernetes cluster control planes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

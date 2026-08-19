@@ -6,9 +6,8 @@ server:
   name: mithril-compute
   transport: http
   url: null
-  note: No official hosted/remote Mithril MCP server was found (docs, npm
-    @modelcontextprotocol, MCP registries). Tools below are a candidate surface
-    derived one-per-operation from the v2 Compute API.
+  note: No official hosted/remote Mithril MCP server was found (docs, npm @modelcontextprotocol, MCP registries).
+    Tools below are a candidate surface derived one-per-operation from the v2 Compute API.
 tools:
 - name: list_pricing_current
   description: Get current market GPU prices
@@ -46,3 +45,9 @@ tools:
 - name: get_quotas
   description: Get compute quotas for the account
   source_operation: openapi/mithril-compute-openapi-original.json#get_quotas_v2_quotas_get
+deployment:
+  mode: none
+  verified: derived
+  tools: 12
+  checked: '2026-08-12'
+  source: catalog MCP census

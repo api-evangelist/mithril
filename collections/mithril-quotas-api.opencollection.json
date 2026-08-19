@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mithril API Keys quotas API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "quotas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Quotas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/quotas",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get all quotas for a project in unified format"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

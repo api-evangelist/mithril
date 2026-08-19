@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mithril API Keys kubernetes clusters API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "kubernetes clusters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Kubernetes Clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/kubernetes/clusters",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get all Kubernetes clusters for a project"
+        },
+        {
+          "info": {
+            "name": "Create Kubernetes Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mithril.ai/v2/kubernetes/clusters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new Kubernetes cluster"
+        },
+        {
+          "info": {
+            "name": "Get Kubernetes Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mithril.ai/v2/kubernetes/clusters/:cluster_fid",
+            "params": [
+              {
+                "name": "cluster_fid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a specific Kubernetes cluster"
+        },
+        {
+          "info": {
+            "name": "Delete Kubernetes Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mithril.ai/v2/kubernetes/clusters/:cluster_fid",
+            "params": [
+              {
+                "name": "cluster_fid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete a Kubernetes cluster"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

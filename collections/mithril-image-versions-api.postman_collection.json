@@ -1,0 +1,269 @@
+{
+  "item": [
+    {
+      "id": "6b186a98-8bb9-49ea-89fd-f01e21490534",
+      "name": "image versions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c08c4623-28bd-4c67-b797-bfe59cc6aabf",
+          "name": "Get Image Versions",
+          "request": {
+            "name": "Get Image Versions",
+            "description": {
+              "content": "Get all available image versions;\nthe stable image version is the default unless otherwise specified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "image-versions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "814735bd-3bea-45ba-be24-dd8fa5a938b8",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "image-versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"image_version_fid\": \"imgver_abc123456\",\n    \"image_version_name\": \"string\",\n    \"os\": \"string\",\n    \"kernel\": \"string\",\n    \"stable\": false,\n    \"supported_regions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"deactivated_at\": \"2024-01-01T00:00:00Z\",\n    \"nvidia_driver\": \"string\",\n    \"cuda\": \"string\",\n    \"cuda_toolkit\": \"string\",\n    \"nvidia_container_toolkit\": \"string\",\n    \"packages\": \"string\"\n  },\n  {\n    \"image_version_fid\": \"imgver_abc123456\",\n    \"image_version_name\": \"string\",\n    \"os\": \"string\",\n    \"kernel\": \"string\",\n    \"stable\": false,\n    \"supported_regions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"deactivated_at\": \"2024-01-01T00:00:00Z\",\n    \"nvidia_driver\": \"string\",\n    \"cuda\": \"string\",\n    \"cuda_toolkit\": \"string\",\n    \"nvidia_container_toolkit\": \"string\",\n    \"packages\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f31204c-9fbb-46e2-b474-dcd601eed470",
+          "name": "Get Mcc Image Versions",
+          "request": {
+            "name": "Get Mcc Image Versions",
+            "description": {
+              "content": "Get MCC (CPU) image versions available for a region.\nThese are CPU-only images used for Kubernetes cluster control planes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "mcc-image-versions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4bcd6b86-df81-4a9b-87f4-edb08ac639a1",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "mcc-image-versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "region",
+                      "value": "us-central1-a"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"image_version_fid\": \"imgver_abc123456\",\n    \"image_version_name\": \"string\",\n    \"os\": \"string\",\n    \"kernel\": \"string\",\n    \"stable\": false,\n    \"supported_regions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"deactivated_at\": \"2024-01-01T00:00:00Z\",\n    \"nvidia_driver\": \"string\",\n    \"cuda\": \"string\",\n    \"cuda_toolkit\": \"string\",\n    \"nvidia_container_toolkit\": \"string\",\n    \"packages\": \"string\"\n  },\n  {\n    \"image_version_fid\": \"imgver_abc123456\",\n    \"image_version_name\": \"string\",\n    \"os\": \"string\",\n    \"kernel\": \"string\",\n    \"stable\": true,\n    \"supported_regions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"deactivated_at\": \"2024-01-01T00:00:00Z\",\n    \"nvidia_driver\": \"string\",\n    \"cuda\": \"string\",\n    \"cuda_toolkit\": \"string\",\n    \"nvidia_container_toolkit\": \"string\",\n    \"packages\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "459290d9-a21a-434d-a003-95ec868e1f9a",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "mcc-image-versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "region",
+                      "value": "us-central1-a"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mithril.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d4dbd3e5-5b3b-4abf-9f52-9b26701d9e99",
+    "name": "Mithril API Keys image versions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Mithril Compute API",
+      "type": "text/plain"
+    }
+  }
+}
