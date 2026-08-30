@@ -322,6 +322,9 @@ apis:
   - type: Authentication
     url: authentication/mithril-authentication.yml
 common:
+- type: CapabilityMap
+  url: capabilities/mithril-capability-edges.yml
+  name: Mithril Business Capability Map
 - type: Website
   url: https://mithril.ai
 - type: DeveloperPortal
