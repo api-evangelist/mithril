@@ -97,7 +97,7 @@ apis:
   humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
   baseURL: https://api.mithril.ai/v2
   tags:
-  - image versions
+  - ImageVersions
   tags_raw:
   - image versions
   properties:
@@ -115,7 +115,7 @@ apis:
   humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
   baseURL: https://api.mithril.ai/v2
   tags:
-  - instance types
+  - Instance Types
   tags_raw:
   - instance types
   properties:
@@ -151,7 +151,7 @@ apis:
   humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
   baseURL: https://api.mithril.ai/v2
   tags:
-  - kubernetes clusters
+  - Kubernetes Clusters
   tags_raw:
   - kubernetes clusters
   properties:
@@ -275,7 +275,7 @@ apis:
   humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
   baseURL: https://api.mithril.ai/v2
   tags:
-  - spot
+  - Spot
   tags_raw:
   - spot
   properties:
@@ -309,7 +309,7 @@ apis:
   humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
   baseURL: https://api.mithril.ai/v2
   tags:
-  - volumes
+  - Volumes
   tags_raw:
   - volumes
   properties:
