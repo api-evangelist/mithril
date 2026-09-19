@@ -204,7 +204,7 @@ apis:
   humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
   baseURL: https://api.mithril.ai/v2
   tags:
-  - Profile
+  - Profiles
   tags_raw:
   - profile
   properties:
