@@ -323,6 +323,8 @@ apis:
   - type: Authentication
     url: authentication/mithril-authentication.yml
 common:
+- type: Plans
+  url: plans/mithril-plans-pricing.yml
 - type: CapabilityMap
   url: capabilities/mithril-capability-edges.yml
   name: Mithril Business Capability Map

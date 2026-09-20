@@ -1,0 +1,58 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://mithril.ai/pricing
+sources:
+- https://mithril.ai/pricing
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120546
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: usage-other
+published: true
+note: GPU compute and storage pricing; spot prices are 7-day averages set algorithmically and updated
+  weekly. No ingress/egress charges stated.
+plan_count: 6
+currency: USD
+plans:
+- name: H200 SXM5 (1 GPU, 20 vCPUs, 200 GB RAM, 1,500 GB disk)
+  price_text: $1.01 instance/hr
+  price: 1.01
+  currency: USD
+  period: per-use
+  unit: instance/hr
+  included_quota: Spot (7-day avg)
+- name: H200 SXM5 (8 GPUs, 168 vCPUs, 1,600 GB RAM, 12,500 GB disk)
+  price_text: $17.26 instance/hr
+  price: 17.26
+  currency: USD
+  period: per-use
+  unit: instance/hr
+  included_quota: Spot (7-day avg)
+- name: H100 SXM5 (1 GPU, 20 vCPUs, 226 GB RAM, 1,774 GB disk)
+  price_text: $1.00 instance/hr
+  price: 1.0
+  currency: USD
+  period: per-use
+  unit: instance/hr
+  included_quota: Spot (7-day avg)
+- name: H100 SXM5 (8 GPUs, 168 vCPUs, 1,814 GB RAM, 12,500 GB disk)
+  price_text: $12.03 instance/hr
+  price: 12.03
+  currency: USD
+  period: per-use
+  unit: instance/hr
+  included_quota: Spot (7-day avg)
+- name: File share NVMe SSD storage
+  price_text: $0.08 GB/month
+  price: 0.08
+  currency: USD
+  period: month
+  unit: GB/mo
+- name: Block NVMe SSD storage
+  price_text: $0.08 GB/month
+  price: 0.08
+  currency: USD
+  period: month
+  unit: GB/mo
