@@ -10,6 +10,10 @@ provenance:
   grounding: every price_text was found verbatim in the fetched page text
 audience: developer-api
 pricing_basis: usage-other
+delivery:
+  delivery: managed
+  method: keyword-prefilter
+  read: '2026-09-20'
 published: true
 note: GPU compute and storage pricing; spot prices are 7-day averages set algorithmically and updated
   weekly. No ingress/egress charges stated.
