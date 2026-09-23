@@ -1,19 +1,44 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Mithril API Keys volumes API
+  title: Mithril Volumes API
   description: Mithril Compute API
   version: 1.0.0
 servers:
 - url: https://api.mithril.ai
 tags:
-- name: volumes
+- name: Volumes
 paths:
   /v2/volumes:
     get:
       tags:
-      - volumes
+      - Volumes
       summary: Get Volumes
-      description: "Retrieves all storage volumes for a specific project.\n\nArgs:\n    user_info: Authenticated user information.\n    project: Identifier of the project to list volumes for.\n    region: Optional region filter.\n    include_deleted: When True, includes soft-deleted volumes in the\n        response. Deleted volumes have a non-null ``deleted_at`` field.\n        Defaults to False.\n\nReturns:\n    list[VolumeModel]: A list of volume models belonging to the project.\n\nRaises:\n    HTTPException: If project is missing or user is not authorized."
+      description: 'Retrieves all storage volumes for a specific project.
+
+
+        Args:
+
+        user_info: Authenticated user information.
+
+        project: Identifier of the project to list volumes for.
+
+        region: Optional region filter.
+
+        include_deleted: When True, includes soft-deleted volumes in the
+
+        response. Deleted volumes have a non-null ``deleted_at`` field.
+
+        Defaults to False.
+
+
+        Returns:
+
+        list[VolumeModel]: A list of volume models belonging to the project.
+
+
+        Raises:
+
+        HTTPException: If project is missing or user is not authorized.'
       operationId: get_volumes_v2_volumes_get
       security:
       - MithrilAPIKey: []
@@ -57,9 +82,26 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     post:
       tags:
-      - volumes
+      - Volumes
       summary: Create Volume
-      description: "Creates a new storage volume.\n\nArgs:\n    user_info: Authenticated user information.\n    body: Request body containing volume creation details (size, region, etc).\n\nReturns:\n    VolumeModel: The created volume model.\n\nRaises:\n    HTTPException: If user unauthorized or creation fails."
+      description: 'Creates a new storage volume.
+
+
+        Args:
+
+        user_info: Authenticated user information.
+
+        body: Request body containing volume creation details (size, region, etc).
+
+
+        Returns:
+
+        VolumeModel: The created volume model.
+
+
+        Raises:
+
+        HTTPException: If user unauthorized or creation fails.'
       operationId: create_volume_v2_volumes_post
       security:
       - MithrilAPIKey: []
@@ -85,9 +127,24 @@ paths:
   /v2/volumes/{volume_fid}:
     delete:
       tags:
-      - volumes
+      - Volumes
       summary: Delete Volume
-      description: "Deletes a storage volume.\n\nPermanently removes a volume. The volume must not be currently in use/attached.\n\nArgs:\n    user_info: Authenticated user information.\n    volume_fid: Identifier of the volume to delete.\n\nRaises:\n    HTTPException: If volume not found, user unauthorized, or volume is in use."
+      description: 'Deletes a storage volume.
+
+
+        Permanently removes a volume. The volume must not be currently in use/attached.
+
+
+        Args:
+
+        user_info: Authenticated user information.
+
+        volume_fid: Identifier of the volume to delete.
+
+
+        Raises:
+
+        HTTPException: If volume not found, user unauthorized, or volume is in use.'
       operationId: delete_volume_v2_volumes__volume_fid__delete
       security:
       - MithrilAPIKey: []
@@ -111,9 +168,28 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     patch:
       tags:
-      - volumes
+      - Volumes
       summary: Update Volume
-      description: "Updates a storage volume's mutable properties (e.g., name).\n\nArgs:\n    user_info: Authenticated user information.\n    volume_fid: Identifier of the volume to update.\n    body: Request body containing updated fields.\n\nReturns:\n    VolumeModel: The updated volume model.\n\nRaises:\n    HTTPException: If volume not found or user unauthorized."
+      description: 'Updates a storage volume''s mutable properties (e.g., name).
+
+
+        Args:
+
+        user_info: Authenticated user information.
+
+        volume_fid: Identifier of the volume to update.
+
+        body: Request body containing updated fields.
+
+
+        Returns:
+
+        VolumeModel: The updated volume model.
+
+
+        Raises:
+
+        HTTPException: If volume not found or user unauthorized.'
       operationId: update_volume_v2_volumes__volume_fid__patch
       security:
       - MithrilAPIKey: []
@@ -147,76 +223,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            oneOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    CreateVolumeRequest:
-      properties:
-        name:
-          type: string
-          maxLength: 64
-          pattern: ^[a-z]([-a-z0-9]*[a-z0-9])?$
-          title: Name
-        project:
-          type: string
-          title: Project
-          examples:
-          - proj_abc123456
-        disk_interface:
-          type: string
-          enum:
-          - Block
-          - File
-          title: Disk Interface
-        region:
-          type: string
-          title: Region
-          examples:
-          - us-central1-a
-        size_gb:
-          title: Size Gb
-          gt:
-            _unit: b
-            _value: 0
-          lt:
-            _unit: pib
-            _value: 2
-      type: object
-      required:
-      - name
-      - project
-      - disk_interface
-      - region
-      - size_gb
-      title: CreateVolumeRequest
-      description: Request model for creating a new storage volume.
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     VolumeModel:
       properties:
         fid:
@@ -297,6 +303,27 @@ components:
       - reservations
       - attachments
       title: VolumeModel
+    ValidationError:
+      properties:
+        loc:
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     UpdateVolumeRequest:
       properties:
         name:
@@ -309,6 +336,55 @@ components:
       - name
       title: UpdateVolumeRequest
       description: "Request model for updating an existing storage volume.\n\nAttributes:\n    name: New name for the volume. Must follow naming conventions."
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    CreateVolumeRequest:
+      properties:
+        name:
+          type: string
+          maxLength: 64
+          pattern: ^[a-z]([-a-z0-9]*[a-z0-9])?$
+          title: Name
+        project:
+          type: string
+          title: Project
+          examples:
+          - proj_abc123456
+        disk_interface:
+          type: string
+          enum:
+          - Block
+          - File
+          title: Disk Interface
+        region:
+          type: string
+          title: Region
+          examples:
+          - us-central1-a
+        size_gb:
+          title: Size Gb
+          gt:
+            _unit: b
+            _value: 0
+          lt:
+            _unit: pib
+            _value: 2
+      type: object
+      required:
+      - name
+      - project
+      - disk_interface
+      - region
+      - size_gb
+      title: CreateVolumeRequest
+      description: Request model for creating a new storage volume.
   securitySchemes:
     MithrilAPIKey:
       type: http

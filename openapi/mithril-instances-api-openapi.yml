@@ -1,17 +1,17 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Mithril API Keys instances API
+  title: Mithril Instances API
   description: Mithril Compute API
   version: 1.0.0
 servers:
 - url: https://api.mithril.ai
 tags:
-- name: instances
+- name: Instances
 paths:
   /v2/instances:
     get:
       tags:
-      - instances
+      - Instances
       summary: Get Instances
       description: Get all instances for a project
       operationId: get_instances_v2_instances_get
@@ -141,9 +141,41 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     patch:
       tags:
-      - instances
+      - Instances
       summary: Put Instance Status
-      description: "Trigger a status change for a set of instances.\n\nThis endpoint supports batch start and pause requests for instances. The\nrequest accepts a set of instance FIDs and a target action\n(`STATUS_RUNNING` or `STATUS_PAUSED`).\n\nThe response always includes an entry for every requested instance, keyed by\ninstance FID, with that instance's current status after processing.\n- When an instance is successfully starting, its status is `STATUS_CONFIRMED`.\n- When an instance is successfully stopping, its status is `STATUS_STOPPING`.\n- If an instance cannot be stopped, its prior status is returned unchanged.\n\nPaused instances which are associated with a reservation will accrue a\ncredit based on the flexible usage buyback price on that reservation.\n\nNotes:\n- Only reserved instances are supported at this time.\n- This API is asynchronous. You can check the status of the instance with the\n  Get Status api."
+      description: 'Trigger a status change for a set of instances.
+
+
+        This endpoint supports batch start and pause requests for instances. The
+
+        request accepts a set of instance FIDs and a target action
+
+        (`STATUS_RUNNING` or `STATUS_PAUSED`).
+
+
+        The response always includes an entry for every requested instance, keyed by
+
+        instance FID, with that instance''s current status after processing.
+
+        - When an instance is successfully starting, its status is `STATUS_CONFIRMED`.
+
+        - When an instance is successfully stopping, its status is `STATUS_STOPPING`.
+
+        - If an instance cannot be stopped, its prior status is returned unchanged.
+
+
+        Paused instances which are associated with a reservation will accrue a
+
+        credit based on the flexible usage buyback price on that reservation.
+
+
+        Notes:
+
+        - Only reserved instances are supported at this time.
+
+        - This API is asynchronous. You can check the status of the instance with the
+
+        Get Status api.'
       operationId: put_instance_status_v2_instances_patch
       security:
       - MithrilAPIKey: []
@@ -175,7 +207,7 @@ paths:
   /v2/instances/{instance_fid}/status:
     get:
       tags:
-      - instances
+      - Instances
       summary: Get Instance Status
       description: 'Get the status of a specific instance by its ID.
 
@@ -208,7 +240,7 @@ paths:
   /v2/instances/{instance_fid}/refresh-boot-disk:
     post:
       tags:
-      - instances
+      - Instances
       summary: Refresh Instance Boot Disk
       description: 'Refresh (delete and recreate) the boot disk of a reserved instance.
 
@@ -265,7 +297,7 @@ paths:
   /v2/instances/status/history:
     get:
       tags:
-      - instances
+      - Instances
       summary: Get Instance Status History
       description: 'Get the history of a specific instance by its ID,
 
@@ -358,7 +390,7 @@ paths:
   /v2/instances/pricing/history:
     get:
       tags:
-      - instances
+      - Instances
       summary: Get Instance Pricing History
       description: 'Get the pricing history of a specific instance by its ID,
 
@@ -450,55 +482,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    PatchInstanceStatusRequest:
-      properties:
-        instances:
-          items:
-            type: string
-            examples:
-            - inst_abc123456
-          type: array
-          uniqueItems: true
-          title: Instances
-        status:
-          type: string
-          enum:
-          - STATUS_RUNNING
-          - STATUS_PAUSED
-          title: Status
-      type: object
-      required:
-      - instances
-      - status
-      title: PatchInstanceStatusRequest
-    InstancePricingHistory:
-      properties:
-        instance_fid:
-          type: string
-          title: Instance Fid
-          examples:
-          - inst_abc123456
-        events:
-          items:
-            $ref: '#/components/schemas/InstancePricingEvent'
-          type: array
-          title: Events
-        bid_fid:
-          type: string
-          examples:
-          - bid_abc123456
-          nullable: true
-        reservation_fid:
-          type: string
-          examples:
-          - res_abc123456
-          nullable: true
-      type: object
-      required:
-      - instance_fid
-      - events
-      title: InstancePricingHistory
-      description: The history of an instance's pricing.
     InstanceStatusResponse:
       properties:
         fid:
@@ -565,60 +548,6 @@ components:
       - status
       title: InstanceStatusResponse
       description: Response model for instance status endpoint.
-    ValidationError:
-      properties:
-        loc:
-          items:
-            oneOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    SortDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-    InstanceStatusHistory:
-      properties:
-        instance_fid:
-          type: string
-          title: Instance Fid
-          examples:
-          - inst_abc123456
-        events:
-          items:
-            $ref: '#/components/schemas/InstanceStatusEvent'
-          type: array
-          title: Events
-        bid_fid:
-          type: string
-          examples:
-          - bid_abc123456
-          nullable: true
-        reservation_fid:
-          type: string
-          examples:
-          - res_abc123456
-          nullable: true
-      type: object
-      required:
-      - instance_fid
-      - events
-      title: InstanceStatusHistory
-      description: The history of an instance's status.
     InstanceModel:
       properties:
         fid:
@@ -714,11 +643,60 @@ components:
       - instance_type
       - status
       title: InstanceModel
-    InstanceStatusHistoryResponse:
+    PatchInstanceStatusResponse:
+      properties:
+        instances:
+          additionalProperties:
+            type: string
+            enum:
+            - STATUS_NEW
+            - STATUS_CONFIRMED
+            - STATUS_INITIALIZING
+            - STATUS_STARTING
+            - STATUS_RUNNING
+            - STATUS_STOPPING
+            - STATUS_TERMINATED
+            - STATUS_RELOCATING
+            - STATUS_PREEMPTING
+            - STATUS_PREEMPTED
+            - STATUS_REPLACED
+            - STATUS_PAUSED
+            - STATUS_ERROR
+          propertyNames:
+            examples:
+            - inst_abc123456
+          type: object
+          title: Instances
+      type: object
+      required:
+      - instances
+      title: PatchInstanceStatusResponse
+    ValidationError:
+      properties:
+        loc:
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    InstancePricingHistoryResponse:
       properties:
         instances:
           items:
-            $ref: '#/components/schemas/InstanceStatusHistory'
+            $ref: '#/components/schemas/InstancePricingHistory'
           type: array
           title: Instances
         next_cursor:
@@ -727,8 +705,61 @@ components:
       type: object
       required:
       - instances
-      title: InstanceStatusHistoryResponse
-      description: Response model for instance status history endpoint.
+      title: InstancePricingHistoryResponse
+      description: Response model for instance pricing history endpoint.
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    PatchInstanceStatusRequest:
+      properties:
+        instances:
+          items:
+            type: string
+            examples:
+            - inst_abc123456
+          type: array
+          uniqueItems: true
+          title: Instances
+        status:
+          type: string
+          enum:
+          - STATUS_RUNNING
+          - STATUS_PAUSED
+          title: Status
+      type: object
+      required:
+      - instances
+      - status
+      title: PatchInstanceStatusRequest
+    RefreshBootDiskResponse:
+      properties:
+        fid:
+          type: string
+          title: Fid
+          examples:
+          - inst_abc123456
+        image_version:
+          type: string
+          examples:
+          - imgver_abc123456
+          nullable: true
+        status:
+          type: string
+          const: REFRESHED
+          title: Status
+      type: object
+      required:
+      - fid
+      - image_version
+      - status
+      title: RefreshBootDiskResponse
+      description: Response model for the refresh-boot-disk endpoint.
     InstanceStatusEvent:
       properties:
         timestamp:
@@ -762,6 +793,49 @@ components:
       - status
       title: InstanceStatusEvent
       description: An event in the history of an instance's status.
+    InstanceStatusHistoryResponse:
+      properties:
+        instances:
+          items:
+            $ref: '#/components/schemas/InstanceStatusHistory'
+          type: array
+          title: Instances
+        next_cursor:
+          type: string
+          nullable: true
+      type: object
+      required:
+      - instances
+      title: InstanceStatusHistoryResponse
+      description: Response model for instance status history endpoint.
+    InstancePricingHistory:
+      properties:
+        instance_fid:
+          type: string
+          title: Instance Fid
+          examples:
+          - inst_abc123456
+        events:
+          items:
+            $ref: '#/components/schemas/InstancePricingEvent'
+          type: array
+          title: Events
+        bid_fid:
+          type: string
+          examples:
+          - bid_abc123456
+          nullable: true
+        reservation_fid:
+          type: string
+          examples:
+          - res_abc123456
+          nullable: true
+      type: object
+      required:
+      - instance_fid
+      - events
+      title: InstancePricingHistory
+      description: The history of an instance's pricing.
     RefreshBootDiskRequest:
       properties:
         image_version:
@@ -777,43 +851,6 @@ components:
         The body is optional; when ``image_version`` is omitted the instance''s
 
         current boot image is reused.'
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    PatchInstanceStatusResponse:
-      properties:
-        instances:
-          additionalProperties:
-            type: string
-            enum:
-            - STATUS_NEW
-            - STATUS_CONFIRMED
-            - STATUS_INITIALIZING
-            - STATUS_STARTING
-            - STATUS_RUNNING
-            - STATUS_STOPPING
-            - STATUS_TERMINATED
-            - STATUS_RELOCATING
-            - STATUS_PREEMPTING
-            - STATUS_PREEMPTED
-            - STATUS_REPLACED
-            - STATUS_PAUSED
-            - STATUS_ERROR
-          propertyNames:
-            examples:
-            - inst_abc123456
-          type: object
-          title: Instances
-      type: object
-      required:
-      - instances
-      title: PatchInstanceStatusResponse
     GetInstancesResponse:
       properties:
         data:
@@ -828,6 +865,11 @@ components:
       required:
       - data
       title: GetInstancesResponse
+    SortDirection:
+      type: string
+      enum:
+      - asc
+      - desc
     InstancePricingEvent:
       properties:
         price_cents:
@@ -856,44 +898,34 @@ components:
       - end_time
       title: InstancePricingEvent
       description: A price period in the history of an instance.
-    InstancePricingHistoryResponse:
+    InstanceStatusHistory:
       properties:
-        instances:
-          items:
-            $ref: '#/components/schemas/InstancePricingHistory'
-          type: array
-          title: Instances
-        next_cursor:
+        instance_fid:
           type: string
-          nullable: true
-      type: object
-      required:
-      - instances
-      title: InstancePricingHistoryResponse
-      description: Response model for instance pricing history endpoint.
-    RefreshBootDiskResponse:
-      properties:
-        fid:
-          type: string
-          title: Fid
+          title: Instance Fid
           examples:
           - inst_abc123456
-        image_version:
+        events:
+          items:
+            $ref: '#/components/schemas/InstanceStatusEvent'
+          type: array
+          title: Events
+        bid_fid:
           type: string
           examples:
-          - imgver_abc123456
+          - bid_abc123456
           nullable: true
-        status:
+        reservation_fid:
           type: string
-          const: REFRESHED
-          title: Status
+          examples:
+          - res_abc123456
+          nullable: true
       type: object
       required:
-      - fid
-      - image_version
-      - status
-      title: RefreshBootDiskResponse
-      description: Response model for the refresh-boot-disk endpoint.
+      - instance_fid
+      - events
+      title: InstanceStatusHistory
+      description: The history of an instance's status.
   securitySchemes:
     MithrilAPIKey:
       type: http

@@ -1,17 +1,17 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Mithril API Keys reservations API
+  title: Mithril Reservations API
   description: Mithril Compute API
   version: 1.0.0
 servers:
 - url: https://api.mithril.ai
 tags:
-- name: reservations
+- name: Reservations
 paths:
   /v2/reservation/instance-types:
     get:
       tags:
-      - reservations
+      - Reservations
       summary: Get Reservation Instance Types
       description: 'Get instance types available for reservation.
 
@@ -39,7 +39,7 @@ paths:
   /v2/reservation/quote:
     get:
       tags:
-      - reservations
+      - Reservations
       summary: Get Reservation Quote
       description: 'Get pricing offers for a reservation.
 
@@ -124,9 +124,158 @@ paths:
   /v2/reservation/availability:
     get:
       tags:
-      - reservations
+      - Reservations
       summary: Get Availability
-      description: "Get availability information for reservations.\n\nThis endpoint supports three different modes for querying availability:\n\n## Mode: latest_end_time (default)\nGet the latest possible end time for a reservation given a start time and\nquantity.\n\n**Required parameters:**\n- `start_time`: Desired start time for the reservation\n- `quantity`: Number of instances needed\n- `project`: Project FID\n- `instance_type`: Instance type FID\n- `region`: Region name\n\n**Returns:** Latest possible end time and availability status\n\n**Example:**\n```\nGET /reservation/availability?\n    start_time=2024-01-01T00:00:00Z&\n    quantity=4&\n    project=proj_01h8x2k9m3n4p5q6r7s8t9u0v&\n    instance_type=it_01h8x2k9m3n4p5q6r7s8t9u0v&\n    region=us-central1-a\n```\n\n## Mode: slots\nGet all available slots in a time range.\n\n**Required parameters:**\n- `earliest_start_time`: Start of the time range to search\n- `latest_end_time`: End of the time range to search\n- `project`: Project FID\n- `instance_type`: Instance type FID\n- `region`: Region name\n\n**Returns:** List of available time slots with quantities\n\n**Example:**\n```\nGET /reservation/availability?\n    mode=slots&\n    earliest_start_time=2024-01-01T00:00:00Z&\n    latest_end_time=2024-01-02T00:00:00Z&\n    project=proj_01h8x2k9m3n4p5q6r7s8t9u0v&\n    instance_type=it_01h8x2k9m3n4p5q6r7s8t9u0v&\n    region=us-central1-a\n```\n\n## Mode: check\nCheck if a specific time slot is available for reservation.\n\n**Required parameters:**\n- `start_time`: Start of the desired time slot\n- `end_time`: End of the desired time slot\n- `quantity`: Number of instances needed\n- `project`: Project FID\n- `instance_type`: Instance type FID\n- `region`: Region name\n\n**Returns:** Boolean indicating if the slot is available\n\n**Example:**\n```\nGET /reservation/availability?\n    mode=check&\n    start_time=2024-01-01T00:00:00Z&\n    end_time=2024-01-01T12:00:00Z&\n    quantity=4&\n    project=proj_01h8x2k9m3n4p5q6r7s8t9u0v&\n    instance_type=it_01h8x2k9m3n4p5q6r7s8t9u0v&\n    region=us-central1-a\n```\n\n## Common Parameters\nAll modes require these parameters:\n- `project`: Project FID\n- `instance_type`: Instance type FID\n- `region`: Region name\n\n## Authentication\nRequires authentication and user must be a member of the specified project."
+      description: 'Get availability information for reservations.
+
+
+        This endpoint supports three different modes for querying availability:
+
+
+        ## Mode: latest_end_time (default)
+
+        Get the latest possible end time for a reservation given a start time and
+
+        quantity.
+
+
+        **Required parameters:**
+
+        - `start_time`: Desired start time for the reservation
+
+        - `quantity`: Number of instances needed
+
+        - `project`: Project FID
+
+        - `instance_type`: Instance type FID
+
+        - `region`: Region name
+
+
+        **Returns:** Latest possible end time and availability status
+
+
+        **Example:**
+
+        ```
+
+        GET /reservation/availability?
+
+        start_time=2024-01-01T00:00:00Z&
+
+        quantity=4&
+
+        project=proj_01h8x2k9m3n4p5q6r7s8t9u0v&
+
+        instance_type=it_01h8x2k9m3n4p5q6r7s8t9u0v&
+
+        region=us-central1-a
+
+        ```
+
+
+        ## Mode: slots
+
+        Get all available slots in a time range.
+
+
+        **Required parameters:**
+
+        - `earliest_start_time`: Start of the time range to search
+
+        - `latest_end_time`: End of the time range to search
+
+        - `project`: Project FID
+
+        - `instance_type`: Instance type FID
+
+        - `region`: Region name
+
+
+        **Returns:** List of available time slots with quantities
+
+
+        **Example:**
+
+        ```
+
+        GET /reservation/availability?
+
+        mode=slots&
+
+        earliest_start_time=2024-01-01T00:00:00Z&
+
+        latest_end_time=2024-01-02T00:00:00Z&
+
+        project=proj_01h8x2k9m3n4p5q6r7s8t9u0v&
+
+        instance_type=it_01h8x2k9m3n4p5q6r7s8t9u0v&
+
+        region=us-central1-a
+
+        ```
+
+
+        ## Mode: check
+
+        Check if a specific time slot is available for reservation.
+
+
+        **Required parameters:**
+
+        - `start_time`: Start of the desired time slot
+
+        - `end_time`: End of the desired time slot
+
+        - `quantity`: Number of instances needed
+
+        - `project`: Project FID
+
+        - `instance_type`: Instance type FID
+
+        - `region`: Region name
+
+
+        **Returns:** Boolean indicating if the slot is available
+
+
+        **Example:**
+
+        ```
+
+        GET /reservation/availability?
+
+        mode=check&
+
+        start_time=2024-01-01T00:00:00Z&
+
+        end_time=2024-01-01T12:00:00Z&
+
+        quantity=4&
+
+        project=proj_01h8x2k9m3n4p5q6r7s8t9u0v&
+
+        instance_type=it_01h8x2k9m3n4p5q6r7s8t9u0v&
+
+        region=us-central1-a
+
+        ```
+
+
+        ## Common Parameters
+
+        All modes require these parameters:
+
+        - `project`: Project FID
+
+        - `instance_type`: Instance type FID
+
+        - `region`: Region name
+
+
+        ## Authentication
+
+        Requires authentication and user must be a member of the specified project.'
       operationId: get_availability_v2_reservation_availability_get
       security:
       - MithrilAPIKey: []
@@ -229,7 +378,7 @@ paths:
   /v2/reservation:
     post:
       tags:
-      - reservations
+      - Reservations
       summary: Create Reservation
       description: Create a new reservation.
       operationId: create_reservation_v2_reservation_post
@@ -256,7 +405,7 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     get:
       tags:
-      - reservations
+      - Reservations
       summary: Get Reservations
       description: Get all reservations for a project
       operationId: get_reservations_v2_reservation_get
@@ -341,7 +490,7 @@ paths:
   /v2/reservation/{reservation_fid}/extension-availability:
     get:
       tags:
-      - reservations
+      - Reservations
       summary: Get Extension Availability
       description: Get extension availability for a reservation
       operationId: get_extension_availability_v2_reservation__reservation_fid__extension_availability_get
@@ -372,7 +521,7 @@ paths:
   /v2/reservation/{reservation_fid}/extend:
     post:
       tags:
-      - reservations
+      - Reservations
       summary: Extend Reservation
       description: Extend a reservation to the requested time.
       operationId: extend_reservation_v2_reservation__reservation_fid__extend_post
@@ -409,7 +558,7 @@ paths:
   /v2/reservation/{reservation_fid}:
     patch:
       tags:
-      - reservations
+      - Reservations
       summary: Update Reservation
       description: Update a reservation's pause/resume status and/or volumes
       operationId: update_reservation_v2_reservation__reservation_fid__patch
@@ -446,7 +595,7 @@ paths:
   /v2/reservation/{reservation_fid}/terminate-instances:
     post:
       tags:
-      - reservations
+      - Reservations
       summary: Terminate Instance
       description: 'Remove and permanently delete instances from this reservation.
 
@@ -508,7 +657,7 @@ paths:
   /v2/reservation/{reservation_fid}/history:
     get:
       tags:
-      - reservations
+      - Reservations
       summary: Get Reservation History
       description: 'Get the activity history for a reservation.
 
@@ -548,7 +697,7 @@ paths:
   /v2/reservation/{reservation_fid}/usage:
     get:
       tags:
-      - reservations
+      - Reservations
       summary: Get Reservation Usage
       description: Get usage breakdown for a flex reservation.
       operationId: get_reservation_usage_v2_reservation__reservation_fid__usage_get
@@ -578,25 +727,61 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    SortDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-    TerminateInstanceResponsePartialSuccess:
+    ReservationLevelEventModel:
       properties:
-        terminated_instances:
-          items:
-            type: string
-            examples:
-            - inst_abc123456
-          type: array
-          uniqueItems: true
-          title: Terminated Instances
+        occurred_at:
+          type: string
+          format: datetime
+          title: Occurred At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        event_type:
+          type: string
+          enum:
+          - Started
+          - Paused
+          - Extended
+          title: Event Type
+        reservation_name:
+          type: string
+          title: Reservation Name
       type: object
       required:
-      - terminated_instances
-      title: TerminateInstanceResponsePartialSuccess
+      - occurred_at
+      - event_type
+      - reservation_name
+      title: ReservationLevelEventModel
+    ExtendReservationRequest:
+      properties:
+        end_time:
+          type: string
+          format: datetime
+          title: End Time
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        price_specification:
+          $ref: '#/components/schemas/PriceSpecification'
+          nullable: true
+      type: object
+      required:
+      - end_time
+      title: ExtendReservationRequest
+    ReservationQuoteResponse:
+      properties:
+        offers:
+          items:
+            $ref: '#/components/schemas/ReservationOffer'
+          type: array
+          title: Offers
+      type: object
+      required:
+      - offers
+      title: ReservationQuoteResponse
+      description: Response with all pricing offers available when creating a new reservation.
     GrantUsageModel:
       properties:
         fid:
@@ -640,385 +825,6 @@ components:
       - price_credit
       - return_credit
       title: GrantUsageModel
-    UpdateReservationRequest:
-      properties:
-        paused:
-          type: boolean
-          nullable: true
-        volumes:
-          items:
-            type: string
-            examples:
-            - vol_abc123456
-          type: array
-          nullable: true
-      type: object
-      title: UpdateReservationRequest
-    ReservationOffer:
-      properties:
-        key:
-          type: string
-          title: Key
-        display_name:
-          type: string
-          title: Display Name
-        unit_price:
-          type: string
-          title: Unit Price
-        return_buyback_price:
-          type: string
-          title: Return Buyback Price
-        pause_buyback_price:
-          type: string
-          title: Pause Buyback Price
-        total_price:
-          type: string
-          title: Total Price
-        total_etbp_value:
-          type: string
-          title: Total Etbp Value
-        total_fubp_value:
-          type: string
-          title: Total Fubp Value
-        option_premium:
-          type: string
-          title: Option Premium
-      type: object
-      required:
-      - key
-      - display_name
-      - unit_price
-      - return_buyback_price
-      - pause_buyback_price
-      - total_price
-      - total_etbp_value
-      - total_fubp_value
-      - option_premium
-      title: ReservationOffer
-      description: A single pricing offer within a quote response.
-    GetReservationsResponse:
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ReservationModel'
-          type: array
-          title: Data
-        next_cursor:
-          type: string
-          nullable: true
-      type: object
-      required:
-      - data
-      title: GetReservationsResponse
-    TerminateInstanceRequest:
-      properties:
-        instances:
-          items:
-            type: string
-            examples:
-            - inst_abc123456
-          type: array
-          minItems: 1
-          uniqueItems: true
-          title: Instances
-        reduce_capacity:
-          type: boolean
-          const: true
-          title: Reduce Capacity
-      type: object
-      required:
-      - instances
-      - reduce_capacity
-      title: TerminateInstanceRequest
-    ReservationQuoteResponse:
-      properties:
-        offers:
-          items:
-            $ref: '#/components/schemas/ReservationOffer'
-          type: array
-          title: Offers
-      type: object
-      required:
-      - offers
-      title: ReservationQuoteResponse
-      description: Response with all pricing offers available when creating a new reservation.
-    UsageSummaryModel:
-      properties:
-        committed_cost_cents:
-          type: integer
-          title: Committed Cost Cents
-        flex_use_credits_cents:
-          type: integer
-          title: Flex Use Credits Cents
-        early_termination_credits_cents:
-          type: integer
-          title: Early Termination Credits Cents
-        net_cost_cents:
-          type: integer
-          title: Net Cost Cents
-        reserved_instance_hours:
-          type: string
-          format: duration
-          title: Reserved Instance Hours
-        active_instance_hours:
-          type: string
-          format: duration
-          title: Active Instance Hours
-        idle_instance_hours:
-          type: string
-          format: duration
-          title: Idle Instance Hours
-        as_of:
-          type: string
-          format: datetime
-          title: As Of
-          examples:
-          - '2024-01-01T00:00:00Z'
-          - '2024-01-01T00:00:00+00:00'
-          - '2024-01-01T00:00:00-00:00'
-      type: object
-      required:
-      - committed_cost_cents
-      - flex_use_credits_cents
-      - early_termination_credits_cents
-      - net_cost_cents
-      - reserved_instance_hours
-      - active_instance_hours
-      - idle_instance_hours
-      - as_of
-      title: UsageSummaryModel
-    ExtendReservationRequest:
-      properties:
-        end_time:
-          type: string
-          format: datetime
-          title: End Time
-          examples:
-          - '2024-01-01T00:00:00Z'
-          - '2024-01-01T00:00:00+00:00'
-          - '2024-01-01T00:00:00-00:00'
-        price_specification:
-          $ref: '#/components/schemas/PriceSpecification'
-          nullable: true
-      type: object
-      required:
-      - end_time
-      title: ExtendReservationRequest
-    ReservationLevelEventModel:
-      properties:
-        occurred_at:
-          type: string
-          format: datetime
-          title: Occurred At
-          examples:
-          - '2024-01-01T00:00:00Z'
-          - '2024-01-01T00:00:00+00:00'
-          - '2024-01-01T00:00:00-00:00'
-        event_type:
-          type: string
-          enum:
-          - Started
-          - Paused
-          - Extended
-          title: Event Type
-        reservation_name:
-          type: string
-          title: Reservation Name
-      type: object
-      required:
-      - occurred_at
-      - event_type
-      - reservation_name
-      title: ReservationLevelEventModel
-    ReservationHistoryEventModel:
-      properties:
-        timestamp:
-          type: string
-          format: datetime
-          title: Timestamp
-          description: When the event occurred
-          examples:
-          - '2024-01-01T00:00:00Z'
-          - '2024-01-01T00:00:00+00:00'
-          - '2024-01-01T00:00:00-00:00'
-        event_type:
-          type: string
-          enum:
-          - Placed
-          - Active
-          - Paused
-          - Resumed
-          - Canceled
-          - Ended
-          - Terms Set
-          - Terms Changed
-          title: Event Type
-          examples:
-          - Placed
-          - Active
-          - Paused
-          - Resumed
-          - Canceled
-          - Ended
-          - Terms Set
-          - Terms Changed
-        user_id:
-          type: string
-          nullable: true
-        unit_price_cents:
-          type: integer
-          nullable: true
-        pause_credit_cents:
-          type: integer
-          nullable: true
-        return_credit_cents:
-          type: integer
-          nullable: true
-      type: object
-      required:
-      - timestamp
-      - event_type
-      title: ReservationHistoryEventModel
-      description: A single event in the history of a reservation.
-    PricingEventModel:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        occurred_at:
-          type: string
-          format: datetime
-          title: Occurred At
-          examples:
-          - '2024-01-01T00:00:00Z'
-          - '2024-01-01T00:00:00+00:00'
-          - '2024-01-01T00:00:00-00:00'
-        instance_fid:
-          type: string
-          title: Instance Fid
-          examples:
-          - inst_abc123456
-        instance_name:
-          type: string
-          title: Instance Name
-        instance_status:
-          type: string
-          enum:
-          - STATUS_NEW
-          - STATUS_CONFIRMED
-          - STATUS_INITIALIZING
-          - STATUS_STARTING
-          - STATUS_RUNNING
-          - STATUS_STOPPING
-          - STATUS_TERMINATED
-          - STATUS_RELOCATING
-          - STATUS_PREEMPTING
-          - STATUS_PREEMPTED
-          - STATUS_REPLACED
-          - STATUS_PAUSED
-          - STATUS_ERROR
-          title: Instance Status
-      type: object
-      required:
-      - id
-      - occurred_at
-      - instance_fid
-      - instance_name
-      - instance_status
-      title: PricingEventModel
-    AvailabilitySlotModel:
-      properties:
-        start_time:
-          type: string
-          format: datetime
-          title: Start Time
-          examples:
-          - '2024-01-01T00:00:00Z'
-          - '2024-01-01T00:00:00+00:00'
-          - '2024-01-01T00:00:00-00:00'
-        end_time:
-          type: string
-          format: datetime
-          title: End Time
-          examples:
-          - '2024-01-01T00:00:00Z'
-          - '2024-01-01T00:00:00+00:00'
-          - '2024-01-01T00:00:00-00:00'
-        quantity:
-          type: integer
-          title: Quantity
-      type: object
-      required:
-      - start_time
-      - end_time
-      - quantity
-      title: AvailabilitySlotModel
-    ReservationHistoryResponse:
-      properties:
-        reservation_fid:
-          type: string
-          title: Reservation Fid
-          examples:
-          - res_abc123456
-        events:
-          items:
-            $ref: '#/components/schemas/ReservationHistoryEventModel'
-          type: array
-          title: Events
-          description: List of historical events for this reservation, ordered by time
-      type: object
-      required:
-      - reservation_fid
-      - events
-      title: ReservationHistoryResponse
-      description: Response model for reservation history.
-    ReservationInfoModel:
-      properties:
-        fid:
-          type: string
-          title: Fid
-          examples:
-          - res_abc123456
-        order_name:
-          type: string
-          title: Order Name
-        start_date:
-          type: string
-          format: datetime
-          title: Start Date
-          examples:
-          - '2024-01-01T00:00:00Z'
-          - '2024-01-01T00:00:00+00:00'
-          - '2024-01-01T00:00:00-00:00'
-        end_date:
-          type: string
-          format: datetime
-          title: End Date
-          examples:
-          - '2024-01-01T00:00:00Z'
-          - '2024-01-01T00:00:00+00:00'
-          - '2024-01-01T00:00:00-00:00'
-        status:
-          type: string
-          enum:
-          - Open
-          - Allocated
-          - Preempting
-          - Terminated
-          - Paused
-        committed_cost_cents:
-          type: integer
-          title: Committed Cost Cents
-      type: object
-      required:
-      - fid
-      - order_name
-      - start_date
-      - end_date
-      - status
-      - committed_cost_cents
-      title: ReservationInfoModel
     CreateReservationRequest:
       properties:
         project:
@@ -1079,119 +885,88 @@ components:
       - name
       - launch_specification
       title: CreateReservationRequest
-    ExtensionAvailabilityResponse:
+    InstanceTypeModel:
       properties:
-        latest_extension_time:
+        fid:
           type: string
-          format: datetime
-          title: Latest Extension Time
+          title: Fid
           examples:
-          - '2024-01-01T00:00:00Z'
-          - '2024-01-01T00:00:00+00:00'
-          - '2024-01-01T00:00:00-00:00'
-        available:
-          type: boolean
-          title: Available
-      type: object
-      required:
-      - latest_extension_time
-      - available
-      title: ExtensionAvailabilityResponse
-    PriceSpecification:
-      properties:
-        offer_key:
+          - it_abc123456
+        name:
           type: string
-          title: Offer Key
-          default: standard
-        max_unit_price:
+          title: Name
+          examples:
+          - h100.80gb.sxm
+        num_cpus:
           type: integer
-          minimum: 0.0
+          title: Num Cpus
           examples:
-          - 500
-          nullable: true
-      type: object
-      title: PriceSpecification
-      description: 'Optional pricing specification for flexible reservations.
-
-
-        If omitted, the reservation defaults to the ''standard'' offer.
-
-        If provided, the system applies the specified offer''s pricing.'
-    LaunchSpecificationModel:
-      properties:
-        volumes:
-          items:
-            type: string
-            examples:
-            - vol_abc123456
-          type: array
-          title: Volumes
-          description: List of volume FIDs
-          examples:
-          - - vol_1234567890
-            - vol_1234567891
-        ssh_keys:
-          items:
-            type: string
-            examples:
-            - sshkey_abc123456
-          type: array
-          title: Ssh Keys
-          description: List of SSH key FIDs
-          examples:
-          - - sshkey_1234567890
-            - sshkey_1234567891
-        startup_script:
+          - 192
+        cpu_type:
           type: string
-          nullable: true
-        kubernetes_cluster:
-          type: string
+          title: Cpu Type
           examples:
-          - clust_abc123456
-          nullable: true
-        image_version:
-          type: string
-          examples:
-          - imgver_abc123456
-          nullable: true
-        memory_gb:
+          - Intel
+        ram_gb:
           type: integer
+          title: Ram Gb
+          examples:
+          - 1800
+        num_gpus:
+          type: integer
+          title: Num Gpus
+          examples:
+          - 8
+        gpu_type:
+          type: string
+          title: Gpu Type
+          examples:
+          - H100
+        gpu_memory_gb:
+          type: integer
+          title: Gpu Memory Gb
+          examples:
+          - 80
+        gpu_socket:
+          type: string
+          title: Gpu Socket
+          examples:
+          - SXM5
+        local_storage_gb:
+          type: integer
+          title: Local Storage Gb
+          examples:
+          - 7800
+        network_type:
+          type: string
+          examples:
+          - InfiniBand
           nullable: true
+        ib_count:
+          type: integer
+          title: Ib Count
+          examples:
+          - 8
+        bridge_count:
+          type: integer
+          title: Bridge Count
+          examples:
+          - 4
       type: object
       required:
-      - volumes
-      - ssh_keys
-      title: LaunchSpecificationModel
-    ValidationError:
-      properties:
-        loc:
-          items:
-            oneOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
+      - fid
+      - name
+      - num_cpus
+      - cpu_type
+      - ram_gb
+      - num_gpus
+      - gpu_type
+      - gpu_memory_gb
+      - gpu_socket
+      - local_storage_gb
+      - ib_count
+      - bridge_count
+      title: InstanceTypeModel
     ReservationModel:
       properties:
         fid:
@@ -1310,88 +1085,462 @@ components:
       - total_price
       - unit_price
       title: ReservationModel
-    InstanceTypeModel:
+    ReservationHistoryResponse:
+      properties:
+        reservation_fid:
+          type: string
+          title: Reservation Fid
+          examples:
+          - res_abc123456
+        events:
+          items:
+            $ref: '#/components/schemas/ReservationHistoryEventModel'
+          type: array
+          title: Events
+          description: List of historical events for this reservation, ordered by time
+      type: object
+      required:
+      - reservation_fid
+      - events
+      title: ReservationHistoryResponse
+      description: Response model for reservation history.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    ReservationHistoryEventModel:
+      properties:
+        timestamp:
+          type: string
+          format: datetime
+          title: Timestamp
+          description: When the event occurred
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        event_type:
+          type: string
+          enum:
+          - Placed
+          - Active
+          - Paused
+          - Resumed
+          - Canceled
+          - Ended
+          - Terms Set
+          - Terms Changed
+          title: Event Type
+          examples:
+          - Placed
+          - Active
+          - Paused
+          - Resumed
+          - Canceled
+          - Ended
+          - Terms Set
+          - Terms Changed
+        user_id:
+          type: string
+          nullable: true
+        unit_price_cents:
+          type: integer
+          nullable: true
+        pause_credit_cents:
+          type: integer
+          nullable: true
+        return_credit_cents:
+          type: integer
+          nullable: true
+      type: object
+      required:
+      - timestamp
+      - event_type
+      title: ReservationHistoryEventModel
+      description: A single event in the history of a reservation.
+    ExtensionAvailabilityResponse:
+      properties:
+        latest_extension_time:
+          type: string
+          format: datetime
+          title: Latest Extension Time
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        available:
+          type: boolean
+          title: Available
+      type: object
+      required:
+      - latest_extension_time
+      - available
+      title: ExtensionAvailabilityResponse
+    SortDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+    AvailabilitySlotModel:
+      properties:
+        start_time:
+          type: string
+          format: datetime
+          title: Start Time
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        end_time:
+          type: string
+          format: datetime
+          title: End Time
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        quantity:
+          type: integer
+          title: Quantity
+      type: object
+      required:
+      - start_time
+      - end_time
+      - quantity
+      title: AvailabilitySlotModel
+    TerminateInstanceRequest:
+      properties:
+        instances:
+          items:
+            type: string
+            examples:
+            - inst_abc123456
+          type: array
+          minItems: 1
+          uniqueItems: true
+          title: Instances
+        reduce_capacity:
+          type: boolean
+          const: true
+          title: Reduce Capacity
+      type: object
+      required:
+      - instances
+      - reduce_capacity
+      title: TerminateInstanceRequest
+    PriceSpecification:
+      properties:
+        offer_key:
+          type: string
+          title: Offer Key
+          default: standard
+        max_unit_price:
+          type: integer
+          minimum: 0.0
+          examples:
+          - 500
+          nullable: true
+      type: object
+      title: PriceSpecification
+      description: 'Optional pricing specification for flexible reservations.
+
+
+        If omitted, the reservation defaults to the ''standard'' offer.
+
+        If provided, the system applies the specified offer''s pricing.'
+    ReservationOffer:
+      properties:
+        key:
+          type: string
+          title: Key
+        display_name:
+          type: string
+          title: Display Name
+        unit_price:
+          type: string
+          title: Unit Price
+        return_buyback_price:
+          type: string
+          title: Return Buyback Price
+        pause_buyback_price:
+          type: string
+          title: Pause Buyback Price
+        total_price:
+          type: string
+          title: Total Price
+        total_etbp_value:
+          type: string
+          title: Total Etbp Value
+        total_fubp_value:
+          type: string
+          title: Total Fubp Value
+        option_premium:
+          type: string
+          title: Option Premium
+      type: object
+      required:
+      - key
+      - display_name
+      - unit_price
+      - return_buyback_price
+      - pause_buyback_price
+      - total_price
+      - total_etbp_value
+      - total_fubp_value
+      - option_premium
+      title: ReservationOffer
+      description: A single pricing offer within a quote response.
+    LaunchSpecificationModel:
+      properties:
+        volumes:
+          items:
+            type: string
+            examples:
+            - vol_abc123456
+          type: array
+          title: Volumes
+          description: List of volume FIDs
+          examples:
+          - - vol_1234567890
+            - vol_1234567891
+        ssh_keys:
+          items:
+            type: string
+            examples:
+            - sshkey_abc123456
+          type: array
+          title: Ssh Keys
+          description: List of SSH key FIDs
+          examples:
+          - - sshkey_1234567890
+            - sshkey_1234567891
+        startup_script:
+          type: string
+          nullable: true
+        kubernetes_cluster:
+          type: string
+          examples:
+          - clust_abc123456
+          nullable: true
+        image_version:
+          type: string
+          examples:
+          - imgver_abc123456
+          nullable: true
+        memory_gb:
+          type: integer
+          nullable: true
+      type: object
+      required:
+      - volumes
+      - ssh_keys
+      title: LaunchSpecificationModel
+    UpdateReservationRequest:
+      properties:
+        paused:
+          type: boolean
+          nullable: true
+        volumes:
+          items:
+            type: string
+            examples:
+            - vol_abc123456
+          type: array
+          nullable: true
+      type: object
+      title: UpdateReservationRequest
+    GetReservationsResponse:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ReservationModel'
+          type: array
+          title: Data
+        next_cursor:
+          type: string
+          nullable: true
+      type: object
+      required:
+      - data
+      title: GetReservationsResponse
+    PricingEventModel:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        occurred_at:
+          type: string
+          format: datetime
+          title: Occurred At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        instance_fid:
+          type: string
+          title: Instance Fid
+          examples:
+          - inst_abc123456
+        instance_name:
+          type: string
+          title: Instance Name
+        instance_status:
+          type: string
+          enum:
+          - STATUS_NEW
+          - STATUS_CONFIRMED
+          - STATUS_INITIALIZING
+          - STATUS_STARTING
+          - STATUS_RUNNING
+          - STATUS_STOPPING
+          - STATUS_TERMINATED
+          - STATUS_RELOCATING
+          - STATUS_PREEMPTING
+          - STATUS_PREEMPTED
+          - STATUS_REPLACED
+          - STATUS_PAUSED
+          - STATUS_ERROR
+          title: Instance Status
+      type: object
+      required:
+      - id
+      - occurred_at
+      - instance_fid
+      - instance_name
+      - instance_status
+      title: PricingEventModel
+    ReservationInfoModel:
       properties:
         fid:
           type: string
           title: Fid
           examples:
-          - it_abc123456
-        name:
+          - res_abc123456
+        order_name:
           type: string
-          title: Name
-          examples:
-          - h100.80gb.sxm
-        num_cpus:
-          type: integer
-          title: Num Cpus
-          examples:
-          - 192
-        cpu_type:
+          title: Order Name
+        start_date:
           type: string
-          title: Cpu Type
+          format: datetime
+          title: Start Date
           examples:
-          - Intel
-        ram_gb:
-          type: integer
-          title: Ram Gb
-          examples:
-          - 1800
-        num_gpus:
-          type: integer
-          title: Num Gpus
-          examples:
-          - 8
-        gpu_type:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        end_date:
           type: string
-          title: Gpu Type
+          format: datetime
+          title: End Date
           examples:
-          - H100
-        gpu_memory_gb:
-          type: integer
-          title: Gpu Memory Gb
-          examples:
-          - 80
-        gpu_socket:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        status:
           type: string
-          title: Gpu Socket
-          examples:
-          - SXM5
-        local_storage_gb:
+          enum:
+          - Open
+          - Allocated
+          - Preempting
+          - Terminated
+          - Paused
+        committed_cost_cents:
           type: integer
-          title: Local Storage Gb
-          examples:
-          - 7800
-        network_type:
-          type: string
-          examples:
-          - InfiniBand
-          nullable: true
-        ib_count:
-          type: integer
-          title: Ib Count
-          examples:
-          - 8
-        bridge_count:
-          type: integer
-          title: Bridge Count
-          examples:
-          - 4
+          title: Committed Cost Cents
       type: object
       required:
       - fid
-      - name
-      - num_cpus
-      - cpu_type
-      - ram_gb
-      - num_gpus
-      - gpu_type
-      - gpu_memory_gb
-      - gpu_socket
-      - local_storage_gb
-      - ib_count
-      - bridge_count
-      title: InstanceTypeModel
+      - order_name
+      - start_date
+      - end_date
+      - status
+      - committed_cost_cents
+      title: ReservationInfoModel
+    TerminateInstanceResponsePartialSuccess:
+      properties:
+        terminated_instances:
+          items:
+            type: string
+            examples:
+            - inst_abc123456
+          type: array
+          uniqueItems: true
+          title: Terminated Instances
+      type: object
+      required:
+      - terminated_instances
+      title: TerminateInstanceResponsePartialSuccess
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    UsageSummaryModel:
+      properties:
+        committed_cost_cents:
+          type: integer
+          title: Committed Cost Cents
+        flex_use_credits_cents:
+          type: integer
+          title: Flex Use Credits Cents
+        early_termination_credits_cents:
+          type: integer
+          title: Early Termination Credits Cents
+        net_cost_cents:
+          type: integer
+          title: Net Cost Cents
+        reserved_instance_hours:
+          type: string
+          format: duration
+          title: Reserved Instance Hours
+        active_instance_hours:
+          type: string
+          format: duration
+          title: Active Instance Hours
+        idle_instance_hours:
+          type: string
+          format: duration
+          title: Idle Instance Hours
+        as_of:
+          type: string
+          format: datetime
+          title: As Of
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+      type: object
+      required:
+      - committed_cost_cents
+      - flex_use_credits_cents
+      - early_termination_credits_cents
+      - net_cost_cents
+      - reserved_instance_hours
+      - active_instance_hours
+      - idle_instance_hours
+      - as_of
+      title: UsageSummaryModel
     ReservationUsageResponse:
       properties:
         reservation:

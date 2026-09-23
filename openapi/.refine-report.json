@@ -1,23 +1,11 @@
 {
   "provider": "mithril",
   "sources": [
-    "mithril-api-keys-api-openapi.yml",
-    "mithril-image-versions-api-openapi.yml",
-    "mithril-instance-types-api-openapi.yml",
-    "mithril-instances-api-openapi.yml",
-    "mithril-kubernetes-clusters-api-openapi.yml",
-    "mithril-lifecycle-scripts-api-openapi.yml",
-    "mithril-pricing-api-openapi.yml",
-    "mithril-profile-api-openapi.yml",
-    "mithril-projects-api-openapi.yml",
-    "mithril-quotas-api-openapi.yml",
-    "mithril-reservations-api-openapi.yml",
-    "mithril-spot-api-openapi.yml",
-    "mithril-ssh-keys-api-openapi.yml",
-    "mithril-volumes-api-openapi.yml"
+    "_original/mithril-compute-openapi-original.json"
   ],
   "outputs": [
     "mithril-api-keys-api-openapi.yml",
+    "mithril-ssh-keys-api-openapi.yml",
     "mithril-image-versions-api-openapi.yml",
     "mithril-instance-types-api-openapi.yml",
     "mithril-instances-api-openapi.yml",
@@ -29,12 +17,44 @@
     "mithril-quotas-api-openapi.yml",
     "mithril-reservations-api-openapi.yml",
     "mithril-spot-api-openapi.yml",
-    "mithril-ssh-keys-api-openapi.yml",
     "mithril-volumes-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "mithril-compute-openapi-original.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "mithril-compute-openapi-original.json: declared missing tag: API Keys",
+    "mithril-compute-openapi-original.json: declared missing tag: SSH Keys",
+    "mithril-compute-openapi-original.json: declared missing tag: image versions",
+    "mithril-compute-openapi-original.json: declared missing tag: instance types",
+    "mithril-compute-openapi-original.json: declared missing tag: instances",
+    "mithril-compute-openapi-original.json: declared missing tag: kubernetes clusters",
+    "mithril-compute-openapi-original.json: declared missing tag: lifecycle scripts",
+    "mithril-compute-openapi-original.json: declared missing tag: pricing",
+    "mithril-compute-openapi-original.json: declared missing tag: profile",
+    "mithril-compute-openapi-original.json: declared missing tag: projects",
+    "mithril-compute-openapi-original.json: declared missing tag: quotas",
+    "mithril-compute-openapi-original.json: declared missing tag: reservations",
+    "mithril-compute-openapi-original.json: declared missing tag: spot",
+    "mithril-compute-openapi-original.json: declared missing tag: volumes",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "mithril-api-keys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mithril-image-versions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mithril-instance-types-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mithril-instances-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mithril-kubernetes-clusters-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mithril-lifecycle-scripts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mithril-pricing-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mithril-profile-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mithril-projects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mithril-quotas-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mithril-reservations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mithril-spot-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mithril-ssh-keys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mithril-volumes-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
