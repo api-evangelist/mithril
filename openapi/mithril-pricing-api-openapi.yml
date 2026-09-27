@@ -159,22 +159,15 @@ components:
           nullable: true
       type: object
       title: CurrentPricesResponse
-    HistoricalPricesResponseModel:
+    HTTPValidationError:
       properties:
-        series:
+        detail:
           items:
-            $ref: '#/components/schemas/HistoricalPriceSeriesModel'
+            $ref: '#/components/schemas/ValidationError'
           type: array
-          title: Series
-        complete:
-          type: boolean
-          title: Complete
-          default: true
+          title: Detail
       type: object
-      required:
-      - series
-      title: HistoricalPricesResponseModel
-      description: Response model for historical pricing data.
+      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -196,15 +189,6 @@ components:
       - msg
       - type
       title: ValidationError
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     HistoricalPriceSeriesModel:
       properties:
         instance_type:
@@ -248,6 +232,22 @@ components:
       - reserved_prices
       title: HistoricalPriceSeriesModel
       description: A single time-series of prices for one instance type in one region.
+    HistoricalPricesResponseModel:
+      properties:
+        series:
+          items:
+            $ref: '#/components/schemas/HistoricalPriceSeriesModel'
+          type: array
+          title: Series
+        complete:
+          type: boolean
+          title: Complete
+          default: true
+      type: object
+      required:
+      - series
+      title: HistoricalPricesResponseModel
+      description: Response model for historical pricing data.
   securitySchemes:
     MithrilAPIKey:
       type: http

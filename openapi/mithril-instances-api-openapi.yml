@@ -482,6 +482,181 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    RefreshBootDiskRequest:
+      properties:
+        image_version:
+          type: string
+          examples:
+          - imgver_abc123456
+          nullable: true
+      type: object
+      title: RefreshBootDiskRequest
+      description: 'Request body for the refresh-boot-disk endpoint.
+
+
+        The body is optional; when ``image_version`` is omitted the instance''s
+
+        current boot image is reused.'
+    PatchInstanceStatusResponse:
+      properties:
+        instances:
+          additionalProperties:
+            type: string
+            enum:
+            - STATUS_NEW
+            - STATUS_CONFIRMED
+            - STATUS_INITIALIZING
+            - STATUS_STARTING
+            - STATUS_RUNNING
+            - STATUS_STOPPING
+            - STATUS_TERMINATED
+            - STATUS_RELOCATING
+            - STATUS_PREEMPTING
+            - STATUS_PREEMPTED
+            - STATUS_REPLACED
+            - STATUS_PAUSED
+            - STATUS_ERROR
+          propertyNames:
+            examples:
+            - inst_abc123456
+          type: object
+          title: Instances
+      type: object
+      required:
+      - instances
+      title: PatchInstanceStatusResponse
+    SortDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+    InstanceStatusEvent:
+      properties:
+        timestamp:
+          type: string
+          format: datetime
+          title: Timestamp
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        status:
+          type: string
+          enum:
+          - STATUS_NEW
+          - STATUS_CONFIRMED
+          - STATUS_INITIALIZING
+          - STATUS_STARTING
+          - STATUS_RUNNING
+          - STATUS_STOPPING
+          - STATUS_TERMINATED
+          - STATUS_RELOCATING
+          - STATUS_PREEMPTING
+          - STATUS_PREEMPTED
+          - STATUS_REPLACED
+          - STATUS_PAUSED
+          - STATUS_ERROR
+          title: Status
+      type: object
+      required:
+      - timestamp
+      - status
+      title: InstanceStatusEvent
+      description: An event in the history of an instance's status.
+    InstanceStatusHistory:
+      properties:
+        instance_fid:
+          type: string
+          title: Instance Fid
+          examples:
+          - inst_abc123456
+        events:
+          items:
+            $ref: '#/components/schemas/InstanceStatusEvent'
+          type: array
+          title: Events
+        bid_fid:
+          type: string
+          examples:
+          - bid_abc123456
+          nullable: true
+        reservation_fid:
+          type: string
+          examples:
+          - res_abc123456
+          nullable: true
+      type: object
+      required:
+      - instance_fid
+      - events
+      title: InstanceStatusHistory
+      description: The history of an instance's status.
+    GetInstancesResponse:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/InstanceModel'
+          type: array
+          title: Data
+        next_cursor:
+          type: string
+          nullable: true
+      type: object
+      required:
+      - data
+      title: GetInstancesResponse
+    InstancePricingEvent:
+      properties:
+        price_cents:
+          type: integer
+          title: Price Cents
+        start_time:
+          type: string
+          format: datetime
+          title: Start Time
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        end_time:
+          type: string
+          format: datetime
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+          nullable: true
+      type: object
+      required:
+      - price_cents
+      - start_time
+      - end_time
+      title: InstancePricingEvent
+      description: A price period in the history of an instance.
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    InstanceStatusHistoryResponse:
+      properties:
+        instances:
+          items:
+            $ref: '#/components/schemas/InstanceStatusHistory'
+          type: array
+          title: Instances
+        next_cursor:
+          type: string
+          nullable: true
+      type: object
+      required:
+      - instances
+      title: InstanceStatusHistoryResponse
+      description: Response model for instance status history endpoint.
     InstanceStatusResponse:
       properties:
         fid:
@@ -548,6 +723,27 @@ components:
       - status
       title: InstanceStatusResponse
       description: Response model for instance status endpoint.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     InstanceModel:
       properties:
         fid:
@@ -643,171 +839,6 @@ components:
       - instance_type
       - status
       title: InstanceModel
-    PatchInstanceStatusResponse:
-      properties:
-        instances:
-          additionalProperties:
-            type: string
-            enum:
-            - STATUS_NEW
-            - STATUS_CONFIRMED
-            - STATUS_INITIALIZING
-            - STATUS_STARTING
-            - STATUS_RUNNING
-            - STATUS_STOPPING
-            - STATUS_TERMINATED
-            - STATUS_RELOCATING
-            - STATUS_PREEMPTING
-            - STATUS_PREEMPTED
-            - STATUS_REPLACED
-            - STATUS_PAUSED
-            - STATUS_ERROR
-          propertyNames:
-            examples:
-            - inst_abc123456
-          type: object
-          title: Instances
-      type: object
-      required:
-      - instances
-      title: PatchInstanceStatusResponse
-    ValidationError:
-      properties:
-        loc:
-          items:
-            oneOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    InstancePricingHistoryResponse:
-      properties:
-        instances:
-          items:
-            $ref: '#/components/schemas/InstancePricingHistory'
-          type: array
-          title: Instances
-        next_cursor:
-          type: string
-          nullable: true
-      type: object
-      required:
-      - instances
-      title: InstancePricingHistoryResponse
-      description: Response model for instance pricing history endpoint.
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    PatchInstanceStatusRequest:
-      properties:
-        instances:
-          items:
-            type: string
-            examples:
-            - inst_abc123456
-          type: array
-          uniqueItems: true
-          title: Instances
-        status:
-          type: string
-          enum:
-          - STATUS_RUNNING
-          - STATUS_PAUSED
-          title: Status
-      type: object
-      required:
-      - instances
-      - status
-      title: PatchInstanceStatusRequest
-    RefreshBootDiskResponse:
-      properties:
-        fid:
-          type: string
-          title: Fid
-          examples:
-          - inst_abc123456
-        image_version:
-          type: string
-          examples:
-          - imgver_abc123456
-          nullable: true
-        status:
-          type: string
-          const: REFRESHED
-          title: Status
-      type: object
-      required:
-      - fid
-      - image_version
-      - status
-      title: RefreshBootDiskResponse
-      description: Response model for the refresh-boot-disk endpoint.
-    InstanceStatusEvent:
-      properties:
-        timestamp:
-          type: string
-          format: datetime
-          title: Timestamp
-          examples:
-          - '2024-01-01T00:00:00Z'
-          - '2024-01-01T00:00:00+00:00'
-          - '2024-01-01T00:00:00-00:00'
-        status:
-          type: string
-          enum:
-          - STATUS_NEW
-          - STATUS_CONFIRMED
-          - STATUS_INITIALIZING
-          - STATUS_STARTING
-          - STATUS_RUNNING
-          - STATUS_STOPPING
-          - STATUS_TERMINATED
-          - STATUS_RELOCATING
-          - STATUS_PREEMPTING
-          - STATUS_PREEMPTED
-          - STATUS_REPLACED
-          - STATUS_PAUSED
-          - STATUS_ERROR
-          title: Status
-      type: object
-      required:
-      - timestamp
-      - status
-      title: InstanceStatusEvent
-      description: An event in the history of an instance's status.
-    InstanceStatusHistoryResponse:
-      properties:
-        instances:
-          items:
-            $ref: '#/components/schemas/InstanceStatusHistory'
-          type: array
-          title: Instances
-        next_cursor:
-          type: string
-          nullable: true
-      type: object
-      required:
-      - instances
-      title: InstanceStatusHistoryResponse
-      description: Response model for instance status history endpoint.
     InstancePricingHistory:
       properties:
         instance_fid:
@@ -836,96 +867,65 @@ components:
       - events
       title: InstancePricingHistory
       description: The history of an instance's pricing.
-    RefreshBootDiskRequest:
+    RefreshBootDiskResponse:
       properties:
+        fid:
+          type: string
+          title: Fid
+          examples:
+          - inst_abc123456
         image_version:
           type: string
           examples:
           - imgver_abc123456
           nullable: true
+        status:
+          type: string
+          const: REFRESHED
+          title: Status
       type: object
-      title: RefreshBootDiskRequest
-      description: 'Request body for the refresh-boot-disk endpoint.
-
-
-        The body is optional; when ``image_version`` is omitted the instance''s
-
-        current boot image is reused.'
-    GetInstancesResponse:
+      required:
+      - fid
+      - image_version
+      - status
+      title: RefreshBootDiskResponse
+      description: Response model for the refresh-boot-disk endpoint.
+    InstancePricingHistoryResponse:
       properties:
-        data:
+        instances:
           items:
-            $ref: '#/components/schemas/InstanceModel'
+            $ref: '#/components/schemas/InstancePricingHistory'
           type: array
-          title: Data
+          title: Instances
         next_cursor:
           type: string
           nullable: true
       type: object
       required:
-      - data
-      title: GetInstancesResponse
-    SortDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-    InstancePricingEvent:
+      - instances
+      title: InstancePricingHistoryResponse
+      description: Response model for instance pricing history endpoint.
+    PatchInstanceStatusRequest:
       properties:
-        price_cents:
-          type: integer
-          title: Price Cents
-        start_time:
-          type: string
-          format: datetime
-          title: Start Time
-          examples:
-          - '2024-01-01T00:00:00Z'
-          - '2024-01-01T00:00:00+00:00'
-          - '2024-01-01T00:00:00-00:00'
-        end_time:
-          type: string
-          format: datetime
-          examples:
-          - '2024-01-01T00:00:00Z'
-          - '2024-01-01T00:00:00+00:00'
-          - '2024-01-01T00:00:00-00:00'
-          nullable: true
-      type: object
-      required:
-      - price_cents
-      - start_time
-      - end_time
-      title: InstancePricingEvent
-      description: A price period in the history of an instance.
-    InstanceStatusHistory:
-      properties:
-        instance_fid:
-          type: string
-          title: Instance Fid
-          examples:
-          - inst_abc123456
-        events:
+        instances:
           items:
-            $ref: '#/components/schemas/InstanceStatusEvent'
+            type: string
+            examples:
+            - inst_abc123456
           type: array
-          title: Events
-        bid_fid:
+          uniqueItems: true
+          title: Instances
+        status:
           type: string
-          examples:
-          - bid_abc123456
-          nullable: true
-        reservation_fid:
-          type: string
-          examples:
-          - res_abc123456
-          nullable: true
+          enum:
+          - STATUS_RUNNING
+          - STATUS_PAUSED
+          title: Status
       type: object
       required:
-      - instance_fid
-      - events
-      title: InstanceStatusHistory
-      description: The history of an instance's status.
+      - instances
+      - status
+      title: PatchInstanceStatusRequest
   securitySchemes:
     MithrilAPIKey:
       type: http

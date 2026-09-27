@@ -178,52 +178,59 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ListLifecycleScriptsResponse:
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/LifecycleScriptModel'
-          type: array
-          title: Data
-        next_cursor:
-          type: string
-          nullable: true
-      type: object
-      required:
-      - data
-      title: ListLifecycleScriptsResponse
     PublicLifecycleScriptScope:
       type: string
       enum:
       - PROJECT
       - ORGANIZATION
+    SortDirection:
+      type: string
+      enum:
+      - asc
+      - desc
     LifecycleScriptScope:
       type: string
       enum:
       - PROJECT
       - ORGANIZATION
       - PLATFORM
-    ValidationError:
+    HTTPValidationError:
       properties:
-        loc:
+        detail:
           items:
-            oneOf:
-            - type: string
-            - type: integer
+            $ref: '#/components/schemas/ValidationError'
           type: array
-          title: Location
-        msg:
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    CreateLifecycleScriptRequest:
+      properties:
+        project:
           type: string
-          title: Message
-        type:
+          title: Project
+          examples:
+          - proj_abc123456
+        name:
           type: string
-          title: Error Type
+          minLength: 1
+          title: Name
+        content:
+          type: string
+          minLength: 1
+          title: Content
+        description:
+          type: string
+          nullable: true
+        scope:
+          $ref: '#/components/schemas/PublicLifecycleScriptScope'
+          default: PROJECT
+          examples: []
       type: object
       required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
+      - project
+      - name
+      - content
+      title: CreateLifecycleScriptRequest
     LifecycleScriptModel:
       properties:
         fid:
@@ -287,15 +294,41 @@ components:
       - last_modified_by
       - scope
       title: LifecycleScriptModel
-    HTTPValidationError:
+    ValidationError:
       properties:
-        detail:
+        loc:
           items:
-            $ref: '#/components/schemas/ValidationError'
+            oneOf:
+            - type: string
+            - type: integer
           type: array
-          title: Detail
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
       type: object
-      title: HTTPValidationError
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    ListLifecycleScriptsResponse:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/LifecycleScriptModel'
+          type: array
+          title: Data
+        next_cursor:
+          type: string
+          nullable: true
+      type: object
+      required:
+      - data
+      title: ListLifecycleScriptsResponse
     UpdateLifecycleScriptRequest:
       properties:
         name:
@@ -311,39 +344,6 @@ components:
           nullable: true
       type: object
       title: UpdateLifecycleScriptRequest
-    SortDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-    CreateLifecycleScriptRequest:
-      properties:
-        project:
-          type: string
-          title: Project
-          examples:
-          - proj_abc123456
-        name:
-          type: string
-          minLength: 1
-          title: Name
-        content:
-          type: string
-          minLength: 1
-          title: Content
-        description:
-          type: string
-          nullable: true
-        scope:
-          $ref: '#/components/schemas/PublicLifecycleScriptScope'
-          default: PROJECT
-          examples: []
-      type: object
-      required:
-      - project
-      - name
-      - content
-      title: CreateLifecycleScriptRequest
   securitySchemes:
     MithrilAPIKey:
       type: http

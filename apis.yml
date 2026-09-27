@@ -52,7 +52,7 @@ tags:
 - Company
 - GPU Cloud
 - AI Infrastructure
-- Machine-Learning
+- Machine Learning
 - Cloud Computing
 - Compute
 - Spot Instances
@@ -68,6 +68,7 @@ tags_raw:
 - Spot Instances
 - Kubernetes
 - GPU
+- Machine-Learning
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -129,7 +130,7 @@ apis:
   - type: Authentication
     url: authentication/mithril-authentication.yml
 - aid: mithril:mithril-instances-api
-  name: Mithril instances API
+  name: Mithril Instances API
   description: The instances API from Mithril — 5 operation(s) for instances.
   humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
   baseURL: https://api.mithril.ai/v2
@@ -181,7 +182,7 @@ apis:
   - type: Authentication
     url: authentication/mithril-authentication.yml
 - aid: mithril:mithril-pricing-api
-  name: Mithril pricing API
+  name: Mithril Pricing API
   description: The pricing API from Mithril — 2 operation(s) for pricing.
   humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
   baseURL: https://api.mithril.ai/v2
@@ -199,7 +200,7 @@ apis:
   - type: Authentication
     url: authentication/mithril-authentication.yml
 - aid: mithril:mithril-profile-api
-  name: Mithril profile API
+  name: Mithril Profile API
   description: The profile API from Mithril — 2 operation(s) for profile.
   humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
   baseURL: https://api.mithril.ai/v2
@@ -217,7 +218,7 @@ apis:
   - type: Authentication
     url: authentication/mithril-authentication.yml
 - aid: mithril:mithril-projects-api
-  name: Mithril projects API
+  name: Mithril Projects API
   description: The projects API from Mithril — 1 operation(s) for projects.
   humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
   baseURL: https://api.mithril.ai/v2
@@ -235,7 +236,7 @@ apis:
   - type: Authentication
     url: authentication/mithril-authentication.yml
 - aid: mithril:mithril-quotas-api
-  name: Mithril quotas API
+  name: Mithril Quotas API
   description: The quotas API from Mithril — 1 operation(s) for quotas.
   humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
   baseURL: https://api.mithril.ai/v2
@@ -253,7 +254,7 @@ apis:
   - type: Authentication
     url: authentication/mithril-authentication.yml
 - aid: mithril:mithril-reservations-api
-  name: Mithril reservations API
+  name: Mithril Reservations API
   description: The reservations API from Mithril — 10 operation(s) for reservations.
   humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
   baseURL: https://api.mithril.ai/v2
@@ -271,7 +272,7 @@ apis:
   - type: Authentication
     url: authentication/mithril-authentication.yml
 - aid: mithril:mithril-spot-api
-  name: Mithril spot API
+  name: Mithril Spot API
   description: The spot API from Mithril — 5 operation(s) for spot.
   humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
   baseURL: https://api.mithril.ai/v2
@@ -305,7 +306,7 @@ apis:
   - type: Authentication
     url: authentication/mithril-authentication.yml
 - aid: mithril:mithril-volumes-api
-  name: Mithril volumes API
+  name: Mithril Volumes API
   description: The volumes API from Mithril — 2 operation(s) for volumes.
   humanURL: https://docs.mithril.ai/compute-api/api-overview-and-quickstart
   baseURL: https://api.mithril.ai/v2

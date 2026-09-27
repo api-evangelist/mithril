@@ -303,6 +303,15 @@ components:
       - reservations
       - attachments
       title: VolumeModel
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -336,15 +345,6 @@ components:
       - name
       title: UpdateVolumeRequest
       description: "Request model for updating an existing storage volume.\n\nAttributes:\n    name: New name for the volume. Must follow naming conventions."
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     CreateVolumeRequest:
       properties:
         name:
