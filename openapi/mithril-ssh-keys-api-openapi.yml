@@ -138,6 +138,74 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    NewSshKeyModel:
+      properties:
+        fid:
+          type: string
+          title: Fid
+          examples:
+          - sshkey_abc123456
+        name:
+          type: string
+          title: Name
+        project:
+          type: string
+          title: Project
+          examples:
+          - proj_abc123456
+        public_key:
+          type: string
+          title: Public Key
+        created_at:
+          type: string
+          format: datetime
+          title: Created At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        required:
+          type: boolean
+          title: Required
+      type: object
+      required:
+      - fid
+      - name
+      - project
+      - public_key
+      - created_at
+      - required
+      title: NewSshKeyModel
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     CreateSshKeyRequest:
       properties:
         project:
@@ -203,36 +271,6 @@ components:
       - created_at
       - required
       title: CreatedSshKeyModel
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    ValidationError:
-      properties:
-        loc:
-          items:
-            oneOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     UpdateSshKeyRequest:
       properties:
         required:
@@ -242,44 +280,6 @@ components:
       required:
       - required
       title: UpdateSshKeyRequest
-    NewSshKeyModel:
-      properties:
-        fid:
-          type: string
-          title: Fid
-          examples:
-          - sshkey_abc123456
-        name:
-          type: string
-          title: Name
-        project:
-          type: string
-          title: Project
-          examples:
-          - proj_abc123456
-        public_key:
-          type: string
-          title: Public Key
-        created_at:
-          type: string
-          format: datetime
-          title: Created At
-          examples:
-          - '2024-01-01T00:00:00Z'
-          - '2024-01-01T00:00:00+00:00'
-          - '2024-01-01T00:00:00-00:00'
-        required:
-          type: boolean
-          title: Required
-      type: object
-      required:
-      - fid
-      - name
-      - project
-      - public_key
-      - created_at
-      - required
-      title: NewSshKeyModel
   securitySchemes:
     MithrilAPIKey:
       type: http

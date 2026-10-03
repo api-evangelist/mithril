@@ -52,36 +52,6 @@ paths:
       - MithrilAPIKey: []
 components:
   schemas:
-    MeResponse:
-      properties:
-        id:
-          type: string
-          title: Id
-        fid:
-          type: string
-          title: Fid
-          examples:
-          - user_abc123456
-        email:
-          type: string
-          format: email
-          title: Email
-        user_name:
-          type: string
-          nullable: true
-        organization_id:
-          type: string
-          title: Organization Id
-        organization_role:
-          type: string
-          nullable: true
-      type: object
-      required:
-      - id
-      - fid
-      - email
-      - organization_id
-      title: MeResponse
     TeammateResponse:
       properties:
         id:
@@ -120,6 +90,36 @@ components:
       - fid
       - project_ids
       title: TeammateResponse
+    MeResponse:
+      properties:
+        id:
+          type: string
+          title: Id
+        fid:
+          type: string
+          title: Fid
+          examples:
+          - user_abc123456
+        email:
+          type: string
+          format: email
+          title: Email
+        user_name:
+          type: string
+          nullable: true
+        organization_id:
+          type: string
+          title: Organization Id
+        organization_role:
+          type: string
+          nullable: true
+      type: object
+      required:
+      - id
+      - fid
+      - email
+      - organization_id
+      title: MeResponse
   securitySchemes:
     MithrilAPIKey:
       type: http

@@ -95,24 +95,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    CreateApiKeyRequest:
-      properties:
-        name:
-          type: string
-          title: Name
-        expires_at:
-          type: string
-          format: datetime
-          title: Expires At
-          examples:
-          - '2024-01-01T00:00:00Z'
-          - '2024-01-01T00:00:00+00:00'
-          - '2024-01-01T00:00:00-00:00'
-      type: object
-      required:
-      - name
-      - expires_at
-      title: CreateApiKeyRequest
     CreateApiKeyResponse:
       properties:
         fid:
@@ -243,6 +225,24 @@ components:
       - expires_at
       - snippet
       title: ApiKeyModel
+    CreateApiKeyRequest:
+      properties:
+        name:
+          type: string
+          title: Name
+        expires_at:
+          type: string
+          format: datetime
+          title: Expires At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+      type: object
+      required:
+      - name
+      - expires_at
+      title: CreateApiKeyRequest
   securitySchemes:
     MithrilAPIKey:
       type: http

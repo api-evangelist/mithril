@@ -170,6 +170,15 @@ components:
       - ssh_keys
       - instance_type
       title: CreateKubernetesClusterRequest
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     KubernetesClusterModel:
       properties:
         fid:
@@ -247,15 +256,6 @@ components:
       - status
       - k8s_version
       title: KubernetesClusterModel
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
