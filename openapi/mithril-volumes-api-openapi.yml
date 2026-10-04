@@ -223,6 +223,18 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    UpdateVolumeRequest:
+      properties:
+        name:
+          type: string
+          maxLength: 64
+          pattern: ^[a-z]([-a-z0-9]*[a-z0-9])?$
+          title: Name
+      type: object
+      required:
+      - name
+      title: UpdateVolumeRequest
+      description: "Request model for updating an existing storage volume.\n\nAttributes:\n    name: New name for the volume. Must follow naming conventions."
     CreateVolumeRequest:
       properties:
         name:
@@ -263,6 +275,27 @@ components:
       - size_gb
       title: CreateVolumeRequest
       description: Request model for creating a new storage volume.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     VolumeModel:
       properties:
         fid:
@@ -352,39 +385,6 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    ValidationError:
-      properties:
-        loc:
-          items:
-            oneOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    UpdateVolumeRequest:
-      properties:
-        name:
-          type: string
-          maxLength: 64
-          pattern: ^[a-z]([-a-z0-9]*[a-z0-9])?$
-          title: Name
-      type: object
-      required:
-      - name
-      title: UpdateVolumeRequest
-      description: "Request model for updating an existing storage volume.\n\nAttributes:\n    name: New name for the volume. Must follow naming conventions."
   securitySchemes:
     MithrilAPIKey:
       type: http

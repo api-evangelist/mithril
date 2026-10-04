@@ -178,56 +178,31 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    SortDirection:
+    PublicLifecycleScriptScope:
       type: string
       enum:
-      - asc
-      - desc
-    ValidationError:
+      - PROJECT
+      - ORGANIZATION
+    ListLifecycleScriptsResponse:
       properties:
-        loc:
+        data:
           items:
-            oneOf:
-            - type: string
-            - type: integer
+            $ref: '#/components/schemas/LifecycleScriptModel'
           type: array
-          title: Location
-        msg:
+          title: Data
+        next_cursor:
           type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
+          nullable: true
       type: object
       required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    UpdateLifecycleScriptRequest:
-      properties:
-        name:
-          type: string
-          minLength: 1
-          nullable: true
-        description:
-          type: string
-          nullable: true
-        scope:
-          $ref: '#/components/schemas/PublicLifecycleScriptScope'
-          examples: []
-          nullable: true
-      type: object
-      title: UpdateLifecycleScriptRequest
+      - data
+      title: ListLifecycleScriptsResponse
+    LifecycleScriptScope:
+      type: string
+      enum:
+      - PROJECT
+      - ORGANIZATION
+      - PLATFORM
     CreateLifecycleScriptRequest:
       properties:
         project:
@@ -256,31 +231,32 @@ components:
       - name
       - content
       title: CreateLifecycleScriptRequest
-    ListLifecycleScriptsResponse:
+    ValidationError:
       properties:
-        data:
+        loc:
           items:
-            $ref: '#/components/schemas/LifecycleScriptModel'
+            oneOf:
+            - type: string
+            - type: integer
           type: array
-          title: Data
-        next_cursor:
+          title: Location
+        msg:
           type: string
-          nullable: true
+          title: Message
+        type:
+          type: string
+          title: Error Type
       type: object
       required:
-      - data
-      title: ListLifecycleScriptsResponse
-    LifecycleScriptScope:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    SortDirection:
       type: string
       enum:
-      - PROJECT
-      - ORGANIZATION
-      - PLATFORM
-    PublicLifecycleScriptScope:
-      type: string
-      enum:
-      - PROJECT
-      - ORGANIZATION
+      - asc
+      - desc
     LifecycleScriptModel:
       properties:
         fid:
@@ -344,6 +320,30 @@ components:
       - last_modified_by
       - scope
       title: LifecycleScriptModel
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    UpdateLifecycleScriptRequest:
+      properties:
+        name:
+          type: string
+          minLength: 1
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        scope:
+          $ref: '#/components/schemas/PublicLifecycleScriptScope'
+          examples: []
+          nullable: true
+      type: object
+      title: UpdateLifecycleScriptRequest
   securitySchemes:
     MithrilAPIKey:
       type: http

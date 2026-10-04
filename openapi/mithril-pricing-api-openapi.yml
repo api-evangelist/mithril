@@ -134,58 +134,22 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    HTTPValidationError:
+    HistoricalPricesResponseModel:
       properties:
-        detail:
+        series:
           items:
-            $ref: '#/components/schemas/ValidationError'
+            $ref: '#/components/schemas/HistoricalPriceSeriesModel'
           type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    HistoricalPriceSeriesModel:
-      properties:
-        instance_type:
-          type: string
-          title: Instance Type
-          examples:
-          - it_abc123456
-        region:
-          type: string
-          title: Region
-        timestamps:
-          items:
-            type: string
-            format: datetime
-            examples:
-            - '2024-01-01T00:00:00Z'
-            - '2024-01-01T00:00:00+00:00'
-            - '2024-01-01T00:00:00-00:00'
-          type: array
-          title: Timestamps
-        spot_prices:
-          items:
-            type: string
-          type: array
-          title: Spot Prices
-        reserved_prices:
-          items:
-            type: string
-          type: array
-          title: Reserved Prices
-        region_disabled:
+          title: Series
+        complete:
           type: boolean
-          title: Region Disabled
-          default: false
+          title: Complete
+          default: true
       type: object
       required:
-      - instance_type
-      - region
-      - timestamps
-      - spot_prices
-      - reserved_prices
-      title: HistoricalPriceSeriesModel
-      description: A single time-series of prices for one instance type in one region.
+      - series
+      title: HistoricalPricesResponseModel
+      description: Response model for historical pricing data.
     CurrentPricesResponse:
       properties:
         spot_price_cents:
@@ -232,22 +196,58 @@ components:
       - msg
       - type
       title: ValidationError
-    HistoricalPricesResponseModel:
+    HistoricalPriceSeriesModel:
       properties:
-        series:
+        instance_type:
+          type: string
+          title: Instance Type
+          examples:
+          - it_abc123456
+        region:
+          type: string
+          title: Region
+        timestamps:
           items:
-            $ref: '#/components/schemas/HistoricalPriceSeriesModel'
+            type: string
+            format: datetime
+            examples:
+            - '2024-01-01T00:00:00Z'
+            - '2024-01-01T00:00:00+00:00'
+            - '2024-01-01T00:00:00-00:00'
           type: array
-          title: Series
-        complete:
+          title: Timestamps
+        spot_prices:
+          items:
+            type: string
+          type: array
+          title: Spot Prices
+        reserved_prices:
+          items:
+            type: string
+          type: array
+          title: Reserved Prices
+        region_disabled:
           type: boolean
-          title: Complete
-          default: true
+          title: Region Disabled
+          default: false
       type: object
       required:
-      - series
-      title: HistoricalPricesResponseModel
-      description: Response model for historical pricing data.
+      - instance_type
+      - region
+      - timestamps
+      - spot_prices
+      - reserved_prices
+      title: HistoricalPriceSeriesModel
+      description: A single time-series of prices for one instance type in one region.
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
   securitySchemes:
     MithrilAPIKey:
       type: http

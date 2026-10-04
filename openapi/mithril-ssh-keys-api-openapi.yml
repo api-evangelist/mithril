@@ -138,6 +138,101 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    UpdateSshKeyRequest:
+      properties:
+        required:
+          type: boolean
+          title: Required
+      type: object
+      required:
+      - required
+      title: UpdateSshKeyRequest
+    CreatedSshKeyModel:
+      properties:
+        fid:
+          type: string
+          title: Fid
+          examples:
+          - sshkey_abc123456
+        name:
+          type: string
+          title: Name
+        project:
+          type: string
+          title: Project
+          examples:
+          - proj_abc123456
+        public_key:
+          type: string
+          title: Public Key
+        created_at:
+          type: string
+          format: datetime
+          title: Created At
+          examples:
+          - '2024-01-01T00:00:00Z'
+          - '2024-01-01T00:00:00+00:00'
+          - '2024-01-01T00:00:00-00:00'
+        required:
+          type: boolean
+          title: Required
+        private_key:
+          type: string
+          examples:
+          - '-----BEGIN RSA PRIVATE KEY-----...'
+          nullable: true
+      type: object
+      required:
+      - fid
+      - name
+      - project
+      - public_key
+      - created_at
+      - required
+      title: CreatedSshKeyModel
+    ValidationError:
+      properties:
+        loc:
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    CreateSshKeyRequest:
+      properties:
+        project:
+          type: string
+          title: Project
+          examples:
+          - proj_abc123456
+        name:
+          type: string
+          title: Name
+        public_key:
+          type: string
+          nullable: true
+        required:
+          type: boolean
+          title: Required
+          default: false
+      type: object
+      required:
+      - project
+      - name
+      title: CreateSshKeyRequest
     NewSshKeyModel:
       properties:
         fid:
@@ -185,101 +280,6 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    ValidationError:
-      properties:
-        loc:
-          items:
-            oneOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    CreateSshKeyRequest:
-      properties:
-        project:
-          type: string
-          title: Project
-          examples:
-          - proj_abc123456
-        name:
-          type: string
-          title: Name
-        public_key:
-          type: string
-          nullable: true
-        required:
-          type: boolean
-          title: Required
-          default: false
-      type: object
-      required:
-      - project
-      - name
-      title: CreateSshKeyRequest
-    CreatedSshKeyModel:
-      properties:
-        fid:
-          type: string
-          title: Fid
-          examples:
-          - sshkey_abc123456
-        name:
-          type: string
-          title: Name
-        project:
-          type: string
-          title: Project
-          examples:
-          - proj_abc123456
-        public_key:
-          type: string
-          title: Public Key
-        created_at:
-          type: string
-          format: datetime
-          title: Created At
-          examples:
-          - '2024-01-01T00:00:00Z'
-          - '2024-01-01T00:00:00+00:00'
-          - '2024-01-01T00:00:00-00:00'
-        required:
-          type: boolean
-          title: Required
-        private_key:
-          type: string
-          examples:
-          - '-----BEGIN RSA PRIVATE KEY-----...'
-          nullable: true
-      type: object
-      required:
-      - fid
-      - name
-      - project
-      - public_key
-      - created_at
-      - required
-      title: CreatedSshKeyModel
-    UpdateSshKeyRequest:
-      properties:
-        required:
-          type: boolean
-          title: Required
-      type: object
-      required:
-      - required
-      title: UpdateSshKeyRequest
   securitySchemes:
     MithrilAPIKey:
       type: http
