@@ -1,0 +1,12 @@
+{
+ "url": "https://api.mithril.ai/openapi.json",
+ "requested_url": "https://api.mithril.ai/openapi.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 105962,
+ "sha256": "e8fdf082549bbd36cf99c3a6f457af17520e4aa5d131f04aedaf9e2cb3b1d190",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 0.9), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
