@@ -60,3 +60,58 @@ plans:
   currency: USD
   period: month
   unit: GB/mo
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - subscription
+  units: []
+  plans:
+  - name: H200 SXM5 (1 GPU, 20 vCPUs, 200 GB RAM, 1,500 GB disk)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: H200 SXM5 (8 GPUs, 168 vCPUs, 1,600 GB RAM, 12,500 GB disk)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: H100 SXM5 (1 GPU, 20 vCPUs, 226 GB RAM, 1,774 GB disk)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: H100 SXM5 (8 GPUs, 168 vCPUs, 1,814 GB RAM, 12,500 GB disk)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: File share NVMe SSD storage
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Block NVMe SSD storage
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
