@@ -324,6 +324,8 @@ apis:
   - type: Authentication
     url: authentication/mithril-authentication.yml
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/mithril/overview
 - type: Plans
   url: plans/mithril-plans-pricing.yml
 - type: CapabilityMap
