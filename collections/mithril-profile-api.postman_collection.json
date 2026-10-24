@@ -1,210 +1,219 @@
 {
+  "info": {
+    "_postman_id": "409c225b-cc8c-4ed9-b34f-553ee02c04e2",
+    "name": "Mithril Profile API",
+    "description": "Mithril Compute API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:07:53.000Z",
+    "updatedAt": "2026-10-22T01:07:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-409c225b-cc8c-4ed9-b34f-553ee02c04e2"
+  },
   "item": [
     {
-      "id": "e8c31357-bb0b-4357-bdc3-a0b4e710012b",
-      "name": "profile",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v2",
       "item": [
         {
-          "id": "ec3e2d48-cbe1-4d23-be73-a00617441ddd",
-          "name": "Get Me",
-          "request": {
-            "name": "Get Me",
-            "description": {
-              "content": "Get the current user's profile",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v2",
-                "me"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "me",
+          "item": [
             {
-              "id": "7a74c226-bc5b-4c03-bf4b-9ed65d180961",
-              "name": "Successful Response",
-              "originalRequest": {
+              "name": "teammates",
+              "item": [
+                {
+                  "name": "Get My Teammates",
+                  "id": "ba2b5484-3a89-44b3-9708-cfb0133a7e1f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/me/teammates",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "me",
+                        "teammates"
+                      ]
+                    },
+                    "description": "Get teammates visible to the current user.\n\nReturns teammates from the user's organization, filtered by shared project\nmembership (unless the user is an org admin, in which case all org members\nare visible). Can be used by a client to map user FIDs to user profiles."
+                  },
+                  "response": [
+                    {
+                      "id": "4058b0f6-b6aa-4b4d-9bb1-946fce5a7604",
+                      "name": "Successful Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/me/teammates",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "me",
+                            "teammates"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"fid\": \"<string>\",\n    \"project_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"user_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"organization_role\": \"<string>\",\n    \"deactivated_at\": \"<string>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"fid\": \"<string>\",\n    \"project_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"user_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"organization_role\": \"<string>\",\n    \"deactivated_at\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-10-22T01:07:53.000Z",
+                      "updatedAt": "2026-10-22T01:07:53.000Z",
+                      "uid": "35240-4058b0f6-b6aa-4b4d-9bb1-946fce5a7604"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:07:53.000Z",
+                  "updatedAt": "2026-10-22T01:07:53.000Z",
+                  "uid": "35240-ba2b5484-3a89-44b3-9708-cfb0133a7e1f"
+                }
+              ],
+              "id": "9e30a5fb-ec05-4f8d-bc73-7cce94620c6c",
+              "createdAt": "2026-10-22T01:07:53.000Z",
+              "updatedAt": "2026-10-22T01:07:53.000Z",
+              "uid": "35240-9e30a5fb-ec05-4f8d-bc73-7cce94620c6c"
+            },
+            {
+              "name": "Get Me",
+              "id": "9b44c64d-3f72-4240-82d7-5133b4626aa1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/v2/me",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v2",
                     "me"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Get the current user's profile"
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "5da4ea6f-e6bc-4819-a6cc-8420405f489a",
+                  "name": "Successful Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/me",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "me"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"fid\": \"<string>\",\n  \"email\": \"<email>\",\n  \"organization_id\": \"<string>\",\n  \"user_name\": \"<string>\",\n  \"organization_role\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:07:53.000Z",
+                  "updatedAt": "2026-10-22T01:07:53.000Z",
+                  "uid": "35240-5da4ea6f-e6bc-4819-a6cc-8420405f489a"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"fid\": \"user_abc123456\",\n  \"email\": \"bSf@lXxteSBjkKCHhFVCgzA.rdar\",\n  \"organization_id\": \"string\",\n  \"user_name\": \"string\",\n  \"organization_role\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-22T01:07:53.000Z",
+              "updatedAt": "2026-10-22T01:07:53.000Z",
+              "uid": "35240-9b44c64d-3f72-4240-82d7-5133b4626aa1"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d6700004-84a4-48ec-9ddd-a8d82ea85364",
-          "name": "Get My Teammates",
-          "request": {
-            "name": "Get My Teammates",
-            "description": {
-              "content": "Get teammates visible to the current user.\n\nReturns teammates from the user's organization, filtered by shared project\nmembership (unless the user is an org admin, in which case all org members\nare visible). Can be used by a client to map user FIDs to user profiles.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v2",
-                "me",
-                "teammates"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "a3db8bbf-3165-48b5-ad7e-fdd71880c831",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "me",
-                    "teammates"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"id\": \"string\",\n    \"fid\": \"user_abc123456\",\n    \"project_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"user_name\": \"string\",\n    \"email\": \"string\",\n    \"organization_role\": \"string\",\n    \"deactivated_at\": \"2024-01-01T00:00:00Z\"\n  },\n  {\n    \"id\": \"string\",\n    \"fid\": \"user_abc123456\",\n    \"project_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"user_name\": \"string\",\n    \"email\": \"string\",\n    \"organization_role\": \"string\",\n    \"deactivated_at\": \"2024-01-01T00:00:00Z\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "15d85625-f2d6-49b0-adc2-9fe039314c53",
+          "createdAt": "2026-10-22T01:07:53.000Z",
+          "updatedAt": "2026-10-22T01:07:53.000Z",
+          "uid": "35240-15d85625-f2d6-49b0-adc2-9fe039314c53"
         }
       ],
-      "event": []
+      "id": "e309988e-3414-4dec-8667-fc9aa7410880",
+      "createdAt": "2026-10-22T01:07:53.000Z",
+      "updatedAt": "2026-10-22T01:07:53.000Z",
+      "uid": "35240-e309988e-3414-4dec-8667-fc9aa7410880"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.mithril.ai",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.mithril.ai"
     }
-  ],
-  "info": {
-    "_postman_id": "583a6740-ad84-4783-8679-cdfe181aa795",
-    "name": "Mithril API Keys profile API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Mithril Compute API",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

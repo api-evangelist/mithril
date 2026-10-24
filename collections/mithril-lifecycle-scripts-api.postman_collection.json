@@ -1,256 +1,737 @@
 {
+  "info": {
+    "_postman_id": "f06e58f2-fea0-4a1f-b69f-39773a46a488",
+    "name": "Mithril lifecycle scripts API",
+    "description": "Mithril Compute API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:07:39.000Z",
+    "updatedAt": "2026-10-22T01:07:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f06e58f2-fea0-4a1f-b69f-39773a46a488"
+  },
   "item": [
     {
-      "id": "bb80d89f-299d-441f-b6a8-4689427333fe",
-      "name": "lifecycle scripts",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v2",
       "item": [
         {
-          "id": "4939df19-8345-4be0-95bc-ed8a6e8d6995",
-          "name": "Create Lifecycle Script",
-          "request": {
-            "name": "Create Lifecycle Script",
-            "description": {
-              "content": "Create a new lifecycle script",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v2",
-                "lifecycle-scripts"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"project\": \"<string>\",\n  \"name\": \"<string>\",\n  \"content\": \"<string>\",\n  \"description\": \"<string>\",\n  \"scope\": \"PROJECT\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "lifecycle-scripts",
+          "item": [
             {
-              "id": "1a376597-914d-42f4-9605-367eec13c3fa",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "lifecycle-scripts"
+              "name": "{ls_fid}",
+              "item": [
+                {
+                  "name": "content",
+                  "item": [
+                    {
+                      "name": "Get Lifecycle Script Content",
+                      "id": "22affa2d-c8c0-433b-b08b-e1b675318962",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/lifecycle-scripts/:ls_fid/content",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "lifecycle-scripts",
+                            ":ls_fid",
+                            "content"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b2cf7c03-f99b-4a2f-98e0-63fc4aeafccf",
+                              "key": "ls_fid",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "6bfe3666-cf34-4d36-9922-551e11d4c381",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/lifecycle-scripts/:ls_fid/content",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "lifecycle-scripts",
+                                ":ls_fid",
+                                "content"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ls_fid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-10-22T01:07:39.000Z",
+                          "updatedAt": "2026-10-22T01:07:39.000Z",
+                          "uid": "35240-6bfe3666-cf34-4d36-9922-551e11d4c381"
+                        },
+                        {
+                          "id": "c602c74a-e067-4e50-8180-c50c63d40309",
+                          "name": "Validation Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/lifecycle-scripts/:ls_fid/content",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "lifecycle-scripts",
+                                ":ls_fid",
+                                "content"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ls_fid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-22T01:07:39.000Z",
+                          "updatedAt": "2026-10-22T01:07:39.000Z",
+                          "uid": "35240-c602c74a-e067-4e50-8180-c50c63d40309"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:07:39.000Z",
+                      "updatedAt": "2026-10-22T01:07:39.000Z",
+                      "uid": "35240-22affa2d-c8c0-433b-b08b-e1b675318962"
+                    }
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  "id": "183dfa4b-8bf4-4b17-988a-831aea4dd6c2",
+                  "createdAt": "2026-10-22T01:07:39.000Z",
+                  "updatedAt": "2026-10-22T01:07:39.000Z",
+                  "uid": "35240-183dfa4b-8bf4-4b17-988a-831aea4dd6c2"
                 },
+                {
+                  "name": "Update Lifecycle Script",
+                  "id": "81bf40ba-22ef-4b1c-9664-ff88979c9e09",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"scope\": \"ORGANIZATION\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/lifecycle-scripts/:ls_fid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "lifecycle-scripts",
+                        ":ls_fid"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7a202753-dbf7-4b10-ab51-82616a0512ac",
+                          "key": "ls_fid",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "5b7c8d11-a601-4c50-bda9-9f6ca570656a",
+                      "name": "Successful Response",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"scope\": \"ORGANIZATION\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/lifecycle-scripts/:ls_fid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "lifecycle-scripts",
+                            ":ls_fid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ls_fid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"fid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"content_url\": \"<uri>\",\n  \"project\": \"<string>\",\n  \"created_at\": \"<string>\",\n  \"created_by\": \"<string>\",\n  \"last_modified_at\": \"<string>\",\n  \"last_modified_by\": \"<string>\",\n  \"scope\": \"ORGANIZATION\"\n}",
+                      "createdAt": "2026-10-22T01:07:39.000Z",
+                      "updatedAt": "2026-10-22T01:07:39.000Z",
+                      "uid": "35240-5b7c8d11-a601-4c50-bda9-9f6ca570656a"
+                    },
+                    {
+                      "id": "5e284aca-64e3-44d3-8c85-d98a6933f7d8",
+                      "name": "Validation Error",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"scope\": \"ORGANIZATION\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/lifecycle-scripts/:ls_fid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "lifecycle-scripts",
+                            ":ls_fid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ls_fid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-22T01:07:39.000Z",
+                      "updatedAt": "2026-10-22T01:07:39.000Z",
+                      "uid": "35240-5e284aca-64e3-44d3-8c85-d98a6933f7d8"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:07:39.000Z",
+                  "updatedAt": "2026-10-22T01:07:39.000Z",
+                  "uid": "35240-81bf40ba-22ef-4b1c-9664-ff88979c9e09"
+                },
+                {
+                  "name": "Delete Lifecycle Script",
+                  "id": "a58f583e-b11a-4731-a460-448aa8077c9e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/lifecycle-scripts/:ls_fid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "lifecycle-scripts",
+                        ":ls_fid"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b01d5d22-9a5a-4838-aa8e-81ffac74c9df",
+                          "key": "ls_fid",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "e18c3d72-6e31-4f3a-a28b-12e57e87636d",
+                      "name": "Successful Response",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/lifecycle-scripts/:ls_fid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "lifecycle-scripts",
+                            ":ls_fid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ls_fid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:07:39.000Z",
+                      "updatedAt": "2026-10-22T01:07:39.000Z",
+                      "uid": "35240-e18c3d72-6e31-4f3a-a28b-12e57e87636d"
+                    },
+                    {
+                      "id": "ec8953a6-e346-43a1-9bad-739dc0c4cba1",
+                      "name": "Validation Error",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/lifecycle-scripts/:ls_fid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "lifecycle-scripts",
+                            ":ls_fid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ls_fid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-22T01:07:39.000Z",
+                      "updatedAt": "2026-10-22T01:07:39.000Z",
+                      "uid": "35240-ec8953a6-e346-43a1-9bad-739dc0c4cba1"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:07:39.000Z",
+                  "updatedAt": "2026-10-22T01:07:39.000Z",
+                  "uid": "35240-a58f583e-b11a-4731-a460-448aa8077c9e"
+                }
+              ],
+              "id": "154317ec-31d3-4b97-956a-c7a26ab9eb7e",
+              "createdAt": "2026-10-22T01:07:39.000Z",
+              "updatedAt": "2026-10-22T01:07:39.000Z",
+              "uid": "35240-154317ec-31d3-4b97-956a-c7a26ab9eb7e"
+            },
+            {
+              "name": "Create Lifecycle Script",
+              "id": "ea9e8d1f-71be-455d-98fd-106223e5a900",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"project\": \"proj_abc123456\",\n  \"name\": \"<string>\",\n  \"content\": \"<string>\",\n  \"description\": \"<string>\",\n  \"scope\": \"PROJECT\"\n}",
+                  "raw": "{\n  \"project\": \"<string>\",\n  \"name\": \"<string>\",\n  \"content\": \"<string>\",\n  \"description\": \"<string>\",\n  \"scope\": \"PROJECT\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"fid\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"content_url\": \"https://czNvshQzd.bnwmZnJesjt9p1h3StMcLWzwQIzMkPteuKe,ThdPjniR\",\n  \"project\": \"proj_abc123456\",\n  \"created_at\": \"2024-01-01T00:00:00Z\",\n  \"created_by\": \"user_abc123456\",\n  \"last_modified_at\": \"2024-01-01T00:00:00Z\",\n  \"last_modified_by\": \"user_abc123456\",\n  \"scope\": \"PLATFORM\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8e9ee83e-9ca4-450a-9c73-0ccf916e6929",
-              "name": "Validation Error",
-              "originalRequest": {
+                },
                 "url": {
-                  "path": [
-                    "v2",
-                    "lifecycle-scripts"
-                  ],
+                  "raw": "{{baseUrl}}/v2/lifecycle-scripts",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
+                  "path": [
+                    "v2",
+                    "lifecycle-scripts"
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                "description": "Create a new lifecycle script"
+              },
+              "response": [
+                {
+                  "id": "754ee66e-93f2-4a0a-a7a0-4613844f243b",
+                  "name": "Successful Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"project\": \"<string>\",\n  \"name\": \"<string>\",\n  \"content\": \"<string>\",\n  \"description\": \"<string>\",\n  \"scope\": \"PROJECT\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/lifecycle-scripts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "lifecycle-scripts"
+                      ]
+                    }
                   },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"fid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"content_url\": \"<uri>\",\n  \"project\": \"<string>\",\n  \"created_at\": \"<string>\",\n  \"created_by\": \"<string>\",\n  \"last_modified_at\": \"<string>\",\n  \"last_modified_by\": \"<string>\",\n  \"scope\": \"ORGANIZATION\"\n}",
+                  "createdAt": "2026-10-22T01:07:39.000Z",
+                  "updatedAt": "2026-10-22T01:07:39.000Z",
+                  "uid": "35240-754ee66e-93f2-4a0a-a7a0-4613844f243b"
+                },
+                {
+                  "id": "76553e56-9d44-465d-84ac-5a95786bf5ba",
+                  "name": "Validation Error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"project\": \"<string>\",\n  \"name\": \"<string>\",\n  \"content\": \"<string>\",\n  \"description\": \"<string>\",\n  \"scope\": \"PROJECT\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/lifecycle-scripts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "lifecycle-scripts"
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-22T01:07:39.000Z",
+                  "updatedAt": "2026-10-22T01:07:39.000Z",
+                  "uid": "35240-76553e56-9d44-465d-84ac-5a95786bf5ba"
+                }
+              ],
+              "createdAt": "2026-10-22T01:07:39.000Z",
+              "updatedAt": "2026-10-22T01:07:39.000Z",
+              "uid": "35240-ea9e8d1f-71be-455d-98fd-106223e5a900"
+            },
+            {
+              "name": "List Lifecycle Scripts",
+              "id": "4c4ec410-209f-4ae4-bd25-f7c2867945b2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"project\": \"proj_abc123456\",\n  \"name\": \"<string>\",\n  \"content\": \"<string>\",\n  \"description\": \"<string>\",\n  \"scope\": \"PROJECT\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f11d1992-ab71-457a-a427-a0c5c542f89e",
-          "name": "List Lifecycle Scripts",
-          "request": {
-            "name": "List Lifecycle Scripts",
-            "description": {
-              "content": "Get all lifecycle scripts visible to user in a project",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v2",
-                "lifecycle-scripts"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "sort_by",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "sort_dir",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "project",
-                  "value": "<string>",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "<integer>"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "8d5f5735-0c53-49f7-ad68-eb0178e23bd7",
-              "name": "Successful Response",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/v2/lifecycle-scripts?nullable=true&sort_by=last_modified_at&sort_dir=asc&project=<string>&limit=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v2",
                     "lifecycle-scripts"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
                   ],
                   "query": [
                     {
+                      "key": "nullable",
+                      "value": "true"
+                    },
+                    {
                       "key": "sort_by",
-                      "value": "<string>"
+                      "value": "last_modified_at"
                     },
                     {
                       "key": "sort_dir",
                       "value": "asc"
                     },
                     {
+                      "description": "(Required) ",
                       "key": "project",
                       "value": "<string>"
                     },
@@ -258,620 +739,165 @@
                       "key": "limit",
                       "value": "<integer>"
                     }
-                  ],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Get all lifecycle scripts visible to user in a project"
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": [\n    {\n      \"fid\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"content_url\": \"http://fKClMojsU.ebjTw9D1ePTOtdiM0lvtodNyXyloyc188YqiJlK3FaSJlzuqxAY7Lxk0aK7in7ELiG13DLxwiO74CTro\",\n      \"project\": \"proj_abc123456\",\n      \"created_at\": \"2024-01-01T00:00:00Z\",\n      \"created_by\": \"user_abc123456\",\n      \"last_modified_at\": \"2024-01-01T00:00:00Z\",\n      \"last_modified_by\": \"user_abc123456\",\n      \"scope\": \"PLATFORM\"\n    },\n    {\n      \"fid\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"content_url\": \"http://xVjnEAPtXZQtqtlahjo.vqoGrkWtuluB4x.HRuWSOLKb2\",\n      \"project\": \"proj_abc123456\",\n      \"created_at\": \"2024-01-01T00:00:00Z\",\n      \"created_by\": \"user_abc123456\",\n      \"last_modified_at\": \"2024-01-01T00:00:00Z\",\n      \"last_modified_by\": \"user_abc123456\",\n      \"scope\": \"ORGANIZATION\"\n    }\n  ],\n  \"next_cursor\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b4291657-182e-4b20-a745-5ae6f71f7814",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "lifecycle-scripts"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "aa224e30-6c46-4acc-80d1-07fdbf785d1b",
+                  "name": "Successful Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/lifecycle-scripts?nullable=true&sort_by=last_modified_at&sort_dir=asc&project=<string>&limit=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "lifecycle-scripts"
+                      ],
+                      "query": [
+                        {
+                          "key": "nullable",
+                          "value": "true"
+                        },
+                        {
+                          "key": "sort_by",
+                          "value": "last_modified_at"
+                        },
+                        {
+                          "key": "sort_dir",
+                          "value": "asc"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "project",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "sort_by",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "sort_dir",
-                      "value": "asc"
-                    },
-                    {
-                      "key": "project",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "<integer>"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": []
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"fid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"content_url\": \"<uri>\",\n      \"project\": \"<string>\",\n      \"created_at\": \"<string>\",\n      \"created_by\": \"<string>\",\n      \"last_modified_at\": \"<string>\",\n      \"last_modified_by\": \"<string>\",\n      \"scope\": \"ORGANIZATION\"\n    },\n    {\n      \"fid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"content_url\": \"<uri>\",\n      \"project\": \"<string>\",\n      \"created_at\": \"<string>\",\n      \"created_by\": \"<string>\",\n      \"last_modified_at\": \"<string>\",\n      \"last_modified_by\": \"<string>\",\n      \"scope\": \"ORGANIZATION\"\n    }\n  ],\n  \"next_cursor\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:07:39.000Z",
+                  "updatedAt": "2026-10-22T01:07:39.000Z",
+                  "uid": "35240-aa224e30-6c46-4acc-80d1-07fdbf785d1b"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "d4b8badc-94bd-4258-851a-fff3e79ef69f",
+                  "name": "Validation Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/lifecycle-scripts?nullable=true&sort_by=last_modified_at&sort_dir=asc&project=<string>&limit=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "lifecycle-scripts"
+                      ],
+                      "query": [
+                        {
+                          "key": "nullable",
+                          "value": "true"
+                        },
+                        {
+                          "key": "sort_by",
+                          "value": "last_modified_at"
+                        },
+                        {
+                          "key": "sort_dir",
+                          "value": "asc"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "project",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-22T01:07:39.000Z",
+                  "updatedAt": "2026-10-22T01:07:39.000Z",
+                  "uid": "35240-d4b8badc-94bd-4258-851a-fff3e79ef69f"
                 }
               ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-22T01:07:39.000Z",
+              "updatedAt": "2026-10-22T01:07:39.000Z",
+              "uid": "35240-4c4ec410-209f-4ae4-bd25-f7c2867945b2"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "6a907202-7ca0-48ec-a999-395c0e0b70f7",
-          "name": "Get Lifecycle Script Content",
-          "request": {
-            "name": "Get Lifecycle Script Content",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "lifecycle-scripts",
-                ":ls_fid",
-                "content"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "ls_fid",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "890f807d-2148-4a3f-9cdd-d5dc6d9cd5d0",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "lifecycle-scripts",
-                    ":ls_fid",
-                    "content"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "ls_fid",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "de9f67d6-fae1-42dd-a97d-1076ae13a3b9",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "lifecycle-scripts",
-                    ":ls_fid",
-                    "content"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "ls_fid",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "46bca388-8140-4977-9432-02ef57380b61",
-          "name": "Update Lifecycle Script",
-          "request": {
-            "name": "Update Lifecycle Script",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "lifecycle-scripts",
-                ":ls_fid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "ls_fid",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PATCH",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "69670113-29d5-4950-9276-f94fb5efac40",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "lifecycle-scripts",
-                    ":ls_fid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "ls_fid",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"scope\": \"ORGANIZATION\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"fid\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"content_url\": \"https://czNvshQzd.bnwmZnJesjt9p1h3StMcLWzwQIzMkPteuKe,ThdPjniR\",\n  \"project\": \"proj_abc123456\",\n  \"created_at\": \"2024-01-01T00:00:00Z\",\n  \"created_by\": \"user_abc123456\",\n  \"last_modified_at\": \"2024-01-01T00:00:00Z\",\n  \"last_modified_by\": \"user_abc123456\",\n  \"scope\": \"PLATFORM\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "2fd769b7-959d-49b7-af97-c1e3b1a8770a",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "lifecycle-scripts",
-                    ":ls_fid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "ls_fid",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"scope\": \"ORGANIZATION\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ba03837a-5177-4e26-80d5-14d1e8282ff1",
-          "name": "Delete Lifecycle Script",
-          "request": {
-            "name": "Delete Lifecycle Script",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "lifecycle-scripts",
-                ":ls_fid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "ls_fid",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "9760d6b1-ab80-4da9-89b2-8e7ed1e9c796",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "lifecycle-scripts",
-                    ":ls_fid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "ls_fid",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "d5ae1c5b-7748-447e-803e-3183e29b9f7f",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "lifecycle-scripts",
-                    ":ls_fid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "ls_fid",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "80c5642d-fbf9-461d-a000-769693a2f574",
+          "createdAt": "2026-10-22T01:07:39.000Z",
+          "updatedAt": "2026-10-22T01:07:39.000Z",
+          "uid": "35240-80c5642d-fbf9-461d-a000-769693a2f574"
         }
       ],
-      "event": []
+      "id": "9e053473-71ff-4dc1-829c-00878a58cb52",
+      "createdAt": "2026-10-22T01:07:39.000Z",
+      "updatedAt": "2026-10-22T01:07:39.000Z",
+      "uid": "35240-9e053473-71ff-4dc1-829c-00878a58cb52"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.mithril.ai",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.mithril.ai"
     }
-  ],
-  "info": {
-    "_postman_id": "b75ae9ad-e72e-4626-89b5-ebb7cd317862",
-    "name": "Mithril API Keys lifecycle scripts API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Mithril Compute API",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

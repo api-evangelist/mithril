@@ -1,210 +1,228 @@
 {
+  "info": {
+    "_postman_id": "bd0f2c22-def3-4c85-a120-9e6717e22b9d",
+    "name": "Mithril instance types API",
+    "description": "Mithril Compute API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:07:07.000Z",
+    "updatedAt": "2026-10-22T01:07:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bd0f2c22-def3-4c85-a120-9e6717e22b9d"
+  },
   "item": [
     {
-      "id": "87efbaa4-2ef1-408e-9171-71327d25c4fe",
-      "name": "instance types",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v2",
       "item": [
         {
-          "id": "dd8bb491-8ff8-4e4a-9115-242c6921193f",
-          "name": "Get Reservation Instance Types",
-          "request": {
-            "name": "Get Reservation Instance Types",
-            "description": {
-              "content": "Get instance types available for reservation.\n\nReturns the subset of public instance types that are currently\neligible for reservation. Instance types can be disabled for\nreservation via the Unleash reservation-disabled-instance-types\nfeature flag.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v2",
-                "reservation",
-                "instance-types"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "reservation",
+          "item": [
             {
-              "id": "26ba2e14-f6ce-4056-b627-4666467aab41",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "reservation",
-                    "instance-types"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "instance-types",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Get Reservation Instance Types",
+                  "id": "b0e24983-6523-452f-9682-99a30ec83d26",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/reservation/instance-types",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "reservation",
+                        "instance-types"
+                      ]
+                    },
+                    "description": "Get instance types available for reservation.\n\nReturns the subset of public instance types that are currently\neligible for reservation. Instance types can be disabled for\nreservation via the Unleash reservation-disabled-instance-types\nfeature flag."
+                  },
+                  "response": [
+                    {
+                      "id": "b6b1bf0b-8711-4a12-b3ab-9f3eb289640e",
+                      "name": "Successful Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/reservation/instance-types",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "reservation",
+                            "instance-types"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"fid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"num_cpus\": \"<integer>\",\n    \"cpu_type\": \"<string>\",\n    \"ram_gb\": \"<integer>\",\n    \"num_gpus\": \"<integer>\",\n    \"gpu_type\": \"<string>\",\n    \"gpu_memory_gb\": \"<integer>\",\n    \"gpu_socket\": \"<string>\",\n    \"local_storage_gb\": \"<integer>\",\n    \"ib_count\": \"<integer>\",\n    \"bridge_count\": \"<integer>\",\n    \"network_type\": \"<string>\"\n  },\n  {\n    \"fid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"num_cpus\": \"<integer>\",\n    \"cpu_type\": \"<string>\",\n    \"ram_gb\": \"<integer>\",\n    \"num_gpus\": \"<integer>\",\n    \"gpu_type\": \"<string>\",\n    \"gpu_memory_gb\": \"<integer>\",\n    \"gpu_socket\": \"<string>\",\n    \"local_storage_gb\": \"<integer>\",\n    \"ib_count\": \"<integer>\",\n    \"bridge_count\": \"<integer>\",\n    \"network_type\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-10-22T01:07:07.000Z",
+                      "updatedAt": "2026-10-22T01:07:07.000Z",
+                      "uid": "35240-b6b1bf0b-8711-4a12-b3ab-9f3eb289640e"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:07:07.000Z",
+                  "updatedAt": "2026-10-22T01:07:07.000Z",
+                  "uid": "35240-b0e24983-6523-452f-9682-99a30ec83d26"
                 }
               ],
-              "body": "[\n  {\n    \"fid\": \"it_abc123456\",\n    \"name\": \"h100.80gb.sxm\",\n    \"num_cpus\": 192,\n    \"cpu_type\": \"Intel\",\n    \"ram_gb\": 1800,\n    \"num_gpus\": 8,\n    \"gpu_type\": \"H100\",\n    \"gpu_memory_gb\": 80,\n    \"gpu_socket\": \"SXM5\",\n    \"local_storage_gb\": 7800,\n    \"ib_count\": 8,\n    \"bridge_count\": 4,\n    \"network_type\": \"InfiniBand\"\n  },\n  {\n    \"fid\": \"it_abc123456\",\n    \"name\": \"h100.80gb.sxm\",\n    \"num_cpus\": 192,\n    \"cpu_type\": \"Intel\",\n    \"ram_gb\": 1800,\n    \"num_gpus\": 8,\n    \"gpu_type\": \"H100\",\n    \"gpu_memory_gb\": 80,\n    \"gpu_socket\": \"SXM5\",\n    \"local_storage_gb\": 7800,\n    \"ib_count\": 8,\n    \"bridge_count\": 4,\n    \"network_type\": \"InfiniBand\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "96182b65-6127-408f-b63d-42bbdf9e5528",
+              "createdAt": "2026-10-22T01:07:07.000Z",
+              "updatedAt": "2026-10-22T01:07:07.000Z",
+              "uid": "35240-96182b65-6127-408f-b63d-42bbdf9e5528"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "1cf942d4-8cfc-46bb-ab66-c8944135f535",
+          "createdAt": "2026-10-22T01:07:07.000Z",
+          "updatedAt": "2026-10-22T01:07:07.000Z",
+          "uid": "35240-1cf942d4-8cfc-46bb-ab66-c8944135f535"
         },
         {
-          "id": "0da2a2da-5bfc-458d-88ce-0c48360b5703",
-          "name": "Get Instance Types",
-          "request": {
-            "name": "Get Instance Types",
-            "description": {
-              "content": "Get all instance types.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v2",
-                "instance-types"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "instance-types",
+          "item": [
             {
-              "id": "1303efd0-ee3b-4503-bc36-04c5fdc845d5",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "instance-types"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+              "name": "Get Instance Types",
+              "id": "bbdafc80-dc44-4319-8430-58ae2ee8c5a6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
                 },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/v2/instance-types",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "instance-types"
+                  ]
+                },
+                "description": "Get all instance types."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "564181f7-0588-4f28-8f16-1ff9d6ec95a8",
+                  "name": "Successful Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/instance-types",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "instance-types"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"fid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"num_cpus\": \"<integer>\",\n    \"cpu_type\": \"<string>\",\n    \"ram_gb\": \"<integer>\",\n    \"num_gpus\": \"<integer>\",\n    \"gpu_type\": \"<string>\",\n    \"gpu_memory_gb\": \"<integer>\",\n    \"gpu_socket\": \"<string>\",\n    \"local_storage_gb\": \"<integer>\",\n    \"ib_count\": \"<integer>\",\n    \"bridge_count\": \"<integer>\",\n    \"network_type\": \"<string>\"\n  },\n  {\n    \"fid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"num_cpus\": \"<integer>\",\n    \"cpu_type\": \"<string>\",\n    \"ram_gb\": \"<integer>\",\n    \"num_gpus\": \"<integer>\",\n    \"gpu_type\": \"<string>\",\n    \"gpu_memory_gb\": \"<integer>\",\n    \"gpu_socket\": \"<string>\",\n    \"local_storage_gb\": \"<integer>\",\n    \"ib_count\": \"<integer>\",\n    \"bridge_count\": \"<integer>\",\n    \"network_type\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-10-22T01:07:07.000Z",
+                  "updatedAt": "2026-10-22T01:07:07.000Z",
+                  "uid": "35240-564181f7-0588-4f28-8f16-1ff9d6ec95a8"
                 }
               ],
-              "body": "[\n  {\n    \"fid\": \"it_abc123456\",\n    \"name\": \"h100.80gb.sxm\",\n    \"num_cpus\": 192,\n    \"cpu_type\": \"Intel\",\n    \"ram_gb\": 1800,\n    \"num_gpus\": 8,\n    \"gpu_type\": \"H100\",\n    \"gpu_memory_gb\": 80,\n    \"gpu_socket\": \"SXM5\",\n    \"local_storage_gb\": 7800,\n    \"ib_count\": 8,\n    \"bridge_count\": 4,\n    \"network_type\": \"InfiniBand\"\n  },\n  {\n    \"fid\": \"it_abc123456\",\n    \"name\": \"h100.80gb.sxm\",\n    \"num_cpus\": 192,\n    \"cpu_type\": \"Intel\",\n    \"ram_gb\": 1800,\n    \"num_gpus\": 8,\n    \"gpu_type\": \"H100\",\n    \"gpu_memory_gb\": 80,\n    \"gpu_socket\": \"SXM5\",\n    \"local_storage_gb\": 7800,\n    \"ib_count\": 8,\n    \"bridge_count\": 4,\n    \"network_type\": \"InfiniBand\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-22T01:07:07.000Z",
+              "updatedAt": "2026-10-22T01:07:07.000Z",
+              "uid": "35240-bbdafc80-dc44-4319-8430-58ae2ee8c5a6"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "e73dfa03-904c-4189-b1db-4c7f15544129",
+          "createdAt": "2026-10-22T01:07:07.000Z",
+          "updatedAt": "2026-10-22T01:07:07.000Z",
+          "uid": "35240-e73dfa03-904c-4189-b1db-4c7f15544129"
         }
       ],
-      "event": []
+      "id": "905022b2-aa01-44d6-91e1-0cd7ec3ba71c",
+      "createdAt": "2026-10-22T01:07:07.000Z",
+      "updatedAt": "2026-10-22T01:07:07.000Z",
+      "uid": "35240-905022b2-aa01-44d6-91e1-0cd7ec3ba71c"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.mithril.ai",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.mithril.ai"
     }
-  ],
-  "info": {
-    "_postman_id": "8d0b221a-26b2-4605-a83a-87e0dbef4673",
-    "name": "Mithril API Keys instance types API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Mithril Compute API",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

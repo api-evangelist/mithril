@@ -1,711 +1,721 @@
 {
+  "info": {
+    "_postman_id": "7a809cc4-09dc-44fd-b3d0-ebbf592179fe",
+    "name": "Mithril Volumes API",
+    "description": "Mithril Compute API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:08:28.000Z",
+    "updatedAt": "2026-10-22T01:08:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7a809cc4-09dc-44fd-b3d0-ebbf592179fe"
+  },
   "item": [
     {
-      "id": "79e8d66d-5c69-4de1-8a11-3d9ae0a914a8",
-      "name": "volumes",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v2",
       "item": [
         {
-          "id": "6ff8f2b2-9802-4a7d-9838-d802fbfa218f",
-          "name": "Get Volumes",
-          "request": {
-            "name": "Get Volumes",
-            "description": {
-              "content": "Retrieves all storage volumes for a specific project.\n\nArgs:\n    user_info: Authenticated user information.\n    project: Identifier of the project to list volumes for.\n    region: Optional region filter.\n    include_deleted: When True, includes soft-deleted volumes in the\n        response. Deleted volumes have a non-null ``deleted_at`` field.\n        Defaults to False.\n\nReturns:\n    list[VolumeModel]: A list of volume models belonging to the project.\n\nRaises:\n    HTTPException: If project is missing or user is not authorized.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v2",
-                "volumes"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "project",
-                  "value": "<string>",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "key": "region",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "include_deleted",
-                  "value": "false"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "volumes",
+          "item": [
             {
-              "id": "b896cbf3-688f-468d-b7f8-b605ee18f5f7",
-              "name": "Successful Response",
-              "originalRequest": {
+              "name": "{volume_fid}",
+              "item": [
+                {
+                  "name": "Delete Volume",
+                  "id": "3f646214-7587-4e31-b4b4-88ffccd26847",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/volumes/:volume_fid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "volumes",
+                        ":volume_fid"
+                      ],
+                      "variable": [
+                        {
+                          "id": "29861e5c-3cd3-4f98-8cc6-f27e83a54961",
+                          "key": "volume_fid",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Deletes a storage volume.\n\nPermanently removes a volume. The volume must not be currently in use/attached.\n\nArgs:\nuser_info: Authenticated user information.\nvolume_fid: Identifier of the volume to delete.\n\nRaises:\nHTTPException: If volume not found, user unauthorized, or volume is in use."
+                  },
+                  "response": [
+                    {
+                      "id": "cc172c16-f85a-4d0a-a46a-ca7ff16d5108",
+                      "name": "Successful Response",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/volumes/:volume_fid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "volumes",
+                            ":volume_fid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "volume_fid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:08:29.000Z",
+                      "updatedAt": "2026-10-22T01:08:29.000Z",
+                      "uid": "35240-cc172c16-f85a-4d0a-a46a-ca7ff16d5108"
+                    },
+                    {
+                      "id": "a999b05a-a636-40dd-89bf-04063b54568b",
+                      "name": "Validation Error",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/volumes/:volume_fid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "volumes",
+                            ":volume_fid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "volume_fid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-22T01:08:29.000Z",
+                      "updatedAt": "2026-10-22T01:08:29.000Z",
+                      "uid": "35240-a999b05a-a636-40dd-89bf-04063b54568b"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:08:29.000Z",
+                  "updatedAt": "2026-10-22T01:08:29.000Z",
+                  "uid": "35240-3f646214-7587-4e31-b4b4-88ffccd26847"
+                },
+                {
+                  "name": "Update Volume",
+                  "id": "ed6432f8-2794-4a32-94e4-50b550c2a0db",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"vy\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/volumes/:volume_fid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "volumes",
+                        ":volume_fid"
+                      ],
+                      "variable": [
+                        {
+                          "id": "bf7c5519-22ce-436a-908f-c00fb2c934f5",
+                          "key": "volume_fid",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Updates a storage volume's mutable properties (e.g., name).\n\nArgs:\nuser_info: Authenticated user information.\nvolume_fid: Identifier of the volume to update.\nbody: Request body containing updated fields.\n\nReturns:\nVolumeModel: The updated volume model.\n\nRaises:\nHTTPException: If volume not found or user unauthorized."
+                  },
+                  "response": [
+                    {
+                      "id": "54b4e329-04b4-406d-9ead-29c830c3d64f",
+                      "name": "Successful Response",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"vy\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/volumes/:volume_fid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "volumes",
+                            ":volume_fid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "volume_fid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"fid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"region\": \"<string>\",\n  \"created_at\": \"<string>\",\n  \"deleted_at\": \"<string>\",\n  \"capacity_gb\": \"<integer>\",\n  \"project\": \"<string>\",\n  \"interface\": \"File\",\n  \"bids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"reservations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"attachments\": {\n    \"mollit_b\": \"<string>\",\n    \"incididunt014\": \"<string>\",\n    \"voluptate_e\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:08:29.000Z",
+                      "updatedAt": "2026-10-22T01:08:29.000Z",
+                      "uid": "35240-54b4e329-04b4-406d-9ead-29c830c3d64f"
+                    },
+                    {
+                      "id": "50cc50ff-0b61-4954-9c32-6870a42a44f5",
+                      "name": "Validation Error",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"vy\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/volumes/:volume_fid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "volumes",
+                            ":volume_fid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "volume_fid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-22T01:08:29.000Z",
+                      "updatedAt": "2026-10-22T01:08:29.000Z",
+                      "uid": "35240-50cc50ff-0b61-4954-9c32-6870a42a44f5"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:08:29.000Z",
+                  "updatedAt": "2026-10-22T01:08:29.000Z",
+                  "uid": "35240-ed6432f8-2794-4a32-94e4-50b550c2a0db"
+                }
+              ],
+              "id": "f639d146-6166-4645-94cd-152f9fbb2f8e",
+              "createdAt": "2026-10-22T01:08:29.000Z",
+              "updatedAt": "2026-10-22T01:08:29.000Z",
+              "uid": "35240-f639d146-6166-4645-94cd-152f9fbb2f8e"
+            },
+            {
+              "name": "Get Volumes",
+              "id": "a9234bc7-df4f-4a3b-be2c-92c17b8b6809",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/v2/volumes?project=<string>&region=<string>&include_deleted=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v2",
                     "volumes"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "(Required) ",
                       "key": "project",
                       "value": "<string>"
                     },
                     {
                       "key": "region",
-                      "value": "us-central1-a"
-                    },
-                    {
-                      "key": "include_deleted",
-                      "value": "false"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"fid\": \"vol_abc123456\",\n    \"name\": \"string\",\n    \"region\": \"us-central1-a\",\n    \"created_at\": \"2024-01-01T00:00:00Z\",\n    \"deleted_at\": \"2024-01-01T00:00:00Z\",\n    \"capacity_gb\": 2000,\n    \"project\": \"proj_abc123456\",\n    \"interface\": \"File\",\n    \"bids\": [\n      \"bid_abc123456\",\n      \"bid_abc123456\"\n    ],\n    \"reservations\": [\n      \"res_abc123456\",\n      \"res_abc123456\"\n    ],\n    \"attachments\": {\n      \"key_0\": \"string\"\n    }\n  },\n  {\n    \"fid\": \"vol_abc123456\",\n    \"name\": \"string\",\n    \"region\": \"us-central1-a\",\n    \"created_at\": \"2024-01-01T00:00:00Z\",\n    \"deleted_at\": \"2024-01-01T00:00:00Z\",\n    \"capacity_gb\": 2000,\n    \"project\": \"proj_abc123456\",\n    \"interface\": \"File\",\n    \"bids\": [\n      \"bid_abc123456\",\n      \"bid_abc123456\"\n    ],\n    \"reservations\": [\n      \"res_abc123456\",\n      \"res_abc123456\"\n    ],\n    \"attachments\": {\n      \"key_0\": \"string\"\n    }\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a29f7a38-8c71-470e-adf3-7d2656d6910e",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "volumes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "project",
                       "value": "<string>"
                     },
                     {
-                      "key": "region",
-                      "value": "us-central1-a"
-                    },
-                    {
                       "key": "include_deleted",
                       "value": "false"
                     }
-                  ],
-                  "variable": []
+                  ]
                 },
+                "description": "Retrieves all storage volumes for a specific project.\n\nArgs:\nuser_info: Authenticated user information.\nproject: Identifier of the project to list volumes for.\nregion: Optional region filter.\ninclude_deleted: When True, includes soft-deleted volumes in the\nresponse. Deleted volumes have a non-null ``deleted_at`` field.\nDefaults to False.\n\nReturns:\nlist[VolumeModel]: A list of volume models belonging to the project.\n\nRaises:\nHTTPException: If project is missing or user is not authorized."
+              },
+              "response": [
+                {
+                  "id": "49fce10f-388b-44e7-8cf9-4b8b4c19ed6e",
+                  "name": "Successful Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/volumes?project=<string>&region=<string>&include_deleted=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "volumes"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "project",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "region",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "include_deleted",
+                          "value": "false"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"fid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"region\": \"<string>\",\n    \"created_at\": \"<string>\",\n    \"deleted_at\": \"<string>\",\n    \"capacity_gb\": \"<integer>\",\n    \"project\": \"<string>\",\n    \"interface\": \"Block\",\n    \"bids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"reservations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"attachments\": {\n      \"voluptateeb0\": \"<string>\",\n      \"Excepteur440\": \"<string>\"\n    }\n  },\n  {\n    \"fid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"region\": \"<string>\",\n    \"created_at\": \"<string>\",\n    \"deleted_at\": \"<string>\",\n    \"capacity_gb\": \"<integer>\",\n    \"project\": \"<string>\",\n    \"interface\": \"File\",\n    \"bids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"reservations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"attachments\": {\n      \"officia_19\": \"<string>\"\n    }\n  }\n]",
+                  "createdAt": "2026-10-22T01:08:29.000Z",
+                  "updatedAt": "2026-10-22T01:08:29.000Z",
+                  "uid": "35240-49fce10f-388b-44e7-8cf9-4b8b4c19ed6e"
+                },
+                {
+                  "id": "24c667e1-9a19-46c9-9bcd-3aab20d7d3e2",
+                  "name": "Validation Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/volumes?project=<string>&region=<string>&include_deleted=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "volumes"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "project",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "region",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "include_deleted",
+                          "value": "false"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-22T01:08:29.000Z",
+                  "updatedAt": "2026-10-22T01:08:29.000Z",
+                  "uid": "35240-24c667e1-9a19-46c9-9bcd-3aab20d7d3e2"
+                }
+              ],
+              "createdAt": "2026-10-22T01:08:29.000Z",
+              "updatedAt": "2026-10-22T01:08:29.000Z",
+              "uid": "35240-a9234bc7-df4f-4a3b-be2c-92c17b8b6809"
+            },
+            {
+              "name": "Create Volume",
+              "id": "cedf813e-bdaf-4986-b738-a45aa94e2725",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ff1f3ba7-296c-4b09-be02-d0f65e65cf69",
-          "name": "Create Volume",
-          "request": {
-            "name": "Create Volume",
-            "description": {
-              "content": "Creates a new storage volume.\n\nArgs:\n    user_info: Authenticated user information.\n    body: Request body containing volume creation details (size, region, etc).\n\nReturns:\n    VolumeModel: The created volume model.\n\nRaises:\n    HTTPException: If user unauthorized or creation fails.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v2",
-                "volumes"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"project\": \"<string>\",\n  \"disk_interface\": \"<string>\",\n  \"region\": \"<string>\",\n  \"size_gb\": {}\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "8fc0a526-43d8-4e42-9594-932d8ab3ee3a",
-              "name": "Successful Response",
-              "originalRequest": {
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"o\",\n  \"project\": \"<string>\",\n  \"disk_interface\": \"Block\",\n  \"region\": \"<string>\",\n  \"size_gb\": {\n    \"title\": \"Size Gb\",\n    \"gt\": {\n      \"_unit\": \"b\",\n      \"_value\": 0\n    },\n    \"lt\": {\n      \"_unit\": \"pib\",\n      \"_value\": 2\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/v2/volumes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v2",
                     "volumes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"project\": \"proj_abc123456\",\n  \"disk_interface\": \"<string>\",\n  \"region\": \"us-central1-a\",\n  \"size_gb\": {}\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
+                "description": "Creates a new storage volume.\n\nArgs:\nuser_info: Authenticated user information.\nbody: Request body containing volume creation details (size, region, etc).\n\nReturns:\nVolumeModel: The created volume model.\n\nRaises:\nHTTPException: If user unauthorized or creation fails."
               },
-              "status": "Created",
-              "code": 201,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "a73a8c19-d5af-471f-aea0-7b12cd168a0c",
+                  "name": "Successful Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"o\",\n  \"project\": \"<string>\",\n  \"disk_interface\": \"Block\",\n  \"region\": \"<string>\",\n  \"size_gb\": {\n    \"title\": \"Size Gb\",\n    \"gt\": {\n      \"_unit\": \"b\",\n      \"_value\": 0\n    },\n    \"lt\": {\n      \"_unit\": \"pib\",\n      \"_value\": 2\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/volumes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "volumes"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"fid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"region\": \"<string>\",\n  \"created_at\": \"<string>\",\n  \"deleted_at\": \"<string>\",\n  \"capacity_gb\": \"<integer>\",\n  \"project\": \"<string>\",\n  \"interface\": \"File\",\n  \"bids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"reservations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"attachments\": {\n    \"mollit_b\": \"<string>\",\n    \"incididunt014\": \"<string>\",\n    \"voluptate_e\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:08:29.000Z",
+                  "updatedAt": "2026-10-22T01:08:29.000Z",
+                  "uid": "35240-a73a8c19-d5af-471f-aea0-7b12cd168a0c"
+                },
+                {
+                  "id": "03fcb4b1-085c-483f-a633-dc40ae813893",
+                  "name": "Validation Error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"o\",\n  \"project\": \"<string>\",\n  \"disk_interface\": \"Block\",\n  \"region\": \"<string>\",\n  \"size_gb\": {\n    \"title\": \"Size Gb\",\n    \"gt\": {\n      \"_unit\": \"b\",\n      \"_value\": 0\n    },\n    \"lt\": {\n      \"_unit\": \"pib\",\n      \"_value\": 2\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/volumes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "volumes"
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-22T01:08:29.000Z",
+                  "updatedAt": "2026-10-22T01:08:29.000Z",
+                  "uid": "35240-03fcb4b1-085c-483f-a633-dc40ae813893"
                 }
               ],
-              "body": "{\n  \"fid\": \"vol_abc123456\",\n  \"name\": \"string\",\n  \"region\": \"us-central1-a\",\n  \"created_at\": \"2024-01-01T00:00:00Z\",\n  \"deleted_at\": \"2024-01-01T00:00:00Z\",\n  \"capacity_gb\": 2000,\n  \"project\": \"proj_abc123456\",\n  \"interface\": \"Block\",\n  \"bids\": [\n    \"bid_abc123456\",\n    \"bid_abc123456\"\n  ],\n  \"reservations\": [\n    \"res_abc123456\",\n    \"res_abc123456\"\n  ],\n  \"attachments\": {\n    \"key_0\": \"string\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "12fcfc22-15b9-4b34-9674-2b1792854cbf",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "volumes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"project\": \"proj_abc123456\",\n  \"disk_interface\": \"<string>\",\n  \"region\": \"us-central1-a\",\n  \"size_gb\": {}\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-22T01:08:29.000Z",
+              "updatedAt": "2026-10-22T01:08:29.000Z",
+              "uid": "35240-cedf813e-bdaf-4986-b738-a45aa94e2725"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "270439ad-b1eb-475f-ba45-e48f59dcbc88",
-          "name": "Delete Volume",
-          "request": {
-            "name": "Delete Volume",
-            "description": {
-              "content": "Deletes a storage volume.\n\nPermanently removes a volume. The volume must not be currently in use/attached.\n\nArgs:\n    user_info: Authenticated user information.\n    volume_fid: Identifier of the volume to delete.\n\nRaises:\n    HTTPException: If volume not found, user unauthorized, or volume is in use.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v2",
-                "volumes",
-                ":volume_fid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "volume_fid",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "cd341a8c-5866-4596-b69f-fd7b3beaf4b3",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "volumes",
-                    ":volume_fid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "volume_fid",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "7267c820-1dc3-4ae7-91fc-d6081d895cf4",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "volumes",
-                    ":volume_fid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "volume_fid",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ef43059a-87fc-4838-a4ff-67868541def0",
-          "name": "Update Volume",
-          "request": {
-            "name": "Update Volume",
-            "description": {
-              "content": "Updates a storage volume's mutable properties (e.g., name).\n\nArgs:\n    user_info: Authenticated user information.\n    volume_fid: Identifier of the volume to update.\n    body: Request body containing updated fields.\n\nReturns:\n    VolumeModel: The updated volume model.\n\nRaises:\n    HTTPException: If volume not found or user unauthorized.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v2",
-                "volumes",
-                ":volume_fid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "volume_fid",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PATCH",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "7b5fcb9d-405e-46d4-8d17-fb76f6160f06",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "volumes",
-                    ":volume_fid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "volume_fid",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"fid\": \"vol_abc123456\",\n  \"name\": \"string\",\n  \"region\": \"us-central1-a\",\n  \"created_at\": \"2024-01-01T00:00:00Z\",\n  \"deleted_at\": \"2024-01-01T00:00:00Z\",\n  \"capacity_gb\": 2000,\n  \"project\": \"proj_abc123456\",\n  \"interface\": \"Block\",\n  \"bids\": [\n    \"bid_abc123456\",\n    \"bid_abc123456\"\n  ],\n  \"reservations\": [\n    \"res_abc123456\",\n    \"res_abc123456\"\n  ],\n  \"attachments\": {\n    \"key_0\": \"string\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "2b690229-1a50-463d-ad1e-1e15f693ea2b",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "volumes",
-                    ":volume_fid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "volume_fid",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "842ccb37-84c0-4c1d-b494-7d9a1cf5ef88",
+          "createdAt": "2026-10-22T01:08:29.000Z",
+          "updatedAt": "2026-10-22T01:08:29.000Z",
+          "uid": "35240-842ccb37-84c0-4c1d-b494-7d9a1cf5ef88"
         }
       ],
-      "event": []
+      "id": "70d916d7-3255-4f71-8981-fc22dab1a623",
+      "createdAt": "2026-10-22T01:08:29.000Z",
+      "updatedAt": "2026-10-22T01:08:29.000Z",
+      "uid": "35240-70d916d7-3255-4f71-8981-fc22dab1a623"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.mithril.ai",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.mithril.ai"
     }
-  ],
-  "info": {
-    "_postman_id": "1a2a4762-8096-4cc2-859d-52e3a8495d04",
-    "name": "Mithril API Keys volumes API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Mithril Compute API",
-      "type": "text/plain"
-    }
-  }
+  ]
 }
